@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeBook", "SafeBook\SafeBook.csproj", "{390B8A83-9309-4E44-9C53-AC2ADF39E21D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeBook", "SafeBook\SafeBook.csproj", "{390B8A83-9309-4E44-9C53-AC2ADF39E21D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safebook.Domain", "Safebook.Domain\Safebook.Domain.csproj", "{9F03C88C-E2AF-4BA1-89BC-0B6EAC9AD2DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{390B8A83-9309-4E44-9C53-AC2ADF39E21D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{390B8A83-9309-4E44-9C53-AC2ADF39E21D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{390B8A83-9309-4E44-9C53-AC2ADF39E21D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F03C88C-E2AF-4BA1-89BC-0B6EAC9AD2DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F03C88C-E2AF-4BA1-89BC-0B6EAC9AD2DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F03C88C-E2AF-4BA1-89BC-0B6EAC9AD2DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F03C88C-E2AF-4BA1-89BC-0B6EAC9AD2DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
