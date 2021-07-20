@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SafeBook.EfCoreInMemory;
 
 namespace SafeBook
 {
@@ -28,6 +30,7 @@ namespace SafeBook
         {
 
             services.AddControllers();
+            services.AddDbContext<InMemoryDbContext>(options => options.UseInMemoryDatabase("SafeBookInMemoryDb"));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SafeBook", Version = "v1" });
