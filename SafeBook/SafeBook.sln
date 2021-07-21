@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeBook", "SafeBook\SafeBook.csproj", "{390B8A83-9309-4E44-9C53-AC2ADF39E21D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safebook.Domain", "Safebook.Domain\Safebook.Domain.csproj", "{9F03C88C-E2AF-4BA1-89BC-0B6EAC9AD2DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeBook.Domain", "Safebook.Domain\SafeBook.Domain.csproj", "{9F03C88C-E2AF-4BA1-89BC-0B6EAC9AD2DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safebook.EfCoreInMemory", "Safebook.EfCoreInMemory\Safebook.EfCoreInMemory.csproj", "{0FE50887-DEE9-45A1-85E8-4C1833AB6DA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeBook.EfCoreInMemory", "Safebook.EfCoreInMemory\SafeBook.EfCoreInMemory.csproj", "{0FE50887-DEE9-45A1-85E8-4C1833AB6DA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

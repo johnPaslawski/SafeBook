@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Safebook.EfCoreInMemory\Safebook.EfCoreInMemory.csproj" />
+    <ProjectReference Include="..\Safebook.EfCoreInMemory\SafeBook.EfCoreInMemory.csproj" />
   </ItemGroup>
 
 </Project>
