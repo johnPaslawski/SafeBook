@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SafeBook.EfCoreInMemory
 {
-    public class InMemoryDbContext : DbContext
+    public class SafeBookDbContextInMemory : DbContext
     {
-        public InMemoryDbContext(DbContextOptions<InMemoryDbContext> options) : base(options)
+        public SafeBookDbContextInMemory(DbContextOptions<SafeBookDbContextInMemory> options) : base(options)
         {
         }
 

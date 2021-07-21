@@ -15,6 +15,6 @@ namespace SafeBook.EfCoreInMemory
         {
         }
 
-        private InMemoryDbContext GetInMemoryDbContext() => (InMemoryDbContext) _dbContext;
+        private SafeBookDbContextInMemory GetInMemoryDbContext() => (SafeBookDbContextInMemory) _dbContext;
     }
 }
