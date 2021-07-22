@@ -1,11 +1,12 @@
-﻿using SafeBook.Domain.Domain.Common;
+﻿using SafeBook.Domain.Common;
+using SafeBook.Domain.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SafeBook.Domain.Domain.HRMS
+namespace SafeBook.Domain.HRMS
 {
     public class Organization
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SafeBook.Domain.Domain.Common
+namespace SafeBook.Domain.Common
 {
     public class User : BaseModel
     {

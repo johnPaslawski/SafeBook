@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SafeBook.Domain.Domain.Common
+namespace SafeBook.Domain.Common
 {
-    public abstract class BaseModel
+    public class Role : BaseModel
     {
-        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

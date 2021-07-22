@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using SafeBook.Domain;
-using SafeBook.Domain.Domain.Common;
+using SafeBook.Domain.Common;
 
 namespace Safebook.Domain.Persistence
 {

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Domain.Shop\" />
+    <Folder Include="Shop\" />
   </ItemGroup>
 
 </Project>
