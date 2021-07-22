@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SafeBook.Domain.Domain.HRMS
 {
-    class Organization
+    public class Organization
     {
         public string Name { get; set; }
         public string Adress { get; set; } // TODO: Adress should be separated into detailed properties ?

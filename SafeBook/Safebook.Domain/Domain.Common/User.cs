@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SafeBook.Domain.Domain.Common
 {
-    class User : BaseModel
+    public class User : BaseModel
     {
         // Personal Data properties
         //          +

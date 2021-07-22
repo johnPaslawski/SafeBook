@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace SafeBook.Domain
 {
-    // TODO: to be simplified
-    public class Offer : BaseModel
+    public class Offer : BaseModel // TODO: to be simplified, propably we only need link to Offer in PDF document on google drive
     {
         public string Description { get; set; }
         public string Name { get; set; }

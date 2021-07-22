@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SafeBook.Domain.Domain.Common
 {
-    class Role : BaseModel
+    public class Role : BaseModel
     {
         public string Name { get; set; }
     }
