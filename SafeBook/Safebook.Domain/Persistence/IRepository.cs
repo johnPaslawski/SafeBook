@@ -5,10 +5,11 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using SafeBook.Domain;
+using SafeBook.Domain.Domain.Common;
 
 namespace Safebook.Domain.Persistence
 {
-    public interface IRepository<TEntity> where TEntity : BaseModel
+    public interface IRepository<TEntity> where TEntity : BaseModel // TODO: question - shouldn't be entirely abstract inheritance ?
     {
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();

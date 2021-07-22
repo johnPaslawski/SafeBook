@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SafeBook.Domain
+namespace SafeBook.Domain.Domain.Common
 {
     public abstract class BaseModel
     {
