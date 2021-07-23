@@ -10,9 +10,10 @@ namespace SafeBook.Domain.HRMS
 {
     public class Organization
     {
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string Adress { get; set; } // TODO: Adress should be separated into detailed properties ?
-        public string REGON { get; set; } // TODO: strings, or int's ? for the following data
+        public string Adress { get; set; } // (idziemy w stronę odrębnej klasy)
+        public string REGON { get; set; } // (typ REGONU zależy od tego czy i jaka będzie walidacja)
         public string NIP { get; set; }
         public string KRS { get; set; }
         public string BankAccountNumber { get; set; }

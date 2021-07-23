@@ -9,8 +9,9 @@ using SafeBook.Domain.Common;
 
 namespace Safebook.Domain.Persistence
 {
-    public interface IRepository<TEntity> where TEntity : BaseModel // TODO: question - shouldn't be entirely abstract inheritance ?
+    public interface IRepository<TEntity> // TODO: question - shouldn't be entirely abstract inheritance ?
     {
+        public int Id { get; set; }
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);

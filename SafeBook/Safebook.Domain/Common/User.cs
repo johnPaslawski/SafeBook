@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace SafeBook.Domain.Common
 {
-    public class User : BaseModel
+    public class User
     {
         // Personal Data properties
         //          +
+
+        public int Id { get; set; }
         public Role Role { get; set; }
     }
 }

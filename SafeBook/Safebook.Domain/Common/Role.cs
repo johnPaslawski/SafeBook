@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SafeBook.Domain.Common
 {
-    public class Role : BaseModel
+    public class Role
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }
