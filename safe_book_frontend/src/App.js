@@ -1,26 +1,23 @@
-import React, {Component, useEffect, useState} from 'react';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
+import { useState } from 'react';
 
-import './App.css';
-import MainPage from './MainPage/MainPage';
-import HRMS from './HRMS/HRMS.JS';
-import Shop from './Shop/Shop';
+import MainPageRouter from './MainPage/MainPageRouter';
+import HrmsRouter from './Hrms/HrmsRouter';
+import ShopRouter from './Shop/ShopRouter';
+import UserRouter from './User/UserRouter';
 
 function App() {
+
+  const [userLogged, setUserLogged] = useState(false);
+  const [userId, setUserId] = useState(null);
+
   return (
     <div>
       <Router>
-        <Switch>
-          <Route path="mainPage">
-            <MainPage />
-          </Route>
-          <Route path="hrms">
-            <HRMS />
-          </Route>
-          <Route path="shop">
-            <Shop />
-          </Route>
-        </Switch>
+          <MainPageRouter userId={userId}/>
+          <HrmsRouter userId={userId}/>
+          <ShopRouter userId={userId}/>
+          <UserRouter setUserId={setUserId} setUserLogged={setUserLogged}/>
       </Router>
     </div>
   );
