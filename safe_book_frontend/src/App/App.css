@@ -1,0 +1,12 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+#root{
+    height: 100vh;
+}
+
+.app{
+    height: 100vh;
+}
