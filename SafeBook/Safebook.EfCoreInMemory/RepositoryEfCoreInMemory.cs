@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SafeBook.Domain;
 using Safebook.Domain.Persistence;
+using SafeBook.Domain.Common;
 
 namespace SafeBook.EfCoreInMemory
 {
-    public abstract class RepositoryEfCoreInMemory<TEntity> : IRepository<TEntity> where TEntity : BaseModel // TODO: Repository can use DAO instead of DbContext
+    public abstract class RepositoryEfCoreInMemory<TEntity> : IRepository<TEntity> where TEntity : class // TODO: Repository can use DAO instead of DbContext
     {
         protected readonly DbContext _dbContext;
 

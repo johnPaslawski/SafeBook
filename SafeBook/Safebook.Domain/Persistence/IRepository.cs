@@ -9,7 +9,7 @@ using SafeBook.Domain.Common;
 
 namespace Safebook.Domain.Persistence
 {
-    public interface IRepository<TEntity> where TEntity : BaseModel // TODO: question - shouldn't be entirely abstract inheritance ?
+    public interface IRepository<TEntity> where TEntity : class // TODO: question - shouldn't be entirely abstract inheritance ?
     {
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();
