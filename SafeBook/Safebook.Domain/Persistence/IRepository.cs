@@ -11,6 +11,7 @@ namespace Safebook.Domain.Persistence
 {
     public interface IRepository<TEntity> where TEntity : class // TODO: question - shouldn't be entirely abstract inheritance ?
     {
+        public int Id { get; set; }
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
