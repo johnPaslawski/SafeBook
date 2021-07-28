@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SafeBook.Domain.Persistence
 {
+
     public interface IUnitOfWork : IDisposable
     {
         INewsRepository News { get; }

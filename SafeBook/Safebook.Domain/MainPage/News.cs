@@ -1,5 +1,4 @@
 ﻿using SafeBook.Domain.Common;
-using SafeBook.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;

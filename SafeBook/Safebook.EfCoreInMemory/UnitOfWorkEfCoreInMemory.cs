@@ -15,7 +15,7 @@ namespace SafeBook.EfCoreInMemory
 
         public UnitOfWorkEfCoreInMemory(SafeBookDbContextInMemory dbContext)
         {
-            _safeBookDbContextInMemory = dbContext;
+            this._safeBookDbContextInMemory = dbContext;
             News = new NewsRepositoryEfCoreInMemory(dbContext);
         }
 
@@ -26,6 +26,7 @@ namespace SafeBook.EfCoreInMemory
         public void Dispose()
         {
             _safeBookDbContextInMemory.Dispose();
+            GC.SuppressFinalize(true);
         }
     }
 }

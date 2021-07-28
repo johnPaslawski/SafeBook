@@ -13,6 +13,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SafeBook.EfCoreInMemory;
+using SafeBook.Domain.Persistence;
+using SafeBook.Domain;
 
 namespace SafeBook
 {
@@ -28,9 +30,13 @@ namespace SafeBook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            
             services.AddControllers();
             services.AddDbContext<SafeBookDbContextInMemory>(options => options.UseInMemoryDatabase("SafeBookInMemoryDb"));
+
+            // UnitOfWork DInjection
+            services.AddTransient<IUnitOfWork, UnitOfWorkEfCoreInMemory>();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SafeBook", Version = "v1" });
@@ -57,6 +63,10 @@ namespace SafeBook
             {
                 endpoints.MapControllers();
             });
+
+            
+
         }
+        
     }
 }
