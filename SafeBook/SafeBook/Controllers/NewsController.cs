@@ -6,11 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using SafeBook.EfCoreInMemory;
 using SafeBook.Domain.Persistence;
+using Microsoft.AspNetCore.Http;
 
 namespace SafeBook.Controllers
 {
-    [Route("api/test")]
-    public class NewsController : Controller
+    [ApiController]
+    [Route("api/[controller]")]
+    public class NewsController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -30,10 +32,12 @@ namespace SafeBook.Controllers
             _unitOfWork.Save();
         }
 
-        [HttpGet("news")]
+        // GET .. api/news
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetNews()
-        {
-             
+        {           
             var allNews = _unitOfWork.News.GetAll();
 
             return Ok(allNews);
