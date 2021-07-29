@@ -15,7 +15,7 @@ namespace SafeBook.EfCoreInMemory
     {
         protected readonly DbContext _dbContext;
 
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        
 
         protected RepositoryEfCoreInMemory(DbContext dbContext)
         {

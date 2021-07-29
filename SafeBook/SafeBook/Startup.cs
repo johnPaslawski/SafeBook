@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using SafeBook.EfCoreInMemory;
 using SafeBook.Domain.Persistence;
 using SafeBook.Domain;
+using System.Reflection;
 
 namespace SafeBook
 {
@@ -35,8 +36,11 @@ namespace SafeBook
             services.AddDbContext<SafeBookDbContextInMemory>(options => options.UseInMemoryDatabase("SafeBookInMemoryDb"));
 
             // UnitOfWork DInjection
-            services.AddTransient<IUnitOfWork, UnitOfWorkEfCoreInMemory>();
-            
+            services.AddScoped<IUnitOfWork, UnitOfWorkEfCoreInMemory>();
+
+            // Automapper
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SafeBook", Version = "v1" });
