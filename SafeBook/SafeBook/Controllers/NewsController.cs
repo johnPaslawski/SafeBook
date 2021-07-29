@@ -26,6 +26,7 @@ namespace SafeBook.Controllers
 
         }
 
+
         // GET .. api/news
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -117,9 +118,42 @@ namespace SafeBook.Controllers
             }
 
             
+        }
 
-            
-            
+        // PUT ... api/news/1
+        [HttpPut("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult UpdateNews(int id, [FromBody] UpdateNewsDto updateNewsDto)
+        {
+            //SETUP FAKE DATA SEED
+            SetupFakeData();
+
+            if (!ModelState.IsValid)
+            {
+                //_logger.LogError($"backend: Invalid ModelState - failed PUT attempt in {nameof(UpdateNews)}");
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var news = _unitOfWork.News.Get(id);
+                if (news == null)
+                {
+                    //_logger.LogError($"backend: Not found news with id = {id}");
+                    return NotFound($"backend: Not found news with id = {id}");
+                }
+
+                _mapper.Map(updateNewsDto, news);
+                _unitOfWork.Save();
+
+                return NoContent();
+            }
+            catch (Exception)
+            {
+                //_logger.LogError(exception, $"backend: Error with creating. Something went wrong in {nameof(UpdateNews)}");
+                return Problem("backend: Error with creating. Something went wrong in {nameof(UpdateNews)"); 
+            }
         }
 
         private void SetupFakeData()
