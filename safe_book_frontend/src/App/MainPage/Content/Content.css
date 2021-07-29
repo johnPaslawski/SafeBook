@@ -1,3 +1,44 @@
 .content{
     grid-area: content;
 }
+
+.content-side{
+    display: grid;
+    grid-template-columns: 80% auto;
+}
+
+.facebook-side{
+    position: sticky;
+    padding-top: 100px;
+    display: grid;
+    grid-template-rows: auto 30px;
+    justify-content: center;
+    align-content: center;
+}
+
+.social-links{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.social-links img{
+    height: 100%;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+    -webkit-transform: translate(0, 0);
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+}
+
+.social-links img:hover{
+    height: 120%;
+}
+
+.social-links a{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: grid;
+}
+

@@ -10,7 +10,7 @@ const BottomPart = () => {
             <Link to="/contact" style={{gridArea: "contacts-btn"}}>Kontakt</Link>
             <Link to="*" style={{gridArea: "shop-btn"}}>Sklep</Link>
             <div className="search">
-                <label for="header-search" className="header-search-label">Wyszukaj</label>
+                <label htmlFor="header-search" className="header-search-label">Wyszukaj</label>
                 <input className="search-input" type="textbox" placeholder="Search" id="header-search"></input>
             </div>
         </div>
