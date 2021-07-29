@@ -10,6 +10,7 @@ namespace SafeBook.Domain.Persistence
     public interface IUnitOfWork : IDisposable
     {
         INewsRepository News { get; }
+        IUsersRepository Users { get; }
         int Save();
     }
 }

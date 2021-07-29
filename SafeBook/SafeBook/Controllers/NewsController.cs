@@ -22,7 +22,7 @@ namespace SafeBook.Controllers
         public NewsController(IUnitOfWork uow, IMapper mapper)
         {
             _unitOfWork = uow;
-            this._mapper = mapper;
+            _mapper = mapper;
 
         }
 
@@ -69,12 +69,12 @@ namespace SafeBook.Controllers
             }
             catch (Exception exception)
             {
-                //_logger.LogError(exception, $"backend: Error with creating. Something went wrong in {nameof(GetOneNews)");
+                //_logger.LogError(exception, $"backend: Error with getting. Something went wrong in {nameof(GetOneNews)");
 
                 //return StatusCode(StatusCodes.Status500InternalServerError,
                 //    "Internal server error, please try again later...");
 
-                return Problem("backend: Error with creating. Something went wrong in {nameof(GetOneNews)");
+                return Problem("backend: Error with getting. Something went wrong in {nameof(GetOneNews)");
             }
         }
 
@@ -120,7 +120,7 @@ namespace SafeBook.Controllers
             
         }
 
-        // PUT ... api/news/1
+        // PUT ... api/news/{id:int}
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -156,17 +156,5 @@ namespace SafeBook.Controllers
             }
         }
 
-        private void SetupFakeData()
-        {
-            News news = new News { Id = 1, CreationDate = DateTime.Now, Description = "fsdfsdDecription of this cool news", Title = "News nr 1" };
-            News news2 = new News { Id = 2, CreationDate = DateTime.Now, Description = "asdasdasdasd of this cool news", Title = "News nr 2" };
-            News news3 = new News { Id = 3, CreationDate = DateTime.Now, Description = "rtyrtyrty of this cool news", Title = "News nr 3" };
-
-            _unitOfWork.News.Add(news);
-            _unitOfWork.News.Add(news2);
-            _unitOfWork.News.Add(news3);
-
-            _unitOfWork.Save();
-        }
     }
 }
