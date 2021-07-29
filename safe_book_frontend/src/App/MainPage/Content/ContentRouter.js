@@ -11,23 +11,21 @@ import Contacts from './Contacts/Contacts';
 const ContentRouter = () => {
     return(
         <div className="content">
-            <Switch>
-                <Route exact path="/" component={News} />  {/*Default(can be changed)*/}
+            <Route exact path="/" component={News} />  {/*Default(can be changed)*/}
 
-                <Route exact path="/news" component={News} />
+            <Route exact path="/news" component={News} />
 
-                <Route exact path="/news/:id" component={AboutNews} />
+            <Route exact path="/news/:id" component={AboutNews} />
 
-                <Route exact path="/projects" component={Projects} />
+            <Route exact path="/projects" component={Projects} />
 
-                <Route path="/projects/:id" component={AboutProjects} />
+            <Route path="/projects/:id" component={AboutProjects} />
 
-                <Route exact path="/about" component={About} />
+            <Route exact path="/about" component={About} />
 
-                <Route exact path="/offer" component={Offer} />
+            <Route exact path="/offer" component={Offer} />
 
-                <Route exact path="/contact" component={Contacts} />
-            </Switch>
+            <Route exact path="/contact" component={Contacts} />
         </div>
     );
 }

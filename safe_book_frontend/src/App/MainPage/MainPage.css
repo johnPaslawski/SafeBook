@@ -5,4 +5,5 @@
     "header"
     "content"
     "footer";
+    grid-template-rows: 150px auto 50px;
 }

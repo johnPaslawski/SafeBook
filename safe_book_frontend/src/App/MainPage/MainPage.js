@@ -1,15 +1,17 @@
-import { BrowserRouter as Switch, Redirect, Route} from 'react-router-dom';
 import Header from './Header/Header';
-import Content from './Content/ContentRouter'
+import ContentRouter from './Content/ContentRouter'
 import Footer from './Footer/Footer';
 import './MainPage.css'
+import { BrowserRouter as Switch} from 'react-router-dom';
 
 const MainPage = (props) => {
     return(
         <div className="main-page">
-            <Header userInfo={props.userInfo}/>
-            <Content />
-            <Footer />
+            <Switch>
+                <Header userInfo={props.userInfo}/>
+                <ContentRouter />
+                <Footer />
+            </Switch>
         </div>
     );
 }
