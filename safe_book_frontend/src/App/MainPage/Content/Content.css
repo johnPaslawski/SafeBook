@@ -8,15 +8,15 @@
 }
 
 .facebook-side{
-    position: sticky;
     padding-top: 100px;
-    display: grid;
-    grid-template-rows: auto 30px;
-    justify-content: center;
-    align-content: center;
+    top: 0;
+    justify-self: center;
+    align-self: start;
+    position: sticky;
 }
 
 .social-links{
+    height: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
