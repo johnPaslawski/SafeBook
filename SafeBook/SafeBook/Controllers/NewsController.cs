@@ -127,8 +127,8 @@ namespace SafeBook.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult UpdateNews(int id, [FromBody] UpdateNewsDto updateNewsDto)
         {
-            //SETUP FAKE DATA SEED
-            SetupFakeData();
+            ////SETUP FAKE DATA SEED
+            //SetupFakeData();
 
             if (!ModelState.IsValid)
             {
