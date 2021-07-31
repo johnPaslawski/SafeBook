@@ -2,17 +2,11 @@
     grid-area: content;
 }
 
+/* ContentSide */
+
 .content-side{
     display: grid;
     grid-template-columns: 80% auto;
-}
-
-.facebook-side{
-    padding-top: 100px;
-    top: 0;
-    justify-self: center;
-    align-self: start;
-    position: sticky;
 }
 
 .social-links{
@@ -41,4 +35,14 @@
     position: relative;
     display: grid;
 }
+/* FacebookSide */
+
+.facebook-side{
+    padding-top: 100px;
+    top: 0;
+    justify-self: center;
+    align-self: start;
+    position: sticky;
+}
+/* ---------------------------------------------- */
 
