@@ -13,12 +13,14 @@ namespace SafeBook.EfCoreInMemory
         private readonly SafeBookDbContextInMemory _safeBookDbContextInMemory;
         public INewsRepository News { get; }
         public IUsersRepository Users { get; }
+        public IProjectsRepository Projects { get; }
 
         public UnitOfWorkEfCoreInMemory(SafeBookDbContextInMemory dbContext)
         {
             this._safeBookDbContextInMemory = dbContext;
             News = new NewsRepositoryEfCoreInMemory(dbContext);
             Users = new UsersRepositoryEfCoreInMemory(dbContext);
+            Projects = new ProjectsRepositoryEfInMemory(dbContext);
         }
 
         public int Save()

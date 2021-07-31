@@ -12,9 +12,9 @@ namespace SafeBook.EfCoreInMemory
     public class SafeBookDbContextInMemory : DbContext
     {
         public DbSet<News> News { get; set; }
-        public DbSet<Project> Projects { get; set; }
-        public DbSet<Offer> Offers { get; set; }
+        public DbSet<Project> Projects { get; set; }      
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
         
 
         public SafeBookDbContextInMemory(DbContextOptions<SafeBookDbContextInMemory> options) : base(options)

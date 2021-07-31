@@ -11,6 +11,7 @@ namespace SafeBook.Domain.Persistence
     {
         INewsRepository News { get; }
         IUsersRepository Users { get; }
+        IProjectsRepository Projects { get; }
         int Save();
     }
 }

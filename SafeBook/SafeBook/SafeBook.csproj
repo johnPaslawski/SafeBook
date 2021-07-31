@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="DTOs\HRMS\" />
+    <Folder Include="Services\HRMS\" />
   </ItemGroup>
 
 </Project>
