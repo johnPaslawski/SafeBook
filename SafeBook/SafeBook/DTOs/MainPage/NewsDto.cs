@@ -8,7 +8,8 @@ namespace SafeBook.DTOs.MainPage
 {
     public class NewsDto : CreateNewsDto
     {
-        [Required]
+        //[Required]
+        [Key]
         public int Id { get; set; }
     }
 
