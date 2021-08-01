@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SafeBook.DataGeneratorInMemory;
+using SafeBook.EfCoreInMemory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +16,24 @@ namespace SafeBook
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            // genuine configuration:
+            // CreateHostBuilder(args).Build().Run();
+
+
+            // In memory Db configuration: ////////////////////////////////////////////
+            
+            var host = CreateHostBuilder(args).Build();
+           
+            using (var scope = host.Services.CreateScope())
+            {               
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<SafeBookDbContextInMemory>();
+   
+                DataGenerator.Initialize(services);
+            }
+
+            host.Run();
+            ///////////////////////////////////////////////////////////////////////////
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
