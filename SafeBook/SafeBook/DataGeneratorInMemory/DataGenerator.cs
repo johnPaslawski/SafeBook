@@ -23,13 +23,11 @@ namespace SafeBook.DataGeneratorInMemory
                     return;   // Data was already seeded
                 }
 
-                News news = new News { Id = 1, CreationDate = DateTime.Now, Description = "fsdfsdDecription of this cool news", Title = "News nr 1" };
-                News news2 = new News { Id = 2, CreationDate = DateTime.Now, Description = "asdasdasdasd of this cool news", Title = "News nr 2" };
-                News news3 = new News { Id = 3, CreationDate = DateTime.Now, Description = "rtyrtyrty of this cool news", Title = "News nr 3" };
+                News news = new News { CreationDate = DateTime.Now, Description = "fsdfsdDecription of this cool news", Title = "News nr 1" };
+                News news2 = new News { CreationDate = DateTime.Now, Description = "asdasdasdasd of this cool news", Title = "News nr 2" };
+                News news3 = new News { CreationDate = DateTime.Now, Description = "rtyrtyrty of this cool news", Title = "News nr 3" };
 
-                context.News.Add(news);
-                context.News.Add(news2);
-                context.News.Add(news3);
+                context.AddRange(news, news2, news3);
 
                 context.SaveChanges();
 
