@@ -15,6 +15,15 @@ namespace SafeBook.EfCoreInMemory
         {
         }
 
-        //private SafeBookDbContextInMemory GetInMemoryDbContext() => (SafeBookDbContextInMemory) _dbContext;
+        public IEnumerable<News> FindString(string like)
+        {
+            return GetInMemoryDbContext().News
+                    .Where(x => x.Title.Contains(like) || x.Description.Contains(like))
+                    .ToList();
+        }
+
+
+
+        private SafeBookDbContextInMemory GetInMemoryDbContext() => (SafeBookDbContextInMemory)_dbContext;
     }
 }

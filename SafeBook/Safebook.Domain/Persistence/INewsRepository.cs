@@ -10,5 +10,7 @@ namespace SafeBook.Domain.Persistence
     public interface INewsRepository : IRepository<News>
     {
         // Queries go here:
+        IEnumerable<News> FindString(string like);
+        
     }
 }

@@ -27,14 +27,22 @@ namespace SafeBook.Controllers
         }
 
 
-        // GET .. api/news
+        // GET .. api/news?like={}
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetNews()
+        public IActionResult GetNews([FromQuery] string like)
         {
-            ////SETUP FAKE DATA SEED
-            //SetupFakeData();
+            if (!string.IsNullOrWhiteSpace(like))
+            {
+                // dodać sortowanie in title first, in description second
+                //var news = _unitOfWork.News.FindString(like);
+
+                //sposób 2:
+                var news = _unitOfWork.News.Find(x => x.Title.Contains(like) || x.Description.Contains(like));
+
+                return Ok(news);
+            }
 
             var allNews = _unitOfWork.News.GetAll();
 
