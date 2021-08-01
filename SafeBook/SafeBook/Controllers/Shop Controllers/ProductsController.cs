@@ -80,14 +80,6 @@
 //            {
 //                var news = _mapper.Map<News>(newsDto);
 
-//                //THIS PART SHOULD BE DELETED AFTER IMPLEMENTING EF CORE Database
-//                var maxId = _unitOfWork.News.GetAll()
-//                    .Select(x => x.Id)
-//                    .DefaultIfEmpty()
-//                    .Max();
-
-//                news.Id = maxId + 1;
-//                //
 
 //                _unitOfWork.News.Add(news);
 //                _unitOfWork.Save();

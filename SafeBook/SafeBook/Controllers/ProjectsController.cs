@@ -89,14 +89,7 @@ namespace SafeBook.Controllers
             {
                 var project = _mapper.Map<Project>(projectDto);
 
-                //THIS PART SHOULD BE DELETED AFTER IMPLEMENTING EF CORE Database
-                var maxId = _unitOfWork.Projects.GetAll()
-                    .Select(x => x.Id)
-                    .DefaultIfEmpty()
-                    .Max();
-
-                project.Id = maxId + 1;
-                //
+                
 
                 _unitOfWork.Projects.Add(project);
                 _unitOfWork.Save();

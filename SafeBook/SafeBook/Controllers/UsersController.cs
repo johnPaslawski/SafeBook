@@ -80,14 +80,6 @@ namespace SafeBook.Controllers
             {
                 var user = _mapper.Map<User>(createUserDto);
 
-                //THIS PART SHOULD BE DELETED AFTER IMPLEMENTING EF CORE Database
-                var maxId = _unitOfWork.Users.GetAll()
-                    .Select(x => x.Id)
-                    .DefaultIfEmpty()
-                    .Max();
-
-                user.Id = maxId + 1;
-                //
 
                 _unitOfWork.Users.Add(user);
                 _unitOfWork.Save();
