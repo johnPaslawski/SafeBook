@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace SafeBook.Domain.Common
+namespace SafeBook.DTOs.Common
 {
-    public class Role
+    public class RoleDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual IList<User> Users { get; set; }
+        public virtual IList<UserDto> Users { get; set; }
     }
 }

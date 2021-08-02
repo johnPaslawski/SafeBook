@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SafeBook.EfCore.Infrastructure.Persistance.Repositories.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace SafeBook.Domain.Persistence
         INewsRepository News { get; }
         IUsersRepository Users { get; }
         IProjectsRepository Projects { get; }
+        IRolesRepository Roles { get; }
         int Save();
     }
 }

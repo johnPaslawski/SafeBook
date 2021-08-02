@@ -31,7 +31,7 @@
 //        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 //        public IActionResult GetProducts()
 //        {
-           
+
 //            var allProducts = _unitOfWork.Products.GetAll();
 
 //            return Ok(allProducts);
@@ -59,7 +59,7 @@
 //            }
 //            catch (Exception exception)
 //            {
-//                return Problem("backend: Error with getting. Something went wrong in {nameof(GetProduct)");
+//                return Problem("exception.ToString(),backend: Error with getting. Something went wrong in {nameof(GetProduct)");
 //            }
 //        }
 
@@ -73,7 +73,7 @@
 
 //            if (!ModelState.IsValid)
 //            {
-               
+
 //                return BadRequest(ModelState);
 //            }
 //            try

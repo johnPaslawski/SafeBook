@@ -1,20 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using SafeBook.EfCoreInMemory;
+using Safebook.EfCore.EFData;
 using SafeBook.Domain.Persistence;
-using SafeBook.Domain;
+using SafeBook.EfCore.Infrastructure.Persistance.Implementations.UOWs;
 using System.Reflection;
 
 namespace SafeBook
@@ -32,13 +25,20 @@ namespace SafeBook
         public void ConfigureServices(IServiceCollection services)
         {
             
-            services.AddControllers();
-            services.AddDbContext<SafeBookDbContextInMemory>(options => options.UseInMemoryDatabase("SafeBookInMemoryDb"));
+            services.AddControllers()
+                .AddNewtonsoftJson(x =>
+            {
+                x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            }); ;
 
-            // UnitOfWork DInjection
-            services.AddScoped<IUnitOfWork, UnitOfWorkEfCoreInMemory>();
+            //Database Injection:
+            //services.AddDbContext<SafeBookDbContextInMemory>(options => options.UseInMemoryDatabase("SafeBookInMemoryDb"));           
+            services.AddDbContext<SafeBookDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("MssqlConnection")));
+            
+            // UnitOfWork Injection:
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            // Automapper
+            // Automapper:
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddSwaggerGen(c =>

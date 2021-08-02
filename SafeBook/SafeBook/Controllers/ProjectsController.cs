@@ -69,7 +69,7 @@ namespace SafeBook.Controllers
                 //return StatusCode(StatusCodes.Status500InternalServerError,
                 //    "Internal server error, please try again later...");
 
-                return Problem("backend: Error with getting. Something went wrong in {nameof(GetProject)");
+                return Problem(exception.ToString(),"backend: Error with getting. Something went wrong in {nameof(GetProject)");
             }
         }
 

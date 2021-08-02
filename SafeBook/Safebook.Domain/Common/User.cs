@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,9 @@ namespace SafeBook.Domain.Common
         public string Country { get; set; }
         public string PhoneNumber { get; set; }
         public string PhoneNumber2 { get; set; }
-        public Role Role { get; set; }
+        public Role Role { get; set; } // set to virtual ????
+        //[ForeignKey(nameof(Role))]
+        public int RoleId { get; set; }
+        
     }
 }

@@ -19,15 +19,18 @@ namespace SafeBook.DTOs.Common
         public string Country { get; set; }
         public string PhoneNumber { get; set; }
         public string PhoneNumber2 { get; set; }
-        public Role Role { get; set; }
+        public int RoleId { get; set; }
+    }
+
+    
+    public class UpdateUserDto : CreateUserDto
+    {
+        //public RoleDto Role { get; set; }
     }
 
     public class UserDto : CreateUserDto
     {
         public int Id { get; set; }
-    }
-    
-    public class UpdateUserDto : CreateUserDto
-    {
+        public RoleDto Role { get; set; }
     }
 }

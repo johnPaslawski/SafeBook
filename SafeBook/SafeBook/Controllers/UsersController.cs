@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SafeBook.EfCoreInMemory;
+//using SafeBook.EfCoreInMemory;
 using SafeBook.Domain.Persistence;
 using Microsoft.AspNetCore.Http;
 using SafeBook.DTOs.MainPage;
@@ -35,6 +35,7 @@ namespace SafeBook.Controllers
         public IActionResult GetUsers()
         {
             var allUsers = _unitOfWork.Users.GetAll();
+
 
             return Ok(allUsers);
         }
@@ -89,7 +90,7 @@ namespace SafeBook.Controllers
             catch (Exception exception)
             {
                 //_logger.LogError(exception, $"backend: Error with creating. Something went wrong in {nameof(CreateNews)}");
-                return Problem("backend: Error with creating. Something went wrong in {nameof(CreateNews)");
+                return Problem(exception.ToString(), "backend: Error with creating. Something went wrong in {nameof(CreateNews)");
             }
 
 
@@ -114,7 +115,10 @@ namespace SafeBook.Controllers
                     return NotFound($"backend: Not found user with id = {id}");
                 }
 
+
+
                 _mapper.Map(updateUserDto, user);
+
                 _unitOfWork.Save();
 
                 return NoContent();
@@ -122,6 +126,58 @@ namespace SafeBook.Controllers
             catch (Exception)
             {
                 return Problem("backend: Error with creating. Something went wrong in {nameof(UpdateUser)");
+            }
+        }
+
+        // GET .. api/users/roles
+        [HttpGet("roles")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetRoles()
+        {
+            var allRoles = _unitOfWork.Roles.GetAllRoles();
+
+            return Ok(allRoles);
+        }
+
+        // GET..api/users/roles/{id}
+        [HttpGet("roles/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetRole(int id)
+        {
+            var role = _unitOfWork.Roles.GetRole(id);
+            if (role == null)
+            {
+                return NotFound($"backend: Not found role with id = {id}");
+            }
+            return Ok(role);
+        }
+
+        // GET .. api/users/{userId:int}/roles
+        [HttpGet("{userId:int}/roles", Name = "GetUserRole")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetUserRole(int userId)
+        {
+            try
+            {
+                var role = _unitOfWork.Roles.GetUserRole(userId);
+
+                if (role == null)
+                {
+                    return NotFound($"backend: Not found role in user with userId = {userId}");
+                }
+
+                var result = _mapper.Map<RoleDto>(role); // temporarily RoleDto and Role domain model are identical, no need to implementing UpdateRoleDto and CreateRoleDto
+
+                return Ok(result);
+            }
+            catch (Exception exception)
+            {
+                return Problem($"{exception}", $"; backend: Error with getting. Something went wrong in {nameof(GetUserRole)}");
             }
         }
 

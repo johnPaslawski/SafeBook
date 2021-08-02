@@ -1,5 +1,4 @@
 ﻿using Safebook.Domain.Persistence;
-using SafeBook.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace SafeBook.Domain.Persistence
 {
-    public interface IUsersRepository : IRepository<User>
+    public interface IProjectsRepository : IRepository<Project>
     {
+        IEnumerable<Project> FindString(string like);
     }
 }
