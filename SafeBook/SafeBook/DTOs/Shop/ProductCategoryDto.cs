@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace SafeBook.DTOs.Shop
 {
-    public class CreateProductDto
+    public class CreateProductCategoryDto
     {
+
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal DefaultPrice { get; set; }
 
     }
 
-    public class ProductDto : CreateProductDto
+    public class ProductCategoryDto : CreateProductCategoryDto
     {
-
         public int Id { get; set; }
-        public ProductCategory ProductCategory { get; set; }
+        public virtual IList<Product> Products { get; set; }
     }
 
-    public class UpdateProductDto : CreateProductDto
+    
+    public class UpdateProductCategoryDto : CreateProductCategoryDto
     {
-        public ProductCategory ProductCategory { get; set; }
+        public virtual IList<Product> Products { get; set; }
     }
 }
