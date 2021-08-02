@@ -14,5 +14,6 @@ namespace SafeBook.Domain.Shop
         public string Description { get; set; }
         public decimal DefaultPrice { get; set; }
         public ProductCategory ProductCategory { get; set; }
+        public int ProductCategoryId { get; set; }
     }
 }

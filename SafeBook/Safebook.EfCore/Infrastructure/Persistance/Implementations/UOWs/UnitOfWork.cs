@@ -2,12 +2,10 @@
 using SafeBook.Domain.Persistence;
 using SafeBook.EfCore.Infrastructure.Persistance.Implementations.Common;
 using SafeBook.EfCore.Infrastructure.Persistance.Implementations.MainPage;
+using SafeBook.EfCore.Infrastructure.Persistance.Implementations.Shop;
 using SafeBook.EfCore.Infrastructure.Persistance.Repositories.Common;
+using SafeBook.EfCore.Infrastructure.Persistance.Repositories.Shop;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SafeBook.EfCore.Infrastructure.Persistance.Implementations.UOWs
 {
@@ -19,6 +17,8 @@ namespace SafeBook.EfCore.Infrastructure.Persistance.Implementations.UOWs
         public IUsersRepository Users { get; }
         public IProjectsRepository Projects { get; }
         public IRolesRepository Roles { get; }
+        public IProductsRepository Products { get; }
+        public IProductCategoryRepository ProductCategories { get; }
 
         public UnitOfWork(SafeBookDbContext dbContext)
         {
@@ -28,6 +28,8 @@ namespace SafeBook.EfCore.Infrastructure.Persistance.Implementations.UOWs
             Users = new UsersRepositoryEfCore(dbContext);
             Projects = new ProjectsRepositoryEfCore(dbContext);
             Roles = new RolesRepositoryEfCore(dbContext);
+            Products = new ProductsRepositoryEfCore(dbContext);
+            ProductCategories = new ProductCategoryRepositoryEfCore(dbContext);
         }
 
         public int Save()

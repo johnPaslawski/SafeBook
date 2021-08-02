@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SafeBook.Domain;
 using SafeBook.Domain.Common;
+using SafeBook.Domain.Shop;
 using SafeBook.EfCore.Configuration;
 
 namespace Safebook.EfCore.EFData
@@ -16,6 +17,8 @@ namespace Safebook.EfCore.EFData
         public DbSet<Project> Projects { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
 
         public SafeBookDbContext(DbContextOptions options) : base(options)
         {
@@ -31,6 +34,9 @@ namespace Safebook.EfCore.EFData
             //modelBuilder.ApplyConfiguration(new NewsConfiguration());
             //modelBuilder.ApplyConfiguration(new ProjectConfiguration());          
             //modelBuilder.ApplyConfiguration(new UserConfiguration());
+
+            //modelBuilder.ApplyConfiguration(new ProductCategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
         }
     }
 }

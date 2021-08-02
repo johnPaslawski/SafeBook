@@ -25,7 +25,6 @@ namespace SafeBook.Controllers
         {
             _unitOfWork = uow;
             _mapper = mapper;
-
         }
 
         // GET .. api/users
@@ -62,7 +61,7 @@ namespace SafeBook.Controllers
             }
             catch (Exception exception)
             {
-                return Problem("backend: Error with getting. Something went wrong in {nameof(GetUser)");
+                return Problem($"backend: Error with getting. Something went wrong in {nameof(GetUser)}");
             }
         }
 

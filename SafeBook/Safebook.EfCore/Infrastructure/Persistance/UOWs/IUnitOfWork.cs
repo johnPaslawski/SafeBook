@@ -1,9 +1,6 @@
 ﻿using SafeBook.EfCore.Infrastructure.Persistance.Repositories.Common;
+using SafeBook.EfCore.Infrastructure.Persistance.Repositories.Shop;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SafeBook.Domain.Persistence
 {
@@ -14,6 +11,8 @@ namespace SafeBook.Domain.Persistence
         IUsersRepository Users { get; }
         IProjectsRepository Projects { get; }
         IRolesRepository Roles { get; }
+        IProductsRepository Products { get; }
+        IProductCategoryRepository ProductCategories { get; }
         int Save();
     }
 }

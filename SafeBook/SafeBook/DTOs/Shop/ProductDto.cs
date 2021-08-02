@@ -11,6 +11,7 @@ namespace SafeBook.DTOs.Shop
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal DefaultPrice { get; set; }
+        public int ProductCategoryId { get; set; }
 
     }
 
