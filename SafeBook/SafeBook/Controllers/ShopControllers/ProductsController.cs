@@ -27,7 +27,7 @@ namespace SafeBook.Controllers.ShopControllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetProducts()
+        public IActionResult GetProducts([FromQuery] string productCategory, string like, decimal price)
         {
             var allProducts = _unitOfWork.Products.GetAll();
 
