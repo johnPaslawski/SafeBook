@@ -10,5 +10,6 @@ namespace SafeBook.EfCore.Infrastructure.Persistance.Repositories.Shop
 {
     public interface IProductCategoryRepository : IRepository<ProductCategory>
     {
+        ProductCategory GetProductCategory(int id);
     }
 }

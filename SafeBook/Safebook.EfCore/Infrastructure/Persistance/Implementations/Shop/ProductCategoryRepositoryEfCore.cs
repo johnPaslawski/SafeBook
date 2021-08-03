@@ -1,4 +1,5 @@
-﻿using Safebook.EfCore.EFData;
+﻿using Microsoft.EntityFrameworkCore;
+using Safebook.EfCore.EFData;
 using SafeBook.Domain.Shop;
 using SafeBook.EfCore.Infrastructure.Persistance.Repositories.Shop;
 using System;
@@ -13,6 +14,14 @@ namespace SafeBook.EfCore.Infrastructure.Persistance.Implementations.Shop
     {
         public ProductCategoryRepositoryEfCore(SafeBookDbContext dbContext) : base(dbContext)
         {
+        }
+
+        public ProductCategory GetProductCategory(int id)
+        {
+            return GetDbContext().ProductCategories
+                .Where(x => x.Id == id)
+                .Include(x => x.Products)
+                .FirstOrDefault();
         }
 
         private SafeBookDbContext GetDbContext() => (SafeBookDbContext)_dbContext;

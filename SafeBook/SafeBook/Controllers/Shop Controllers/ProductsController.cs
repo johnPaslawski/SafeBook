@@ -38,6 +38,7 @@ namespace SafeBook.Controllers.Shop_Controllers
         // GET .. api/products/{id}
         [HttpGet("{id}", Name = "GetProduct")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetProduct(int id)
         {
@@ -57,5 +58,51 @@ namespace SafeBook.Controllers.Shop_Controllers
                 return Problem($"backend: Error with getting. Something went wrong in {nameof(GetProduct)}");
             }
         }
+
+        // GET .. api/products/categories
+        [HttpGet("categories")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetProductCategories()
+        {
+            var allCategories = _unitOfWork.ProductCategories.GetAll();
+
+            return Ok(allCategories);
+        }
+
+        // GET .. api/products/categories/{id}
+        [HttpGet("categories/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetProductCategory(int id)
+        {
+            try
+            {
+                var productCategory = _unitOfWork.ProductCategories.GetProductCategory(id);
+
+                if (productCategory == null)
+                {
+                    return NotFound($"backend: Not found productCategory with id = {id}");
+                }
+
+                return Ok(productCategory);
+            }
+            catch (Exception)
+            {
+                return Problem($"backend: Error with getting productCategory. Something went wrong in {nameof(GetProductCategory)}");
+            }
+        }
+
+        // DO WE NEED THIS METHOD ????
+        //// GET .. api/products/{id}/category  
+        //[HttpGet("{id}/category", Name = "GetProductCategory")]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
+
+
+
     }
 }
