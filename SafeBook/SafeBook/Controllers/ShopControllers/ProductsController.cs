@@ -7,7 +7,7 @@ using SafeBook.Domain;
 using SafeBook.Domain.Persistence;
 using SafeBook.DTOs.MainPage;
 
-namespace SafeBook.Controllers.Shop_Controllers
+namespace SafeBook.Controllers.ShopControllers
 {
 
     [ApiController]
