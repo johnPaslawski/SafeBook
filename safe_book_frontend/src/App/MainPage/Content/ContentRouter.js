@@ -3,7 +3,7 @@ import { BrowserRouter as Switch, Route} from 'react-router-dom';
 import News from "./News/News";
 import AboutNews from './News/AboutNews/AboutNews';
 import Projects from  './Projects/Projects';
-import AboutProjects from  './Projects/AboutProject/AboutProject';
+import AboutProject from  './Projects/AboutProject/AboutProject';
 import About from './About/About';
 import Offer from './Offer/Offer';
 import Contacts from './Contacts/Contacts';
@@ -19,7 +19,7 @@ const ContentRouter = () => {
 
             <Route exact path="/projects" component={Projects} />
 
-            <Route path="/projects/:id" component={AboutProjects} />
+            <Route path="/projects/:id" component={AboutProject} />
 
             <Route exact path="/about" component={About} />
 

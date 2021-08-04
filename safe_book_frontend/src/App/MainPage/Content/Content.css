@@ -56,6 +56,16 @@
     align-self: center;
 }
 
+.google_map{
+    width: 400px;
+    height: 400px;
+}
+
+.label_content > *{
+    display: block;
+}
+
+
 /* ---------------------------------------------- */
 /** News **/
 
@@ -178,4 +188,55 @@
     box-shadow: 0 0 10px black;
 }
 
+/* ---------------------------------------------- */
+/* Contact */
+.contact{
+    display: grid;
+}
+
+.contanct-title{
+    justify-self: center;
+}
+
+.contact-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.contact-data_map{
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-self: center;
+}
+
+.contact-data_map-data{
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 1fr;
+}
+
+.contact-data_map-map{
+    
+}
+
+.contact-email_form{
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr 1fr;
+    justify-self: center;
+    width: 70%;
+}
+
+#contact-text-box-message{
+    height: 90%;
+    width: 100%;
+    max-width: 100%;
+    resize: none;
+}
+
+.contact-email_form-message label{
+    height: 10%;
+}
+
+#contact-text-box-email{
+    width: 50%;
+}
 /* ---------------------------------------------- */

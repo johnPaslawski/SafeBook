@@ -35,10 +35,15 @@
 .heder-bottom > *{
     text-align: center;
 }
+
 .heder-bottom > a{
     justify-self: center;
     align-self: center;
     font-size: 20px;
+}
+
+.heder-bottom > a:hover{
+    font-size: 25px;
 }
 /* Search */
 
