@@ -1,6 +1,8 @@
+import ElementInfo from "../../ElementInfo/ElementInfo";
+
 const AboutProject = () => {
     return(
-        <div>About project</div>
+        <ElementInfo />
     );
 }
 

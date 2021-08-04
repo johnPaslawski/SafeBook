@@ -241,5 +241,36 @@
 }
 /* ---------------------------------------------- */
 /* Solo Page Project&News */
+.element_info{
+    display: grid;
+    grid-template-rows: 500px auto 100px;
+}
 
+.element_info-front{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: grid;
+    grid-template-rows: 100%;
+}
+
+.element_info-img{
+    height: 90%;
+    border: 4px solid white;
+    border-radius: 10px;
+    align-self: center;
+    justify-self: center;
+}
+
+.element_info-content-title{
+    justify-self: center;
+}
+
+.element_info-content{
+    margin: 0 10% 0 10%;
+}
+
+.element_info-aditional_inf{
+    justify-self: end;
+    align-self: center;
+}
 /* ---------------------------------------------- */

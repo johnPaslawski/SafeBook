@@ -1,6 +1,8 @@
-const AboutNews = () => {
+import ElementInfo from "../../ElementInfo/ElementInfo";
+
+const AboutNews = (props) => {
     return(
-        <div>AboutNews</div>
+        <ElementInfo />
     );
 }
 
