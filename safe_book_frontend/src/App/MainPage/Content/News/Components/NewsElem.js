@@ -8,7 +8,7 @@ const NewsElem = () => {
                 <div className="news-elem-title">Muzyczna podróż</div>
                 <div className="news-elem-descr">Lorem Ipsum is simply dummy text of the printing and typenting and typesetting inLorem Ipsum is simply dummy text of the printing and typesettsetting inLorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
                 <div className="news-elem-show">
-                    <Link to="*" className="news-elem-show-btn">Rozwiń</Link>
+                    <Link to="/news/1" className="news-elem-show-btn">Rozwiń</Link>
                 </div>
             </div>
         </div>

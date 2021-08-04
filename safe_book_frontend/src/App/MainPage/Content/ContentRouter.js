@@ -15,11 +15,11 @@ const ContentRouter = () => {
 
             <Route exact path="/news" component={News} />
 
-            <Route exact path="/news/:id" component={AboutNews} />
+            <Route exact path="/news/:1" component={AboutNews} />
 
             <Route exact path="/projects" component={Projects} />
 
-            <Route path="/projects/:id" component={AboutProject} />
+            <Route path="/projects/:1" component={AboutProject} />
 
             <Route exact path="/about" component={About} />
 
