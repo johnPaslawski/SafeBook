@@ -3,8 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SafeBook.DataGeneratorInMemory;
-using SafeBook.EfCoreInMemory;
+//using SafeBook.DataGeneratorInMemory;
+//using SafeBook.EfCoreInMemory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,22 +17,22 @@ namespace SafeBook
         public static void Main(string[] args)
         {
             // genuine configuration:
-            // CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
 
 
             // In memory Db configuration: ////////////////////////////////////////////
             
-            var host = CreateHostBuilder(args).Build();
+            //var host = CreateHostBuilder(args).Build();
            
-            using (var scope = host.Services.CreateScope())
-            {               
-                var services = scope.ServiceProvider;
-                var context = services.GetRequiredService<SafeBookDbContextInMemory>();
+            //using (var scope = host.Services.CreateScope())
+            //{               
+            //    var services = scope.ServiceProvider;
+            //    var context = services.GetRequiredService<SafeBookDbContextInMemory>();
    
-                DataGenerator.Initialize(services);
-            }
+            //    DataGenerator.Initialize(services);
+            //}
 
-            host.Run();
+            //host.Run();
             ///////////////////////////////////////////////////////////////////////////
         }
 

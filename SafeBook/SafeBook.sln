@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeBook", "SafeBook\SafeBo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeBook.Domain", "Safebook.Domain\SafeBook.Domain.csproj", "{9F03C88C-E2AF-4BA1-89BC-0B6EAC9AD2DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeBook.EfCoreInMemory", "Safebook.EfCoreInMemory\SafeBook.EfCoreInMemory.csproj", "{0FE50887-DEE9-45A1-85E8-4C1833AB6DA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeBook.EfCore", "SafeBook.EfCore\SafeBook.EfCore.csproj", "{59CB6630-F100-4463-A64E-74EDA13ED226}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{9F03C88C-E2AF-4BA1-89BC-0B6EAC9AD2DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F03C88C-E2AF-4BA1-89BC-0B6EAC9AD2DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F03C88C-E2AF-4BA1-89BC-0B6EAC9AD2DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0FE50887-DEE9-45A1-85E8-4C1833AB6DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0FE50887-DEE9-45A1-85E8-4C1833AB6DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0FE50887-DEE9-45A1-85E8-4C1833AB6DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0FE50887-DEE9-45A1-85E8-4C1833AB6DA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59CB6630-F100-4463-A64E-74EDA13ED226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59CB6630-F100-4463-A64E-74EDA13ED226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59CB6630-F100-4463-A64E-74EDA13ED226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59CB6630-F100-4463-A64E-74EDA13ED226}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

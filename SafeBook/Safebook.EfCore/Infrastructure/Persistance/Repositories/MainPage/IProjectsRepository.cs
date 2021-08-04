@@ -9,5 +9,6 @@ namespace SafeBook.Domain.Persistence
 {
     public interface IProjectsRepository : IRepository<Project>
     {
+        IEnumerable<Project> FindString(string like);
     }
 }

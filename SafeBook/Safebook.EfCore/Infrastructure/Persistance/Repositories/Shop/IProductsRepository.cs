@@ -1,14 +1,14 @@
 ﻿using Safebook.Domain.Persistence;
-using SafeBook.Domain.Common;
+using SafeBook.Domain.Shop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SafeBook.Domain.Persistence
+namespace SafeBook.EfCore.Infrastructure.Persistance.Repositories.Shop
 {
-    public interface IUsersRepository : IRepository<User>
+    public interface IProductsRepository : IRepository<Product>
     {
     }
 }

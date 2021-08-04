@@ -1,26 +1,24 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Safebook.Domain.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using SafeBook.Domain;
-using Safebook.Domain.Persistence;
-using SafeBook.Domain.Common;
 
-namespace SafeBook.EfCoreInMemory
+namespace SafeBook.EfCore.Infrastructure.Persistance.Implementations
 {
-    public abstract class RepositoryEfCoreInMemory<TEntity> : IRepository<TEntity> where TEntity : class // TODO: Repository can use DAO instead of DbContext
+    public abstract class RepositoryEfCore<TEntity> : IRepository<TEntity> where TEntity : class // TODO: Repository can use DAO instead of DbContext
     {
         protected readonly DbContext _dbContext;
 
-        
-        protected RepositoryEfCoreInMemory(DbContext dbContext)
+
+        protected RepositoryEfCore(DbContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public TEntity Get(int id)
+        public virtual TEntity Get(int id)
         {
             return _dbContext.Find<TEntity>(id);
         }
