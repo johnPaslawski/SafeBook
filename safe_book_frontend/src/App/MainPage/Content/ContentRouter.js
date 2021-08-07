@@ -1,4 +1,4 @@
-import { BrowserRouter as Switch, Route} from 'react-router-dom';
+import { Route, Redirect, Switch} from 'react-router-dom';
 
 import News from "./News/News";
 import AboutNews from './News/AboutNews/AboutNews';
@@ -8,24 +8,30 @@ import About from './About/About';
 import Offer from './Offer/Offer';
 import Contacts from './Contacts/Contacts';
 
-const ContentRouter = () => {
+const ContentRouter = (props) => {
     return(
         <div className="content">
-            <Route exact path="/" component={News} />  {/*Default(can be changed)*/}
+            <Switch>
+                <Route exact path="/main"> {/*Default(can be changed)*/}
+                    <Redirect to="/main/news"></Redirect>
+                </Route>
 
-            <Route exact path="/news" component={News} />
+                <Route exact path="/main/news">
+                    <News lookingValue={props.lookingValue}/>
+                </Route>
 
-            <Route exact path="/news/:1" component={AboutNews} />
+                <Route exact path="/main/news/:1" component={AboutNews} />
 
-            <Route exact path="/projects" component={Projects} />
+                <Route exact path="/main/projects" component={Projects} />
 
-            <Route path="/projects/:1" component={AboutProject} />
+                <Route path="/main/projects/:1" component={AboutProject} />
 
-            <Route exact path="/about" component={About} />
+                <Route exact path="/main/about" component={About} />
 
-            <Route exact path="/offer" component={Offer} />
+                <Route exact path="/main/offer" component={Offer} />
 
-            <Route exact path="/contact" component={Contacts} />
+                <Route exact path="/main/contact" component={Contacts} />
+            </Switch>
         </div>
     );
 }

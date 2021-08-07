@@ -1,40 +1,35 @@
 import { useEffect, useState } from "react";
 
 
-const GetApi = (url) => {
+const useGetApi = (url) => {
     const [data, setData] = useState(null);
     const [isPending, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    // console.log("I am on api start");
 
     useEffect(() => {
-        const abortCont = AbortController();
-
-        fetch(url, {signal: abortCont})
+        fetch(url)
         .then( resp => {
-            if (!resp.ok()){
+            if (!resp.ok){
                 throw Error("Coud not fetch the data for that resource");
             }
             return resp.json();
         })
-        .then( data =>{
+        .then( data => {
+            console.log("I got data");
             setData(data);
             setIsLoading(false);
             setError(null);
         })
-        .catch( error =>{
-            if (error.name === 'AbortError'){
-                console.log(error.massage);
-            }
-            else{
-                setIsLoading(false);
-                setError(error.massage);
-            }
+        .catch( error => {
+            setIsLoading(false);
+            setError(error.massage);
+
         })
+    }, [url]);
 
-        return () => abortCont.abort();
-    });
-
+    console.log("I am on api end return data\n" + data);
     return {data, isPending, error}
 }
 
-export default GetApi;
+export default useGetApi;

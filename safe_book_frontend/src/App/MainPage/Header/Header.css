@@ -49,14 +49,15 @@
 
 .search{
     grid-area: search;
-    width: 50%;
-    justify-self: center;
-    align-self: center;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 60% auto;
+    column-gap: 10%;
+    padding-right: 20px;
 }
 
 .search-input{
+    align-self: center;
+    height: 50%;
 }
 
 .search input[type=textbox] {
@@ -64,8 +65,13 @@
     border: 0;
 }
 
-.header-search-label{
-    justify-self: start;
+.search-btn{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 4px 0 4px 0;
+    align-self: center;
+    cursor: pointer;
 }
 /* ---------------------------------------------- */
 /* Logo */

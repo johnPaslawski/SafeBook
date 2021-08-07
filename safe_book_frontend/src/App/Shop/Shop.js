@@ -1,9 +1,11 @@
+import { Route, Switch } from "react-router-dom"
+
 const Shop = () => {
     return(
         <div>
-            {/* <Header /> */}
-            {/* <Content /> */}
-            {/* <Footer /> */}
+            <Switch>
+                <Route path="/shop">Shop</Route>
+            </Switch>
         </div>
     );
 };

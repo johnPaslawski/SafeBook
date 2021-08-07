@@ -46,6 +46,7 @@ namespace SafeBook.Controllers
 
             var allNews = _unitOfWork.News.GetAll();
 
+
             return Ok(allNews);
         }
 

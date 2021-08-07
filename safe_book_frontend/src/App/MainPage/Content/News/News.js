@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
 import FacebookSide from "../Sidebars/FacebookSide";
 import "./../Content.css";
 import NewsElem from "./Components/NewsElem";
+import useGetApi from "../../../Api/useGetApi";
 
-const News = () => {
+const News = (props) => {
+
+    const {data, isPending, error} = useGetApi(`/api/News`);
+
     return(
         <div className="content-side">
             <div className="news title-content-grid">
@@ -11,16 +14,9 @@ const News = () => {
                     Aktualności
                 </div>
                 <div className="news-list title-content-content">
-                    <NewsElem />
-                    <NewsElem />
-                    <NewsElem />
-                    <NewsElem />
-                    <NewsElem />
-                    <NewsElem />
-                    <NewsElem />
-                    <NewsElem />
-                    <NewsElem />
-                    <NewsElem />
+                    { data && data.map(news => 
+                        <NewsElem newsData={news}/>
+                    )}
                 </div>
             </div>
             <FacebookSide />
