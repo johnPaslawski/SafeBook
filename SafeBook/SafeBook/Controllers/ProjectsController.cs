@@ -30,8 +30,18 @@ namespace SafeBook.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetProjects()
+        public IActionResult GetProjects([FromQuery] string like)
         {
+            if (!string.IsNullOrWhiteSpace(like))
+            {
+                // dodać sortowanie in title first, in description second
+                //var news = _unitOfWork.News.FindString(like);
+
+                //sposób 2:
+                var news = _unitOfWork.Projects.Find(x => x.Title.Contains(like) || x.Description.Contains(like));
+
+                return Ok(news);
+            }
 
             var allProjects = _unitOfWork.Projects.GetAll();
 
