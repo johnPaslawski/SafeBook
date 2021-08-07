@@ -17,7 +17,7 @@ const ContentRouter = (props) => {
                 </Route>
 
                 <Route exact path="/main/news">
-                    <News lookingValue={props.lookingValue}/>
+                    <News like={props.lookingValue}/>
                 </Route>
 
                 <Route exact path="/main/news/:1" component={AboutNews} />
