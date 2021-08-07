@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import './../../Content.css'
 
-const ProjectElement = () => {
+const ProjectElement = (props) => {
     return(
-        <Link to="/projects/1" className="project-elem" style={{backgroundImage: "url(/lak192.jpg)"}}>
+        <Link to="/projects/1" className="project-elem" projectId={props.projectData.id} style={{backgroundImage: `url(/${props.projectData.imageName})`}}>
             <div className="project-elem-content">
-                <div className="project-elem-title">Tytuł cos tam cos tam</div>
+                <div className="project-elem-title">{props.projectData.title}</div>
             </div>
         </Link>
     );
