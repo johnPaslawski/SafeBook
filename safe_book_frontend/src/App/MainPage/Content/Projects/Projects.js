@@ -8,8 +8,11 @@ const Projects = (props) => {
     
     return(
         <div className="projects title-content-grid">
-            <div className="title-content-title projects-title">Projekty</div>
+            <div className="title-content-title projects-title">
+                <h1>Projekty</h1>
+            </div>
             <div className="title-content-content projects-list">
+                {isPadding && <div>Loading...</div>}
                 {data && data.map( project => <ProjectElement projectData={project} key={project.id}/>)}
             </div>
         </div>

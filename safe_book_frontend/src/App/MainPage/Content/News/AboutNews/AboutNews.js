@@ -1,8 +1,14 @@
 import ElementInfo from "../../ElementInfo/ElementInfo";
+import { useParams } from "react-router";
+import useGetApi from "../../../../Api/useGetApi";
 
-const AboutNews = (props) => {
+const AboutNews = () => {
+
+    const {id} = useParams();
+    const {data, isPending, error} = useGetApi(`/api/News/${id}`);
+
     return(
-        <ElementInfo />
+        data && <ElementInfo elementData={data}/>
     );
 }
 

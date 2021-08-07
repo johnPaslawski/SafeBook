@@ -6,20 +6,24 @@ import useGetApi from "../../../Api/useGetApi";
 const News = (props) => {
 
     const {data: newsDataFetch, isPending: isPendingNews, error: newsError} = useGetApi(`/api/News?like=${props.like}`);
-    const {data: projectsDataFetch, isPadding: isPaddingProjects, error: projectsError} = useGetApi(`/api/Projects?like=${props.like}`);
+    const {data: projectsDataFetch, isPadding: isPaddingProjects, error: projectsError} = useGetApi(`/api/Projects?like${props.like}`);
 
-    const combinedData = (newsDataFetch && projectsDataFetch) && newsDataFetch.concat(projectsDataFetch);
+    const renderData = (data, type) => (
+        data.map( element => 
+            <NewsElem type={type} newsData={element} key={element.id} />
+        )
+    )
 
     return(
         <div className="content-side">
             <div className="news title-content-grid">
                 <div className="news-title title-content-title">
-                    Aktualności
+                    <h1>Aktualności</h1>
                 </div>
                 <div className="news-list title-content-content">
-                    { combinedData && combinedData.map(news => 
-                        <NewsElem newsData={news} key={combinedData.indexOf(news)}/>
-                    )}
+                    {(isPendingNews || isPaddingProjects)  && <div>Loading...</div>}
+                    {newsDataFetch && renderData(newsDataFetch, "news")}
+                    {projectsDataFetch && renderData(projectsDataFetch, "projects")}
                 </div>
             </div>
             <FacebookSide />

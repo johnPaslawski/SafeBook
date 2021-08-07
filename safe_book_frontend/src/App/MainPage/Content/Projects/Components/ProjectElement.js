@@ -3,7 +3,7 @@ import './../../Content.css'
 
 const ProjectElement = (props) => {
     return(
-        <Link to="/projects/1" className="project-elem" style={{backgroundImage: `url(/${props.projectData.imageName})`}}>
+        <Link to={`/main/projects/${props.projectData.id}`} className="project-elem" style={{backgroundImage: `url(/${props.projectData.imageName})`}}>
             <div className="project-elem-content">
                 <div className="project-elem-title">{props.projectData.title}</div>
             </div>
