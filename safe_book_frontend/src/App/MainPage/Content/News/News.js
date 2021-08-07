@@ -5,7 +5,7 @@ import useGetApi from "../../../Api/useGetApi";
 
 const News = (props) => {
 
-    const {data, isPending, error} = useGetApi(`/api/News`);
+    const {data, isPending, error} = useGetApi(`https://localhost:44325/api/News`);
 
     return(
         <div className="content-side">
