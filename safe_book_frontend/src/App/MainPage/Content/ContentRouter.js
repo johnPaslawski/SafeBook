@@ -17,12 +17,14 @@ const ContentRouter = (props) => {
                 </Route>
 
                 <Route exact path="/main/news">
-                    <News lookingValue={props.lookingValue}/>
+                    <News like={props.like}/>
                 </Route>
 
                 <Route exact path="/main/news/:1" component={AboutNews} />
 
-                <Route exact path="/main/projects" component={Projects} />
+                <Route exact path="/main/projects">
+                    <Projects like={props.like}/>
+                </Route>
 
                 <Route path="/main/projects/:1" component={AboutProject} />
 

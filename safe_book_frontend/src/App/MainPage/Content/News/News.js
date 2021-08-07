@@ -5,7 +5,10 @@ import useGetApi from "../../../Api/useGetApi";
 
 const News = (props) => {
 
-    const {data, isPending, error} = useGetApi(`/api/News`);
+    const {data: newsDataFetch, isPending: isPendingNews, error: newsError} = useGetApi(`/api/News?like=${props.like}`);
+    const {data: projectsDataFetch, isPadding: isPaddingProjects, error: projectsError} = useGetApi(`/api/Projects?like=${props.like}`);
+
+    const combinedData = (newsDataFetch && projectsDataFetch) && newsDataFetch.concat(projectsDataFetch);
 
     return(
         <div className="content-side">
@@ -14,8 +17,8 @@ const News = (props) => {
                     Aktualności
                 </div>
                 <div className="news-list title-content-content">
-                    { data && data.map(news => 
-                        <NewsElem newsData={news}/>
+                    { combinedData && combinedData.map(news => 
+                        <NewsElem newsData={news} key={combinedData.indexOf(news)}/>
                     )}
                 </div>
             </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NewsElem = (props) => {
     return(
-        <div className="news-elem" newsId={props.id} style={{backgroundImage: `url(/${props.newsData.imageName})`}}>
+        <div className="news-elem" style={{backgroundImage: `url(/${props.newsData.imageName})`}}>
             <div className="news-elem-content">
                 <h2 className="news-elem-title">{props.newsData.title}</h2>
                 <div className="news-elem-descr">{props.newsData.description}</div>

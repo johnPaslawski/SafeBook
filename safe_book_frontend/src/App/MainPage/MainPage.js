@@ -11,7 +11,7 @@ const MainPage = (props) => {
     return(
         <div className="main-page">
             <Header userInfo={props.userInfo} SetLookingValue={SetLookingValue} />
-            <ContentRouter lookingValue={lookingValue} />
+            <ContentRouter like={lookingValue} />
             <Footer />
         </div>
     );

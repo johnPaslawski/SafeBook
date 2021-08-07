@@ -10,6 +10,12 @@ const BottomPart = (props) => {
         SetSearchValue(event.target.value);
     }
 
+    const CheckEnterToChangeState = (event) => {
+        if (event.code == "Enter"){
+            props.SetLookingValue(searchValue);
+        }
+    }
+
     return(
         <div className="heder-bottom">
             <Link to="/main/about" style={{gridArea: "about-btn"}}>O Nas</Link>
@@ -18,7 +24,7 @@ const BottomPart = (props) => {
             <Link to="/main/contact" style={{gridArea: "contacts-btn"}}>Kontakt</Link>
             <Link to="/shop" style={{gridArea: "shop-btn"}}>Sklep</Link>
             <div className="search">
-                <input className="search-input" onChange={ ChangeSearchValue}type="textbox" placeholder="Search" id="header-search"></input>
+                <input className="search-input" onKeyUp={ CheckEnterToChangeState } onChange={ ChangeSearchValue}type="textbox" placeholder="Search" id="header-search"></input>
                 <a onClick={ () => {props.SetLookingValue(searchValue)}} className="search-btn">Wyszukaj</a>
             </div>
         </div>
