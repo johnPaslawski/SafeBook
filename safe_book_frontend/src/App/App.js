@@ -23,7 +23,7 @@ function App() {
           <Route path="/main">
             <MainPage userId={userId} userLogged={userLogged}/>
           </Route>
-          <Route exact path="/hrms">
+          <Route path="/hrms">
             <Hrms userId={userId}/>
           </Route>
           <Route exact path="/shop">

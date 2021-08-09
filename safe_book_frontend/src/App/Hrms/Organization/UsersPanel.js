@@ -1,3 +1,10 @@
+import { useParams } from "react-router";
+
+const UsersPanel = () => {
+  const { id } = useParams();
+  return ( 
+  <div>
+
 <table class="table table-borderless table-hover">
   <thead>
     <tr>
@@ -27,3 +34,9 @@
     </tr>
   </tbody>
 </table>
+<h1>{ id }</h1>
+  </div> 
+  );
+}
+ 
+export default UsersPanel;

@@ -1,23 +1,42 @@
+import App from "../App";
 import "./Hrms.css";
-import Header from "../MainPage/Header/Header";
-import TopPart from "../MainPage/Header/Content/TopPart";
 import { useState } from "react";
-
+import { Router, Route, Switch, Link } from 'react-router-dom'
+import Shop from "../Shop/Shop";
+import HrmsMainMenu from "./HrmsMainMenu";
+import { Redirect } from "react-router";
+import Organization from "./Organization/Organization";
+import React from "react";
+import HrmsContentRouter from "./HrmsContentRouter";
+// import WebControl;
+// import UsersPanel
 const Hrms = () => {
-  
+
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      const user = { email: "taki@email", password:"TakieHaslo" };
-  
+    const user = { email: "taki@email", password: "TakieHaslo" };
+
   }
   return (
     <div>
-      <table className="table table-borderless table-hover">
+      <div className="dark_top_panel">
+      </div>
+      
+        <Link to="/" className="logo-box">
+          <img className="logo" src={process.env.PUBLIC_URL + '/partyturaLogoBlack.jpg'} />
+        </Link>
+      
+      
+      <HrmsContentRouter />
+      
+      
+      
+      {/* <table className="table table-borderless table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -45,7 +64,7 @@ const Hrms = () => {
       <td>@twitter</td>
     </tr>
   </tbody>
-</table>
+</table> */}
 
       {/* {vidLoaded && } */}
       {/* <Content /> */}
