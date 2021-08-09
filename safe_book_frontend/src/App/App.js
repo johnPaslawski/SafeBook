@@ -26,7 +26,7 @@ function App() {
           <Route path="/hrms">
             <Hrms userId={userId}/>
           </Route>
-          <Route exact path="/shop">
+          <Route path="/shop">
             <Shop userId={userId}/>
           </Route>
         </Switch>

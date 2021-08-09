@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const Org_top_menu = () => {
+const Top_menu = () => {
     
     const id = 1; 
 
@@ -28,4 +28,4 @@ const Org_top_menu = () => {
     );
 }
 
-export default Org_top_menu;
+export default Top_menu;

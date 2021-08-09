@@ -1,11 +1,20 @@
 import { useParams } from "react-router";
+import './UsersPanel.css'
 
 const UsersPanel = () => {
   const { id } = useParams();
   return ( 
   <div>
+    <div className="usersPanel">
+    <h1>UsersPanel</h1>
+    </div>
 
-<table class="table table-borderless table-hover">
+  </div> 
+  );
+}
+ 
+export default UsersPanel;
+{/* <table class="table table-borderless table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -33,10 +42,4 @@ const UsersPanel = () => {
       <td>@twitter</td>
     </tr>
   </tbody>
-</table>
-<h1>{ id }</h1>
-  </div> 
-  );
-}
- 
-export default UsersPanel;
+</table> */}

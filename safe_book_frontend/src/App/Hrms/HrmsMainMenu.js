@@ -4,7 +4,8 @@ import { Link, Route, Switch } from "react-router-dom";
 const HrmsMainMenu = () => {
     return (
         <div>
-            <div className="backgroundBox"> </div>
+            <div className="backgroundBoxDiv"> <div className="backgroundBox"> </div></div>
+            
             <div className="mainMenuTitle">
                 <h1>HRMS</h1>
                 <h4>v.1.0</h4>

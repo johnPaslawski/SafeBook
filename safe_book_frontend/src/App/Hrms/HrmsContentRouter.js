@@ -4,6 +4,7 @@ import HrmsMainMenu from "./HrmsMainMenu";
 import Organization from "./Organization/Organization";
 import "./Hrms.css";
 import App from "../App";
+import Footer from "../MainPage/Footer/Footer";
 
 const HrmsContentRouter = () => {
     return ( 
@@ -16,7 +17,7 @@ const HrmsContentRouter = () => {
                 <HrmsMainMenu />
             </Route>
 
-            <Route exact path="/hrms/organization">
+            <Route path="/hrms/organization">
                 <Organization />
             </Route>
             <Route exact path="/hrms/webservice">
@@ -26,7 +27,10 @@ const HrmsContentRouter = () => {
                 
             </Route>
         </Switch>
+
+        
         </div>
+        
      );
 }
  

@@ -63,23 +63,26 @@ justify-content: center;
     flex-flow: column;
     justify-content: flex-start;
     background-color:honeydew;
-    height: 80vh;
-    max-width: 19vw;
+    height: 100vh;
+    max-width: 16vw;
     border-top:grey;
     border-top-style:solid;
     border-width: 1px;
+    
 }
 
 .box_hmrsm{
     display: flex;
     background-color:honeydew;
     opacity: 0.9;
-    border-radius: 4%;
+    /* border-radius: 4%; */
     align-items: center;
     justify-content: center;
     width: 11vw;
     height: 2.5vw;
     border: 1px solid grey;
+    margin-right: 0.1rem;
+    margin-left:0.1rem;
 }
 
 .box1 {
@@ -95,10 +98,18 @@ justify-content: center;
 }
 
 .box2 {
-    border: 1px solid grey;
-    text-align: center; 
+    display: flex;
+    /* border: 1px solid grey; */
+    text-align: left; 
     /* margin-top: 0.5vw; */
-    margin-bottom: 1vh;
+    margin-bottom: 2vh;
+}
+
+.box3 {
+    margin-left: 1rem;
+    margin-right: 0.7rem;
+    /* border: 1px solid grey; */
+
 }
 
 .logo-box {
@@ -152,16 +163,32 @@ justify-content: center;
 .mainMenuContainer {
     display: flex;
     margin-top: 50vh;
+    width: 100vw;
     justify-content: center;
 }
 
-.backgroundBox{
+.serviceMenuTitle{
+    text-align: center;
+    margin-top: 3vh;
+    margin-bottom: 2rem;
+}
+
+.backgroundBoxDiv {
+    display: flex;
     position: absolute;
+    width: 100vw;
+    height: 70;
+    top: 0%;
+    justify-content: center;
+}
+
+.backgroundBox {
+    
     width: 39vw;
     height: 70vh;
+    
     background-color: rgba(240, 255, 240, 0.7);
-    top: 0vh;
-    left: 30%;
+    
     z-index: 0;
 }
 
