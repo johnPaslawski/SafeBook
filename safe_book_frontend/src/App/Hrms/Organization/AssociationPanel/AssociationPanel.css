@@ -1,7 +1,7 @@
 .associationPanel {
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-content: flex-start;
     position: absolute;
     width: 75vw;

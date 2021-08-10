@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
-import './AssociationPanel.css'
+import './AssociationPanel.css';
+import './AssociationContentRouter';
+import AssociationContentRouter from './AssociationContentRouter';
 
 const AssociationPanel = () => {
     return (
@@ -36,7 +38,7 @@ const AssociationPanel = () => {
                     </Link>
                 </div>
                 <div className="AssociationPanel-contentRouter">
-
+                    <AssociationContentRouter />
                 </div>
             </div>
 
