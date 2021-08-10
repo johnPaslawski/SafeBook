@@ -63,7 +63,7 @@ justify-content: center;
     flex-flow: column;
     justify-content: flex-start;
     background-color:honeydew;
-    height: 100vh;
+    height: 90vh;
     max-width: 16vw;
     border-top:grey;
     border-top-style:solid;
@@ -191,5 +191,23 @@ justify-content: center;
     
     z-index: 0;
 }
+
+
+/* .hrms_footer {
+    display: flex;
+    position:relative;
+    flex-flow: column;
+    text-align: center;
+    font-family:sans-serif;
+    font-size: 0.55rem;
+     left: 0%; 
+    top: 27rem;
+    height: 7vh;
+    align-content: flex-start;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    border-top: solid 5px rgba(128, 128, 128, 0.576);
+     border: solid grey 3px; 
+} */
 
 

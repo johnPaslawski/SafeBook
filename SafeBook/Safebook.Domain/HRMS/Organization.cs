@@ -16,6 +16,6 @@ namespace SafeBook.Domain.HRMS
         public string NIP { get; set; }
         public string KRS { get; set; }
         public string BankAccountNumber { get; set; }
-        public List<User> MembersList { get; set; }
+        public virtual List<User> MembersList { get; set; }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using Safebook.EfCore.EFData;
 using SafeBook.Domain.Persistence;
 using SafeBook.EfCore.Infrastructure.Persistance.Implementations.Common;
+using SafeBook.EfCore.Infrastructure.Persistance.Implementations.HRMS;
 using SafeBook.EfCore.Infrastructure.Persistance.Implementations.MainPage;
 using SafeBook.EfCore.Infrastructure.Persistance.Implementations.Shop;
 using SafeBook.EfCore.Infrastructure.Persistance.Repositories.Common;
+using SafeBook.EfCore.Infrastructure.Persistance.Repositories.HRMS;
 using SafeBook.EfCore.Infrastructure.Persistance.Repositories.Shop;
 using System;
 
@@ -13,6 +15,7 @@ namespace SafeBook.EfCore.Infrastructure.Persistance.Implementations.UOWs
     {
         private readonly SafeBookDbContext _safeBookDbContext;
 
+        public IOrganizationRepository Organization { get; }
         public INewsRepository News { get; }
         public IUsersRepository Users { get; }
         public IProjectsRepository Projects { get; }
@@ -30,6 +33,7 @@ namespace SafeBook.EfCore.Infrastructure.Persistance.Implementations.UOWs
             Roles = new RolesRepositoryEfCore(dbContext);
             Products = new ProductsRepositoryEfCore(dbContext);
             ProductCategories = new ProductCategoryRepositoryEfCore(dbContext);
+            Organization = new OrganizationRepositoryEfCore(dbContext);
         }
 
         public int Save()

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Safebook.EfCore.EFData;
 
 namespace SafeBook.EfCore.Migrations
 {
     [DbContext(typeof(SafeBookDbContext))]
-    partial class SafeBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210810162425_organization-added")]
+    partial class organizationadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,18 +119,6 @@ namespace SafeBook.EfCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Organization");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Adress = "Citkowice 32, 32-700 Bochnia",
-                            BankAccountNumber = "46 1020 4984 0000 4002 0148 2553",
-                            KRS = "0000878769",
-                            NIP = "8681980008",
-                            Name = "Stowarzyszenie Partytura",
-                            REGON = "388006387"
-                        });
                 });
 
             modelBuilder.Entity("SafeBook.Domain.News", b =>

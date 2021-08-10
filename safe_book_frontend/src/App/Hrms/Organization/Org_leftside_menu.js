@@ -40,6 +40,18 @@ const Org_leftside_menu = () => {
           <div className="box3">Actions</div>
         </div>
         </Link>
+        {/* <div className="hrms_footer">
+          <div>
+            Human Resource Managment System
+          </div>
+          
+          <div>
+          v.1.0
+          </div>
+          <div>
+          Copyright © 2021 C# Ninjas.
+          </div>
+        </div> */}
       </div>
     </div>
   );

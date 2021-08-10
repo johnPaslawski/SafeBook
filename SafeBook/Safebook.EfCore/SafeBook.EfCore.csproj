@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure\Persistance\Implementations\HRMS\" />
-    <Folder Include="Infrastructure\Persistance\Repositories\HRMS\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 
