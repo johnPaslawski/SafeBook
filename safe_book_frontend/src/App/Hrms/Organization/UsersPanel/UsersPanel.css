@@ -1,13 +1,40 @@
 .usersPanel {
     display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content: flex-start;
     position: absolute;
     width: 75vw;
     height: 80vh;
     top: 5rem;
     left: 17vw;
-    background-color: rgba(240, 255, 240, 0.83);
+    background-color: rgba(240, 255, 240, 0.932);
     border-radius: 0.5%;
-
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 }
+
+.usersPanelHeader {
+    width: 100%;
+    height:fit-content;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    /* border: 1px solid grey; */
+}
+
+.UsersPanel-contentRouter {
+    /* border: 1px solid grey; */
+    height: 75%;
+    width: 85%;
+    font-size: 90%;
+}
+
+.box2-right {
+    display: flex;   
+    /* justify-content: right; */
+    border: 1px solid grey;
+    /* text-align: center; */
+}
+
+
+

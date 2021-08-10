@@ -23,7 +23,7 @@ namespace SafeBook.EfCore.Infrastructure.Persistance.Implementations
             return _dbContext.Find<TEntity>(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return _dbContext.Set<TEntity>().ToList();
         }

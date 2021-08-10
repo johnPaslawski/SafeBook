@@ -25,6 +25,12 @@ namespace SafeBook.EfCore.Infrastructure.Persistance.Implementations.Common
                 .FirstOrDefault();
         }
 
+        public override IEnumerable<User> GetAll()
+        {
+            return GetDbContext().Users
+                .Include(x => x.Role);
+        }
+
         public IEnumerable<User> FindString(string like)
         {
             return GetDbContext().Users
