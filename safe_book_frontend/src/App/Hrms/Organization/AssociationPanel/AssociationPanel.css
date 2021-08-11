@@ -8,8 +8,9 @@
     height: 80vh;
     top: 5rem;
     left: 17vw;
-    background-color: rgba(240, 255, 240, 0.83);
+    background-color: whitesmoke;
     border-radius: 0.5%;
+    font-size: 90%;
     /* justify-content: center;
     align-items: center; */
 }
@@ -28,13 +29,13 @@
     padding-top: 1rem;
     justify-content:flex-start;
     align-content:flex-start;
-    border: 1px solid grey;
+    border-right: 1px solid grey;
     height: 70%;
     width: 20%;
 }
 
 .AssociationPanel-contentRouter {
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     height: 70%;
     width: 75%;
 }
@@ -44,6 +45,18 @@
     /* justify-content: right; */
     border: 1px solid grey;
     /* text-align: center; */
+}
+
+.table {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.289);
+}
+
+.column-narrow {
+    /* table-layout: fixed; */
+    /* border: 3px grey solid; */
+    width:30%;
+    /* word-wrap: break-word; */
+    /* width: 15%; */
 }
 
 

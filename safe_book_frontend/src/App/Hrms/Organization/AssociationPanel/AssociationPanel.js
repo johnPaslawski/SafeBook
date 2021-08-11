@@ -38,7 +38,9 @@ const AssociationPanel = () => {
                     </Link>
                 </div>
                 <div className="AssociationPanel-contentRouter">
+
                     <AssociationContentRouter />
+                    
                 </div>
             </div>
 

@@ -25,8 +25,8 @@ const OrgDetails = ({ details }) => {
                         <td>{details.nip}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Liczba członków:</th>
-                        <td>{details.membersList.length}</td>
+                        <th scope="row">Konto bankowe:</th>
+                        <td>{details.bankAccountNumber}</td>
                     </tr>
                 </tbody>
             </table>

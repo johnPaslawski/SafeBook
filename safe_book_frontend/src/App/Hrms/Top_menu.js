@@ -10,7 +10,7 @@ const Top_menu = () => {
                 <div className="container_top_small1">
                     <div className="box1">
                     <Link to="/hrms">
-                        <div><i className="bi bi-box-arrow-in-left"></i> Main menu</div>
+                        <div><i className="bi bi-box-arrow-in-left"></i> Menu główne </div>
                     </Link>
                     </div>
                     

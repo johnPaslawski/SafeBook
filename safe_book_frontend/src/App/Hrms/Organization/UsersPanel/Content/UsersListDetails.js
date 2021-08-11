@@ -3,7 +3,7 @@ import '../UsersPanel.css'
 
 const UsersListDetails = ({ usersList }) => {
 
-    var counter = 0;
+    var counter = 1;
 
     return (<div>
 
@@ -15,7 +15,9 @@ const UsersListDetails = ({ usersList }) => {
                     <th scope="col">Imię</th>
                     <th scope="col">Nazwisko</th>
                     <th scope="col">Adres</th>
+                    <th scope="col">Kod pocztowy</th>
                     <th scope="col">Miasto</th>
+                    <th scope="col">Telefonu</th>
                     <th scope="col">Rola</th>
                 </tr>
             </thead>
@@ -27,6 +29,8 @@ const UsersListDetails = ({ usersList }) => {
                         <td>{user.firstName}</td>
                         <td>{user.lastName}</td>
                         <td>{user.adressLine1}</td>
+                        <td>{user.postalCode}</td>
+                        <td>{user.phoneNumber}</td>
                         <td>{user.city}</td>
                         <td>{user.role.name}</td>
                     </tr>

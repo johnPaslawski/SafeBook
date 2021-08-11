@@ -8,7 +8,7 @@
     height: 80vh;
     top: 5rem;
     left: 17vw;
-    background-color: rgba(240, 255, 240, 0.932);
+    background-color:whitesmoke;
     border-radius: 0.5%;
     /* justify-content: center;
     align-items: center; */
@@ -26,7 +26,7 @@
     /* border: 1px solid grey; */
     height: 75%;
     width: 85%;
-    font-size: 90%;
+    font-size: 80%;
 }
 
 .box2-right {
@@ -36,5 +36,22 @@
     /* text-align: center; */
 }
 
+.userProfileContainer {
+/* border: rgba(128, 128, 128, 0.398) 1px solid; */
+padding: 1rem;
+}
+
+.userProfileContainerContent {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.59);
+    padding: 0.3rem;
+    }
+
+.column-narrow2 {
+    /* table-layout: fixed; */
+    /* border: 3px grey solid; */
+    width:10%;
+    /* word-wrap: break-word; */
+    /* width: 15%; */
+}
 
 

@@ -6,6 +6,7 @@ const OrgData = () => {
     const route = 'https://localhost:44325/api/Organization';
 
     const { data: orgDetails, isLoading, error } = useHrmsApi(route)
+
     console.log('orgDetails:');
     console.log(typeof(orgDetails));
     console.log(orgDetails);
@@ -13,7 +14,7 @@ const OrgData = () => {
         <div>
             { error && <div>{ error }</div> }
             { isLoading && <div>Loading data . . .</div> }
-            { orgDetails && <OrgDetails details={ orgDetails } cos = 'cossss'/> }
+            { orgDetails && <OrgDetails details={ orgDetails } /> }
         </div>
      );
 }
