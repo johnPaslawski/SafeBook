@@ -2,7 +2,7 @@ import MapGoogle from "./Components/MapGoogle";
 
 const Contacts = () => {
     return(
-        <div className="contact title-content-grid">
+        <div className="contact title-content-grid main-content">
             <div className="contanct-title title-content-title">
                 <h1>Kontakt</h1>
             </div>

@@ -16,7 +16,7 @@ const News = (props) => {
 
     return(
         <div className="content-side">
-            <div className="news title-content-grid">
+            <div className="news title-content-grid main-content">
                 <div className="news-title title-content-title">
                     <h1>Aktualności</h1>
                 </div>

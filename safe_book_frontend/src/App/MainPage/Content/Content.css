@@ -9,6 +9,10 @@
     grid-template-columns: 80% auto;
 }
 
+.main-content{
+    padding-top:100px;
+}
+
 /* SocialLinks */
 
 .social-links{
@@ -169,6 +173,7 @@
     background-position: center;
     border-radius: 20px;
     position: relative;
+    z-index: 0;
 }
 
 .project-elem-content{

@@ -4,7 +4,7 @@ const ElementInfo = (props) => {
     
     return(
         <div className="element_info">
-            <div className="element_info-front" style={{backgroundImage: "url(/news_logo.jpg)"}}>
+            <div className="element_info-front main-content" style={{backgroundImage: "url(/news_logo.jpg)"}}>
                 <img className="element_info-img" src={process.env.PUBLIC_URL + `/${props.elementData.imageName}`}></img>
             </div>
             <div className="element_info-content title-content-grid">

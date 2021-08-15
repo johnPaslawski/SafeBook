@@ -10,8 +10,8 @@ using Safebook.EfCore.EFData;
 namespace SafeBook.EfCore.Migrations
 {
     [DbContext(typeof(SafeBookDbContext))]
-    [Migration("20210802173523_ProjectConfiguration")]
-    partial class ProjectConfiguration
+    [Migration("20210811220938_ProjectsAndUserConffig")]
+    partial class ProjectsAndUserConffig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,33 +34,6 @@ namespace SafeBook.EfCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Admin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "BoardMember"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Member"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "RegularUser"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Anonymous"
-                        });
                 });
 
             modelBuilder.Entity("SafeBook.Domain.Common.User", b =>
@@ -111,6 +84,41 @@ namespace SafeBook.EfCore.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AdressLine1 = "Krótka 4/56",
+                            BirthDate = new DateTime(2021, 8, 12, 0, 9, 37, 610, DateTimeKind.Local).AddTicks(7269),
+                            City = "Kraków",
+                            FirstName = "Adam",
+                            LastName = "Stary",
+                            PostalCode = "30-004",
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AdressLine1 = "Długa 98/3",
+                            BirthDate = new DateTime(2021, 8, 12, 0, 9, 37, 610, DateTimeKind.Local).AddTicks(9342),
+                            City = "Poznań",
+                            FirstName = "Magda",
+                            LastName = "Młoda",
+                            PostalCode = "23-323",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AdressLine1 = "Lipna 10/5c",
+                            BirthDate = new DateTime(2021, 8, 12, 0, 9, 37, 610, DateTimeKind.Local).AddTicks(9358),
+                            City = "Kraków",
+                            FirstName = "Lech",
+                            LastName = "Nijaki",
+                            PostalCode = "50-111",
+                            RoleId = 3
+                        });
                 });
 
             modelBuilder.Entity("SafeBook.Domain.News", b =>
@@ -135,29 +143,6 @@ namespace SafeBook.EfCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("News");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreationDate = new DateTime(2021, 8, 2, 19, 35, 22, 868, DateTimeKind.Local).AddTicks(1520),
-                            Description = "fsdfsdDecription of this cool news",
-                            Title = "News nr 1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreationDate = new DateTime(2021, 8, 2, 19, 35, 22, 872, DateTimeKind.Local).AddTicks(9690),
-                            Description = "asdasdasdasd of this cool news",
-                            Title = "News nr 2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreationDate = new DateTime(2021, 8, 2, 19, 35, 22, 872, DateTimeKind.Local).AddTicks(9748),
-                            Description = "rtyrtyrty of this cool news",
-                            Title = "News nr 3"
-                        });
                 });
 
             modelBuilder.Entity("SafeBook.Domain.Project", b =>
@@ -187,24 +172,68 @@ namespace SafeBook.EfCore.Migrations
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2021, 8, 2, 19, 35, 22, 873, DateTimeKind.Local).AddTicks(8177),
+                            CreationDate = new DateTime(2021, 8, 12, 0, 9, 37, 605, DateTimeKind.Local).AddTicks(7334),
                             Description = "kolejny ładny projekt",
                             Title = "Taki fajny projekt"
                         },
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2021, 8, 2, 19, 35, 22, 873, DateTimeKind.Local).AddTicks(8957),
+                            CreationDate = new DateTime(2021, 8, 12, 0, 9, 37, 608, DateTimeKind.Local).AddTicks(8806),
                             Description = "dobrze kolega mówi, zacny",
                             Title = "A ten jaki ładny"
                         },
                         new
                         {
                             Id = 3,
-                            CreationDate = new DateTime(2021, 8, 2, 19, 35, 22, 873, DateTimeKind.Local).AddTicks(8979),
+                            CreationDate = new DateTime(2021, 8, 12, 0, 9, 37, 608, DateTimeKind.Local).AddTicks(8897),
                             Description = "program ewidentnie im nie leżał",
                             Title = "No, ten to nie siadł"
                         });
+                });
+
+            modelBuilder.Entity("SafeBook.Domain.Shop.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("DefaultPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductCategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductCategoryId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("SafeBook.Domain.Shop.ProductCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("SafeBook.Domain.Common.User", b =>
@@ -218,9 +247,25 @@ namespace SafeBook.EfCore.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("SafeBook.Domain.Shop.Product", b =>
+                {
+                    b.HasOne("SafeBook.Domain.Shop.ProductCategory", "ProductCategory")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProductCategory");
+                });
+
             modelBuilder.Entity("SafeBook.Domain.Common.Role", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("SafeBook.Domain.Shop.ProductCategory", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

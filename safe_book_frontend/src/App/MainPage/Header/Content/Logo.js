@@ -4,7 +4,9 @@ import './../Header.css'
 const Logo = () =>{
     return(
         <Link to="/" className="header-logo-ref">
-            <img className = "header-logo" src={process.env.PUBLIC_URL + '/partyturaLogo.png'} />
+            <div className="header-logo-back">
+                <img className = "header-logo" src={process.env.PUBLIC_URL + '/partyturaLogo.png'} />
+            </div>
         </Link>
     );
 }

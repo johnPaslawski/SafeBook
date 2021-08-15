@@ -10,8 +10,8 @@ using Safebook.EfCore.EFData;
 namespace SafeBook.EfCore.Migrations
 {
     [DbContext(typeof(SafeBookDbContext))]
-    [Migration("20210802222528_ProductCategorySeed")]
-    partial class ProductCategorySeed
+    [Migration("20210811220607_InitializeCreate")]
+    partial class InitializeCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,33 @@ namespace SafeBook.EfCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "BoardMember"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Member"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "RegularUser"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Anonymous"
+                        });
                 });
 
             modelBuilder.Entity("SafeBook.Domain.Common.User", b =>
@@ -108,6 +135,29 @@ namespace SafeBook.EfCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("News");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreationDate = new DateTime(2021, 8, 12, 0, 6, 7, 155, DateTimeKind.Local).AddTicks(5251),
+                            Description = "fsdfsdDecription of this cool news",
+                            Title = "News nr 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreationDate = new DateTime(2021, 8, 12, 0, 6, 7, 158, DateTimeKind.Local).AddTicks(7792),
+                            Description = "asdasdasdasd of this cool news",
+                            Title = "News nr 2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreationDate = new DateTime(2021, 8, 12, 0, 6, 7, 158, DateTimeKind.Local).AddTicks(7828),
+                            Description = "rtyrtyrty of this cool news",
+                            Title = "News nr 3"
+                        });
                 });
 
             modelBuilder.Entity("SafeBook.Domain.Project", b =>
@@ -176,32 +226,6 @@ namespace SafeBook.EfCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductCategories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Kubki z nadrukiem, muzyczne i inne",
-                            Name = "Kubki"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Ołówki, długopisy muzyczne i inne",
-                            Name = "Artykuły biurowe"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Akcesoria do instrumentów smyczkowych i dętych",
-                            Name = "Akcesoria do instrumentów"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Inne akcesoria, pulpity, lampki i pozostałe",
-                            Name = "Akcesoria muzyczne"
-                        });
                 });
 
             modelBuilder.Entity("SafeBook.Domain.Common.User", b =>

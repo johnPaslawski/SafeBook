@@ -7,7 +7,7 @@ const Projects = (props) => {
     const {data, isPadding, error} = useGetApi(`/api/Projects?like=${props.like}`);
     
     return(
-        <div className="projects title-content-grid">
+        <div className="projects title-content-grid main-content">
             <div className="title-content-title projects-title">
                 <h1>Projekty</h1>
             </div>

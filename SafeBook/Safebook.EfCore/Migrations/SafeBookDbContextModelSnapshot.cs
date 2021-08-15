@@ -272,6 +272,32 @@ namespace SafeBook.EfCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Kubki z nadrukiem, muzyczne i inne",
+                            Name = "Kubki"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Ołówki, długopisy muzyczne i inne",
+                            Name = "Artykuły biurowe"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Akcesoria do instrumentów smyczkowych i dętych",
+                            Name = "Akcesoria do instrumentów"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Inne akcesoria, pulpity, lampki i pozostałe",
+                            Name = "Akcesoria muzyczne"
+                        });
                 });
 
             modelBuilder.Entity("SafeBook.Domain.Common.User", b =>
