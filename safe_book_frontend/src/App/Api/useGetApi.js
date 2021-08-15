@@ -5,10 +5,11 @@ const useGetApi = (url) => {
     const [data, setData] = useState(null);
     const [isPending, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    // console.log("I am on api start");
 
     useEffect(() => {
-        fetch(url)
+        const abortCont = new AbortController();
+
+        fetch(url, {signal : abortCont.signal})
         .then( resp => {
             if (!resp.ok){
                 throw Error("Coud not fetch the data for that resource");
@@ -16,17 +17,22 @@ const useGetApi = (url) => {
             return resp.json();
         })
         .then( data => {
-            console.log("I got data");
             setData(data);
             setIsLoading(false);
             setError(null);
         })
         .catch( error => {
-            setIsLoading(false);
-            setError(error.massage);
-
+            if(error.name == "AbortError"){
+                console.log("Fetch aborted")
+            }
+            else{
+                setIsLoading(false);
+                setError(error.massage);
+            }
         })
-    }, [url]);
+
+        return () => abortCont.abort();
+    }, []);
 
     console.log("I am on api end return data\n" + data);
     return {data, isPending, error}
