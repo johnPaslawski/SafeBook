@@ -9,10 +9,6 @@
     grid-template-columns: 80% auto;
 }
 
-.main-content{
-    padding-top:100px;
-}
-
 /* SocialLinks */
 
 .social-links{
@@ -43,17 +39,15 @@
 /* FacebookSide */
 
 .facebook-side{
-    padding-top: 100px;
-    top: 0;
-    justify-self: center;
-    align-self: start;
-    position: sticky;
+    top: 300px;
+    right: 0;
+    position: fixed;
 }
 /* ---------------------------------------------- */
 /* Common */
 .title-content-grid{
     display: grid;
-    grid-template-rows: 100px auto;
+    grid-template-rows: 400px auto;
 }
 
 .title-content-title{
@@ -80,9 +74,19 @@
 /* Title */
 
 .news-title{
-    border-bottom: 2px solid black;
     padding-bottom: 10px;
     padding: 0 5% 0 5%;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
+.news-title-content{
+    position: relative;
+    transform: translateY(-50%);
+    top: 50%;
+    text-align: center;
+    color: white;
+    font-weight: 600;
 }
 
 /* Content */

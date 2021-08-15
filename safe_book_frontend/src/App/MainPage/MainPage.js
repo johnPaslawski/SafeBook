@@ -9,7 +9,7 @@ const MainPage = (props) => {
     const [lookingValue, SetLookingValue] = useState("");
 
     return(
-        <div className="main-page">
+        <div className="main-page" style={{backgroundImage: `url(/music_note.jpg)`}}>
             <Header userInfo={props.userInfo} SetLookingValue={SetLookingValue} />
             <ContentRouter like={lookingValue} />
             <Footer />

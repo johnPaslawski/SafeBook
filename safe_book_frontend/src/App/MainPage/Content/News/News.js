@@ -15,10 +15,10 @@ const News = (props) => {
     )
 
     return(
-        <div className="content-side">
+        <div className="news_page">
             <div className="news title-content-grid main-content">
-                <div className="news-title title-content-title">
-                    <h1>Aktualności</h1>
+                <div className="news-title">
+                    <h1 className="news-title-content">Aktualności</h1>
                 </div>
                 <div className="news-list title-content-content">
                     {(isPendingNews || isPaddingProjects)  && <div>Loading...</div>}
@@ -26,7 +26,6 @@ const News = (props) => {
                     {projectsDataFetch && renderData(projectsDataFetch, "projects")}
                 </div>
             </div>
-            <FacebookSide />
         </div>
     );
 }

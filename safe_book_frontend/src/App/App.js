@@ -14,7 +14,7 @@ function App() {
   const [userId, setUserId] = useState(null);
 
   return (
-    <div className='app'>
+    <div className='app' style={{backgroundImage: "url(/public/BackgroundMusiNotes.jpg"}}>
       <Router>
         <Switch>
           <Route exact path="/">
