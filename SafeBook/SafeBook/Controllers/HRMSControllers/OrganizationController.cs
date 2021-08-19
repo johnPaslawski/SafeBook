@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SafeBook.Domain.HRMS;
 using SafeBook.Domain.Persistence;
+using SafeBook.DTOs.HRMS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace SafeBook.Controllers.HRMSControllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult UpdateOrganization(int id, [FromBody] Organization updateOrganization)
+        public IActionResult UpdateOrganization(int id, [FromBody] UpdateOrganizationDto updateOrganization)
         {
             if (!ModelState.IsValid)
             {
@@ -58,7 +59,6 @@ namespace SafeBook.Controllers.HRMSControllers
                     return NotFound($"backend: Not found organization with id = {id}");
                 }
 
-                updateOrganization.Id = organization.Id;
                 _mapper.Map(updateOrganization, organization);
                 
                 _unitOfWork.Save();

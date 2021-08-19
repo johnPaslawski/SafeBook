@@ -1,4 +1,4 @@
-import useHrmsApi from "../../HrmsApi/useHrmsApi";
+import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
 import StatsDetails from "./StatsDetails";
 
 const Stats = () => {

@@ -1,4 +1,4 @@
-import useHrmsApi from "../../HrmsApi/useHrmsApi";
+import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
 import UsersListDetails from "./UsersListDetails";
 
 
@@ -14,6 +14,8 @@ const UsersList = () => {
     console.log(usersList);
 
     return ( <div>
+        <h5>Lista użytkowników</h5>
+        <br/>
         { error && <div>{error}</div> }
         { isLoading && <div>Loading . . .</div> }
         { usersList && <UsersListDetails usersList={ usersList } /> }

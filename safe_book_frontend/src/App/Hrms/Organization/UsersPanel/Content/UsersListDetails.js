@@ -6,9 +6,14 @@ const UsersListDetails = ({ usersList }) => {
     var counter = 1;
 
     return (<div>
-
-        <table class="table table-sm table-hover">
+<div className='userOptionsFlex'>
+            <button className='userOptionsButton'><i class="bi bi-files"></i> Kopiuj</button>
+            <button className='userOptionsButton'><i class="bi bi-printer"></i> Drukuj</button>
+            <button className='userOptionsButton'><i class="bi bi-plus-lg"></i> Dodaj</button>
+            </div>
+        <table class="table table-sm">
             <thead>
+                
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Nr</th>
@@ -23,8 +28,8 @@ const UsersListDetails = ({ usersList }) => {
             </thead>
             <tbody>
                 {usersList.map((user) => (
-                    <tr key={user.id}>
-                        <th><Link to={`/hrms/organization/users/${user.id}`}><i class="bi bi-pencil-square"></i></Link></th>
+                   <tr key={user.id} > 
+                   <Link to={`/hrms/organization/users/${user.id}`}> <th data-toggle="tooltip" data-placement="top" title="Edycja danych"><i class="bi bi-pencil-square" ></i></th></Link>
                         <th>{counter++}</th>
                         <td>{user.firstName}</td>
                         <td>{user.lastName}</td>
@@ -33,6 +38,7 @@ const UsersListDetails = ({ usersList }) => {
                         <td>{user.phoneNumber}</td>
                         <td>{user.city}</td>
                         <td>{user.role.name}</td>
+                        
                     </tr>
                 ))}
             </tbody>

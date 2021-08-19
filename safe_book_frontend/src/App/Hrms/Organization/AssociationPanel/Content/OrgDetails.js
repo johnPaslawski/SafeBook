@@ -1,7 +1,14 @@
+import { Link } from "react-router-dom";
+
 const OrgDetails = ({ details }) => {
     
     return (
         <div>
+            <div className='optionsFlex'>
+            <button className='optionsButton'><i class="bi bi-files"></i> Copy</button>
+            <button className='optionsButton'><i class="bi bi-printer"></i> Print</button>
+            <Link to="/hrms/organization/association/edit"><button className='optionsButton'><i class="bi bi-pencil-square"></i> Edit</button></Link>
+            </div>
             <table className="table table-borderless table-hover">
                 <tbody>
                     <tr>
@@ -25,11 +32,13 @@ const OrgDetails = ({ details }) => {
                         <td>{details.nip}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Konto bankowe:</th>
+                        <th scope="row">Numer konta:</th>
                         <td>{details.bankAccountNumber}</td>
                     </tr>
                 </tbody>
             </table>
+            
+           
         </div>
     );
 }

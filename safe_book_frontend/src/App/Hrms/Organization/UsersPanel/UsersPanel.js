@@ -10,7 +10,7 @@ const UsersPanel = () => {
       <div className="usersPanel">
         <div className="usersPanelHeader">
           <div>
-            <p>Panel użytkowników</p>
+            <p>Członkowie</p>
           </div>
         </div>
         <div className="UsersPanel-contentRouter">

@@ -40,7 +40,7 @@ namespace Safebook.EfCore.EFData
             //modelBuilder.ApplyConfiguration(new ProductCategoryConfiguration());
             //modelBuilder.ApplyConfiguration(new ProductConfiguration());
 
-            modelBuilder.ApplyConfiguration(new OrganizationConfiguration());
+           // modelBuilder.ApplyConfiguration(new OrganizationConfiguration());
         }
     }
 }
