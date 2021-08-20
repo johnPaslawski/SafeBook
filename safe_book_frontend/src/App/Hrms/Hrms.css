@@ -27,7 +27,14 @@ body {
     opacity: 0.4;
 
 }
-
+a:hover{
+    /* color: grey; */
+    transition: 0.3s;
+}
+a:active{
+    color: white;
+    /* transition: 2s; */
+}
 .loading {
     
     color: grey;

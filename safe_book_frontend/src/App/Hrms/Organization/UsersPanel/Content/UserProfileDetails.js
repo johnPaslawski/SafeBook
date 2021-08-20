@@ -1,11 +1,30 @@
 import "../UsersPanel.css";
+import { Link } from "react-router-dom";
 
-const UserProfileDetails = ( { user } ) => {
+const UserProfileDetails = ( { user, handleDelete } ) => {
+    
+    
+    
     return ( <div>
+        
         <div className="userProfileContainer">
             <div className="userProfileContainerContent">
                 PROFIL UŻYTKOWNIKA
             </div>
+            <div className="userOptionsFlex">
+        <button className="userOptionsButton">
+          <i class="bi bi-files"></i> Kopiuj
+        </button>
+        
+        <Link to="/hrms/organization/users/add">
+          <button className="userOptionsButton">
+            <i class="bi bi-plus-lg"></i> Dodaj
+          </button>
+        </Link>
+        <button onClick={() => { handleDelete(user.id) }} className="userOptionsButtonDelete">
+        <i class="bi bi-x-circle-fill"></i> Usuń
+        </button>
+      </div>
             <table className="table table-borderless table-hover">
                 <tbody>
                 <tr>

@@ -65,6 +65,25 @@ namespace SafeBook.Controllers
             }
         }
 
+        //DELETE ... api/users/{id}
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUser(int id)
+        {
+            // najpierw weryfikujemy czy istnieje
+            var userToDelete = _unitOfWork.Users.Get(id);
+
+            if (userToDelete == null)
+            {
+                return NotFound();
+            }
+
+            _unitOfWork.Users.Remove(userToDelete);
+            _unitOfWork.Save();
+
+            return NoContent();
+        }
+
+
         // POST ... api/users
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]

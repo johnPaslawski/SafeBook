@@ -1,19 +1,22 @@
 import "../UsersPanel.css";
 import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
 import { useState } from "react";
+import { withRouter } from "react-router";
 import { select } from "async";
 
-const AddUserDetails = () => {
+const AddUserDetails = (props) => {
+  console.log(props);
   const urlForRoles = "https://localhost:44325/api/Users/roles";
   const { data: roles, isLoading, error } = useHrmsApi(urlForRoles);
   const [issLoading, setIssLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const [firstName, setName] = useState("");
   const [lastName, setlastName] = useState("");
   const [adressLine1, setAdress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [roleId, setRoleId] = useState("");
-  
+
   const handleChange = () => {
     const optionsValue = document.getElementById("optionsValue").value;
     setRoleId(optionsValue);
@@ -35,6 +38,12 @@ const AddUserDetails = () => {
         console.log(user);
         console.log(response);
         setIssLoading(false);
+        document.querySelector(".userProfileContainer").innerHTML = "";
+        setSuccess(true);
+
+        setTimeout(() => {
+          props.history.push("/hrms/organization/users");
+        }, 1500);
       })
       .catch((err) => {
         if (err.name === "Abort error") {
@@ -49,6 +58,18 @@ const AddUserDetails = () => {
     <div>
       {isLoading && <div>Loading . . . xd</div>}
       {error && <div>{error}</div>}
+      {success && (
+        <div className="success">
+        <button disabled type="button" class="btn-sm btn-primary">
+          <div>
+            <i class="small material-icons">done</i>
+          </div>
+          <div>DODANO UŻYTKOWNIKA</div>
+          <div> </div>
+          <div>Powrót do Panelu . . .</div>
+        </button>
+      </div>
+      )}
       {roles && (
         <div className="userProfileContainer">
           <div className="userProfileContainerContent">
@@ -131,7 +152,11 @@ const AddUserDetails = () => {
                       aria-label=".form-select-sm example"
                       required
                       onChange={handleChange}
-                    > <option selected></option>
+                    >
+                      {" "}
+                      <option disabled selected value="">
+                        Wybierz z listy
+                      </option>
                       {roles.map((role) => (
                         <option value={role.id}>{role.name}</option>
                       ))}
@@ -184,4 +209,4 @@ const AddUserDetails = () => {
   );
 };
 
-export default AddUserDetails;
+export default withRouter(AddUserDetails);
