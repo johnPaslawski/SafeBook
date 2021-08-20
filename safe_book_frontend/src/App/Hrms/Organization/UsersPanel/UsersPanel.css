@@ -76,4 +76,26 @@ padding: 1rem;
     background-color: rgb(230, 230, 230); 
 }
 
+.form-select {
+    width: 10rem;
+    height: 1.8rem;
+}
+
+.newUserInput {
+    width: 15rem;
+}
+
+.addNewUserButtonText {
+    margin-left: 5px;
+}
+
+.addUserWarning {
+    color: red;
+}
+
+.addUserDataContainer {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+}
 

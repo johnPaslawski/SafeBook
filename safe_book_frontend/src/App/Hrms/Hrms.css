@@ -28,6 +28,16 @@ body {
 
 }
 
+.loading {
+    
+    color: grey;
+    
+}
+
+.failedToFetch {
+    color: red;
+}
+
 .container {
 display: flex;
 margin-top: 40vh;

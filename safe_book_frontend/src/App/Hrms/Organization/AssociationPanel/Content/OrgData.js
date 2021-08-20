@@ -12,8 +12,8 @@ const OrgData = () => {
     console.log(orgDetails);
     return ( 
         <div>
-            { error && <div>{ error }</div> }
-            { isLoading && <div>Loading data . . .</div> }
+            { error && <div className="failedToFetch"><h6><i class="bi bi-exclamation-triangle-fill"> </i> { error}</h6></div> }
+        { isLoading && <div className="loading"><h6><i class="bi bi-arrow-repeat"></i> {"Loading . . ."}</h6></div> }
             { orgDetails && <OrgDetails details={ orgDetails } /> }
         </div>
      );

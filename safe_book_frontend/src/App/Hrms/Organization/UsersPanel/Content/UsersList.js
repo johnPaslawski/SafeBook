@@ -1,6 +1,6 @@
 import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
 import UsersListDetails from "./UsersListDetails";
-
+import '../UsersPanel.css'
 
 const UsersList = () => {
 
@@ -16,8 +16,8 @@ const UsersList = () => {
     return ( <div>
         <h5>Lista użytkowników</h5>
         <br/>
-        { error && <div>{error}</div> }
-        { isLoading && <div>Loading . . .</div> }
+        { error && <div className="failedToFetch"><h6><i class="bi bi-exclamation-triangle-fill"> </i> { error}</h6></div> }
+        { isLoading && <div className="loading"><h6><i class="bi bi-arrow-repeat"></i> {"Loading . . ."}</h6></div> }
         { usersList && <UsersListDetails usersList={ usersList } /> }
     </div> );
 }
