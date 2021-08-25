@@ -1,14 +1,14 @@
 import "./../../Content.css";
 import { Link } from "react-router-dom";
 
-const NewsElem = () => {
+const NewsElem = (props) => {
     return(
-        <div className="news-elem" style={{backgroundImage: `url(${'/mp.jpg'})`}}>
+        <div className="news-elem" newsId={props.id} style={{backgroundImage: `url(/${props.newsData.imageName})`}}>
             <div className="news-elem-content">
-                <div className="news-elem-title">Muzyczna podróż</div>
-                <div className="news-elem-descr">Lorem Ipsum is simply dummy text of the printing and typenting and typesetting inLorem Ipsum is simply dummy text of the printing and typesettsetting inLorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+                <h2 className="news-elem-title">{props.newsData.title}</h2>
+                <div className="news-elem-descr">{props.newsData.description}</div>
                 <div className="news-elem-show">
-                    <Link to="*" className="news-elem-show-btn">Rozwiń</Link>
+                    <Link to="/news/1" className="news-elem-show-btn">Rozwiń</Link>
                 </div>
             </div>
         </div>

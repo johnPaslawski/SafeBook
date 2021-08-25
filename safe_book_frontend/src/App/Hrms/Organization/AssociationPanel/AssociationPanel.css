@@ -1,0 +1,109 @@
+.associationPanel {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content: flex-start;
+    position: absolute;
+    width: 75vw;
+    height: 80vh;
+    top: 5rem;
+    left: 16vw;
+    background-color: whitesmoke;
+    border-radius: 0.5%;
+    font-size: 90%;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.associationPanelHeader {
+    width: 100%;
+    height:fit-content;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    /* border: 1px solid grey; */
+}
+
+.AssociationPanel-leftMenu {
+    display: flex;
+    flex-flow: row wrap;
+    padding-top: 1rem;
+    justify-content:flex-start;
+    align-content:flex-start;
+    border-right: 1px solid grey;
+    height: 70%;
+    width: 20%;
+}
+
+.AssociationPanel-contentRouter {
+    /* border: 1px solid grey; */
+    height: 70%;
+    width: 75%;
+}
+
+.box2-right {
+    display: flex;   
+    /* justify-content: right; */
+    border: 1px solid grey;
+    /* text-align: center; */
+}
+
+.table {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.289);
+}
+
+.column-narrow {
+    /* table-layout: fixed; */
+    /* border: 3px grey solid; */
+    width:30%;
+    /* word-wrap: break-word; */
+    /* width: 15%; */
+}
+
+.optionsFlex{
+    display: flex;
+    justify-content: left;
+    border-bottom: 1px lightgray solid;
+    align-items: flex-start;
+}
+
+.optionsButton {
+    margin-right: 0.5rem;
+    border: solid 1px grey;
+    transition: 0.2s;
+    border-radius: 7%;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;   
+}
+.optionsButton:hover {
+    transition: 0.2s;
+    border: solid 1px transparent;
+    background-color: rgb(230, 230, 230);    
+}
+
+.orgEditWarning {
+    color: red;
+}
+.orgEditInput {
+    width:20rem;
+    
+}
+
+/* @media screen {
+    
+} */
+.optionsButton2 {
+    margin-left: 2rem;
+    border: solid 1px grey;
+    transition: 0.2s;
+    border-radius: 4%;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+}
+
+.optionsButton2:hover {
+    transition: 0.2s;
+    border: solid 1px transparent;
+    background-color: rgb(230, 230, 230);    
+}

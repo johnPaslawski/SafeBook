@@ -16,7 +16,6 @@ namespace SafeBook.EfCoreInMemory
         protected readonly DbContext _dbContext;
 
         
-
         protected RepositoryEfCoreInMemory(DbContext dbContext)
         {
             _dbContext = dbContext;
@@ -54,6 +53,12 @@ namespace SafeBook.EfCoreInMemory
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
             _dbContext.RemoveRange(entities);
+        }
+
+        public void Modify(TEntity entity)
+        {
+            _dbContext.Attach(entity);
+            _dbContext.Entry(entity).State = EntityState.Modified;
         }
     }
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router , Switch, Route, Redirect} from 'react-router-dom';
 import { useState } from 'react';
 
 import MainPage from './MainPage/MainPage';
@@ -16,10 +16,20 @@ function App() {
   return (
     <div className='app'>
       <Router>
-          <MainPage userId={userId} userLogged={userLogged}/>
-          <Hrms userId={userId}/>
-          <Shop userId={userId}/>
-          <UserRouter setUserId={setUserId} setUserLogged={setUserLogged}/>
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/main" />
+          </Route>
+          <Route path="/main">
+            <MainPage userId={userId} userLogged={userLogged}/>
+          </Route>
+          <Route path="/hrms">
+            <Hrms userId={userId}/>
+          </Route>
+          <Route path="/shop">
+            <Shop userId={userId}/>
+          </Route>
+        </Switch>
       </Router>
     </div>
   );

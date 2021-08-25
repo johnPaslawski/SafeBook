@@ -6,7 +6,7 @@ const Header = (props) => {  //props.userInfo
     return(
         <div className="header">
             <TopPart />
-            <BottomPart />
+            <BottomPart SetLookingValue = {props.SetLookingValue}/>
         </div>
     );
 }

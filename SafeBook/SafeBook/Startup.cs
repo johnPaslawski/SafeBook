@@ -1,20 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using SafeBook.EfCoreInMemory;
+using Safebook.EfCore.EFData;
 using SafeBook.Domain.Persistence;
-using SafeBook.Domain;
+using SafeBook.EfCore.Infrastructure.Persistance.Implementations.UOWs;
 using System.Reflection;
 
 namespace SafeBook
@@ -31,14 +24,30 @@ namespace SafeBook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();                      
+                    });
+            });
+
+            services.AddControllers()
+                .AddNewtonsoftJson(x =>
+            {
+                x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            }); ;
+
+            //Database Injection:
+            //services.AddDbContext<SafeBookDbContextInMemory>(options => options.UseInMemoryDatabase("SafeBookInMemoryDb"));           
+            services.AddDbContext<SafeBookDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("MssqlConnection")));
             
-            services.AddControllers();
-            services.AddDbContext<SafeBookDbContextInMemory>(options => options.UseInMemoryDatabase("SafeBookInMemoryDb"));
+            // UnitOfWork Injection:
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            // UnitOfWork DInjection
-            services.AddScoped<IUnitOfWork, UnitOfWorkEfCoreInMemory>();
-
-            // Automapper
+            // Automapper:
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddSwaggerGen(c =>
@@ -50,6 +59,8 @@ namespace SafeBook
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,8 +78,6 @@ namespace SafeBook
             {
                 endpoints.MapControllers();
             });
-
-            
 
         }
         

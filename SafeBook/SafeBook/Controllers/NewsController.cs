@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SafeBook.EfCoreInMemory;
+//using SafeBook.EfCoreInMemory;
 using SafeBook.Domain.Persistence;
 using Microsoft.AspNetCore.Http;
 using SafeBook.DTOs.MainPage;
@@ -46,6 +46,7 @@ namespace SafeBook.Controllers
 
             var allNews = _unitOfWork.News.GetAll();
 
+
             return Ok(allNews);
         }
 
@@ -82,7 +83,7 @@ namespace SafeBook.Controllers
                 //return StatusCode(StatusCodes.Status500InternalServerError,
                 //    "Internal server error, please try again later...");
 
-                return Problem("backend: Error with getting. Something went wrong in {nameof(GetOneNews)");
+                return Problem(exception.ToString(), "backend: Error with getting. Something went wrong in {nameof(GetOneNews)");
             }
         }
 

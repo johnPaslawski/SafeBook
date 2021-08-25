@@ -22,8 +22,6 @@ namespace SafeBook.EfCoreInMemory
                     .ToList();
         }
 
-
-
         private SafeBookDbContextInMemory GetInMemoryDbContext() => (SafeBookDbContextInMemory)_dbContext;
     }
 }

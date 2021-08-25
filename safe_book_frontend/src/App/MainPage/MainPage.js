@@ -2,16 +2,17 @@ import Header from './Header/Header';
 import ContentRouter from './Content/ContentRouter'
 import Footer from './Footer/Footer';
 import './MainPage.css'
-import { BrowserRouter as Switch} from 'react-router-dom';
+import { useState, useEffect } from "react";
 
 const MainPage = (props) => {
+
+    const [lookingValue, SetLookingValue] = useState("");
+
     return(
         <div className="main-page">
-            <Switch>
-                <Header userInfo={props.userInfo}/>
-                <ContentRouter />
-                <Footer />
-            </Switch>
+            <Header userInfo={props.userInfo} SetLookingValue={SetLookingValue} />
+            <ContentRouter lookingValue={lookingValue} />
+            <Footer />
         </div>
     );
 }

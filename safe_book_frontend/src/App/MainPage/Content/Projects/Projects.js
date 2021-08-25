@@ -1,11 +1,17 @@
 import "./../Content.css";
-
-import FacebookSide from "../Sidebars/FacebookSide";
+import ProjectElement from "./Components/ProjectElement";
+import useGetApi from "../../../Api/useGetApi";
 
 const Projects = () => {
+
+    const {data, isPadding, error} = useGetApi("/api/Projects");
+    
     return(
-        <div className="projects">
-            
+        <div className="projects title-content-grid">
+            <div className="title-content-title projects-title">Projekty</div>
+            <div className="title-content-content projects-list">
+                {data && data.map( project => <ProjectElement projectData={project}/>)}
+            </div>
         </div>
     );
 }
