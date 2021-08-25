@@ -7,7 +7,7 @@ const UserProfileDetails = ( { user, handleDelete } ) => {
     
     return ( <div>
         
-        <div className="userProfileContainer">
+        <div className="userProfileContainer2">
             <div className="userProfileContainerContent">
                 PROFIL UŻYTKOWNIKA
             </div>

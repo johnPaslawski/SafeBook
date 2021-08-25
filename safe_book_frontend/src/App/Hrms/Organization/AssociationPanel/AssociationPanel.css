@@ -70,7 +70,7 @@
     margin-right: 0.5rem;
     border: solid 1px grey;
     transition: 0.2s;
-    border-radius: 10%;
+    border-radius: 7%;
     height: 1.5rem;
     margin-bottom: 1rem;
     font-size: 0.8rem;   
@@ -92,3 +92,18 @@
 /* @media screen {
     
 } */
+.optionsButton2 {
+    margin-left: 2rem;
+    border: solid 1px grey;
+    transition: 0.2s;
+    border-radius: 4%;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+}
+
+.optionsButton2:hover {
+    transition: 0.2s;
+    border: solid 1px transparent;
+    background-color: rgb(230, 230, 230);    
+}

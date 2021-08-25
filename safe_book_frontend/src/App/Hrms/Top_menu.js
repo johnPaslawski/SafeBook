@@ -18,8 +18,8 @@ const Top_menu = () => {
                 </div>
                 <div className="container_top_small2">
                     <div className="box1">
-                    <Link to={`/hrms/users/${id}`}>
-                    <div><i class="bi bi-person-circle"></i> Jan Pasławski</div>
+                    <Link to={`/hrms/organization/users/${id}`}>
+                    <div><i class="bi bi-person-circle"></i> Kinga Ścipuzna</div>
                     </Link>
                     </div>
                 </div>

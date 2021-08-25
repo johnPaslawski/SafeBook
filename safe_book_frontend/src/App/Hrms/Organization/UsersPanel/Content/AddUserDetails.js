@@ -16,10 +16,15 @@ const AddUserDetails = (props) => {
   const [adressLine1, setAdress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [roleId, setRoleId] = useState("");
+  const [roleName, setRoleName] = useState("");
 
   const handleChange = () => {
     const optionsValue = document.getElementById("optionsValue").value;
     setRoleId(optionsValue);
+    setRoleName(`${roles[optionsValue - 1].name}`);
+    // console.log(optionsValue);
+    // console.log('-----');
+    // console.log();
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -72,6 +77,7 @@ const AddUserDetails = (props) => {
       )}
       {roles && (
         <div className="userProfileContainer">
+          <div>
           <div className="userProfileContainerContent">
             TWORZENIE NOWEGO UŻYTKOWNIKA
           </div>
@@ -179,11 +185,14 @@ const AddUserDetails = (props) => {
               <span className="addNewUserButtonText"> Dodaj użytkownika </span>
             </button>
           </form>
+          </div>
+          <div>
           <div className="addUserDataContainer">
             <div className="addUserWarning">SPRAWDŹ POPRAWNOŚĆ DANYCH !</div>
+            <div></div>
             <div>Dane nowego użytkownika:</div>
-
-            <table>
+            <div> </div>
+            <table className="table-sm table-borderless table-sm-custom">
               <tbody>
                 <tr>
                   <td>{<div>{firstName}</div>}</td>
@@ -198,11 +207,13 @@ const AddUserDetails = (props) => {
                   <td>{<div>{phoneNumber}</div>}</td>
                 </tr>
                 <tr>
-                  <td>{<div>{roleId}</div>}</td>
+                {/* document.getElementById("optionsValue").value */}
+                  <td>{<div>{ roleName }</div>}</td>
                 </tr>
               </tbody>
             </table>
           </div>
+        </div>
         </div>
       )}
     </div>
