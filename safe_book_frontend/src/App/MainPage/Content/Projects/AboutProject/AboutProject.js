@@ -5,7 +5,7 @@ import useGetApi from "../../../../Api/useGetApi";
 const AboutProject = () => {
 
     const {id} = useParams();
-    const {data, isPending, error} = useGetApi(`/api/Projects/${id}`);
+    const {data} = useGetApi(`/api/Projects/${id}`);
 
     return(
         data && <ElementInfo elementData={data}/>

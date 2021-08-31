@@ -1,0 +1,145 @@
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: 600;
+    overflow: visible;
+}
+
+.header a{
+    color: balck;
+}
+
+.header a:hover{
+    text-shadow: 2px 2px 5px black;
+    color: white;
+}
+
+.mainBtn{
+    align-self: center;
+    justify-self: center;
+}
+
+.secondBtn{
+    align-self: center;
+}
+
+.active{
+    color: white;
+    padding: 5px;
+    border-bottom: 2px solid white;
+    text-shadow: 2px 2px 5px black;
+}
+
+.logoImg{
+    height: 100%;
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+    transform: rotate(-45deg);
+}
+
+.logo{
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    justify-self: center;
+    align-self: center;
+    transform: rotate(45deg);
+    top: 14px;
+}
+
+.logo a{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    animation-name: logoPulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes logoPulse {
+    from{
+        box-shadow: 0 0 10px white;
+    }
+    to{
+        box-shadow: 0 0 10px black;
+    }
+}
+
+.logoBlock{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.secondBtn img{
+    height: 30%;
+    justify-self: center;
+    align-self: center;
+}
+
+.secondBtn img:hover{
+    height: 50%;
+}
+
+.search img{
+    height: 30%;
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+}
+
+.search img:hover{
+    height: 50%;
+}
+
+.searchIconBlock{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.search{
+    position: relative;
+}
+
+.serchPanel{
+    top: 110%;
+    position: absolute;
+    color: black;
+    z-index: 9999999;
+    column-gap: 10px;
+    display: none;
+}
+
+.serchPanel input[type=textBox]:focus{
+    outline: none;
+}
+
+.serchPanel input[type=textBox]{
+    border-radius: 5px;
+    height: 30px;
+    box-shadow: 0 0 10px black;
+    font-size: 16px;
+    padding-left: 10px;
+    font-family: 'Arvo', serif;
+    color: black;
+}
+
+.searchBtn{
+    align-self: center;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Arvo', serif;
+    background-color: black;
+    color: white;
+}
+

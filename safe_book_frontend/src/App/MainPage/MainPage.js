@@ -1,15 +1,16 @@
 import Header from './Header/Header';
 import ContentRouter from './Content/ContentRouter'
 import Footer from './Footer/Footer';
-import './MainPage.css'
-import { useState, useEffect } from "react";
+import mainPage from './MainPage.module.css'
+import { useState} from "react";
+
 
 const MainPage = (props) => {
 
     const [lookingValue, SetLookingValue] = useState("");
 
     return(
-        <div className="main-page" style={{backgroundImage: `url(/music_note.jpg)`}}>
+        <div className={mainPage.mainPage}>
             <Header userInfo={props.userInfo} SetLookingValue={SetLookingValue} />
             <ContentRouter like={lookingValue} />
             <Footer />

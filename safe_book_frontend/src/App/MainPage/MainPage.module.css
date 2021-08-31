@@ -1,0 +1,15 @@
+.mainPage{
+    display: grid;
+    grid-template-areas: 
+    "content"
+    "footer";
+    grid-template-rows: 92vh 8vh;
+    background-attachment: fixed;
+    position: relative;
+    font-family: 'Arvo', serif;
+    margin-top: 100px;
+}
+
+body{
+    overflow-y: scroll;
+}

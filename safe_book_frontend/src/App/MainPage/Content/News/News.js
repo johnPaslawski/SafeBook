@@ -1,12 +1,11 @@
-import FacebookSide from "../Sidebars/FacebookSide";
 import "./../Content.css";
 import NewsElem from "./Components/NewsElem";
 import useGetApi from "../../../Api/useGetApi";
 
 const News = (props) => {
 
-    const {data: newsDataFetch, isPending: isPendingNews, error: newsError} = useGetApi(`/api/News?like=${props.like}`);
-    const {data: projectsDataFetch, isPadding: isPaddingProjects, error: projectsError} = useGetApi(`/api/Projects?like${props.like}`);
+    const {data: newsDataFetch, isPending: isPendingNews} = useGetApi(`/api/News?like=${props.like}`);
+    const {data: projectsDataFetch, isPadding: isPaddingProjects} = useGetApi(`/api/Projects?like${props.like}`);
 
     const renderData = (data, type) => (
         data.map( element => 

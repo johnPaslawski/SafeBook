@@ -8,7 +8,7 @@ const NewsElem = (props) => {
                 <h2 className="news-elem-title">{props.newsData.title}</h2>
                 <div className="news-elem-descr">{props.newsData.description}</div>
                 <div className="news-elem-show">
-                    { props.type == "news" ?
+                    { props.type === "news" ?
                         <Link to={`/main/news/${props.newsData.id}`} className="news-elem-show-btn">Rozwiń</Link> :
                         <Link to={`/main/projects/${props.newsData.id}`} className="news-elem-show-btn">Rozwiń</Link>
                     }

@@ -5,7 +5,7 @@ import useGetApi from "../../../../Api/useGetApi";
 const AboutNews = () => {
 
     const {id} = useParams();
-    const {data, isPending, error} = useGetApi(`/api/News/${id}`);
+    const {data} = useGetApi(`/api/News/${id}`);
 
     return(
         data && <ElementInfo elementData={data}/>

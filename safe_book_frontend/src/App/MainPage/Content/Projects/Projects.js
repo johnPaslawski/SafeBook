@@ -4,7 +4,7 @@ import useGetApi from "../../../Api/useGetApi";
 
 const Projects = (props) => {
 
-    const {data, isPadding, error} = useGetApi(`/api/Projects?like=${props.like}`);
+    const {data, isPadding} = useGetApi(`/api/Projects?like=${props.like}`);
     
     return(
         <div className="projects title-content-grid main-content">

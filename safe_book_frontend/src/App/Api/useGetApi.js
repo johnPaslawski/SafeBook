@@ -6,7 +6,7 @@ const useGetApi = (url) => {
     const [isPending, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
+    useEffect((url) => {
         const abortCont = new AbortController();
 
         fetch(url, {signal : abortCont.signal})
@@ -22,7 +22,7 @@ const useGetApi = (url) => {
             setError(null);
         })
         .catch( error => {
-            if(error.name == "AbortError"){
+            if(error.name === "AbortError"){
                 console.log("Fetch aborted")
             }
             else{
@@ -33,8 +33,6 @@ const useGetApi = (url) => {
 
         return () => abortCont.abort();
     }, []);
-
-    console.log("I am on api end return data\n" + data);
     return {data, isPending, error}
 }
 
