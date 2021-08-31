@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import {newMainPageHeaderSearchBodyActionCreator} from "./../../../redux/reducers/MainPage/mainPageHeaderReducer";
 
 let mapStateToProps = (state) => {
-    return {}
+    return {
+        serchValue: state.mainPageHeader.newSearchBody
+    }
 }
 
 let mapDispatchToProps = (dispatch) => {
