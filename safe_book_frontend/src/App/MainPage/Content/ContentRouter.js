@@ -1,6 +1,6 @@
 import { Route, Redirect, Switch} from 'react-router-dom';
 
-import News from "./News/News";
+import NewsContainer from "./News/NewsContainer";
 import AboutNews from './News/AboutNews/AboutNews';
 import Projects from  './Projects/Projects';
 import AboutProject from  './Projects/AboutProject/AboutProject';
@@ -8,7 +8,7 @@ import About from './About/About';
 import Offer from './Offer/Offer';
 import Contacts from './Contacts/Contacts';
 
-const ContentRouter = (props) => {
+const ContentRouter = () => {
     return(
         <div className="content">
             <Switch>
@@ -17,13 +17,13 @@ const ContentRouter = (props) => {
                 </Route>
 
                 <Route exact path="/main/news">
-                    <News like={props.like}/>
+                    <NewsContainer />
                 </Route>
 
                 <Route exact path="/main/news/:id" component={AboutNews} />
 
                 <Route exact path="/main/projects">
-                    <Projects like={props.like}/>
+                    <Projects />
                 </Route>
 
                 <Route path="/main/projects/:id" component={AboutProject} />

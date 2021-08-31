@@ -1,32 +1,35 @@
 import "./../Content.css";
 import NewsElem from "./Components/NewsElem";
-import useGetApi from "../../../Api/useGetApi";
+import React from "react";
+import * as axios from "axios";
 
-const News = (props) => {
+class News extends React.Component{
 
-    const {data: newsDataFetch, isPending: isPendingNews} = useGetApi(`/api/News?like=${props.like}`);
-    const {data: projectsDataFetch, isPadding: isPaddingProjects} = useGetApi(`/api/Projects?like${props.like}`);
-
-    const renderData = (data, type) => (
+    renderNews = (data, type) => (
         data.map( element => 
             <NewsElem type={type} newsData={element} key={element.id} />
         )
     )
 
-    return(
-        <div className="news_page">
-            <div className="news title-content-grid main-content">
-                <div className="news-title">
-                    <h1 className="news-title-content">Aktualności</h1>
-                </div>
-                <div className="news-list title-content-content">
-                    {(isPendingNews || isPaddingProjects)  && <div>Loading...</div>}
-                    {newsDataFetch && renderData(newsDataFetch, "news")}
-                    {projectsDataFetch && renderData(projectsDataFetch, "projects")}
+    componentDidMount(){
+        axios.get(`https://localhost:44325/api/News?like=${this.props.like}`)
+        .then( response => { this.props.onFetchNews(response.data)});
+    }
+
+    render(){
+        return(
+            <div className="news_page">
+                <div className="news title-content-grid main-content">
+                    <div className="news-title">
+                        <h1 className="news-title-content">Aktualności</h1>
+                    </div>
+                    <div className="news-list title-content-content">
+                        {this.props.news.length > 0 ? this.renderNews(this.props.news, "news") : <div>Loading...</div>}
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default News;

@@ -1,14 +1,21 @@
-let initializeState = () => ({
-    mainPageNews : {}
-});
+const SET_MAIN_PAGE_NEWS = "SET_MAIN_PAGE_NEWS";
 
-const mainPageNewsReducer = (state, action) => {
+let initializeState = {
+    mainPageNews : []
+};
+
+const mainPageNewsReducer = (state = initializeState, action) => {
     switch (action.type) {
-        case value:
-            
-            break;
-    
+        case SET_MAIN_PAGE_NEWS:
+            return {
+                ...state,
+                mainPageNews: action.body
+            };
         default:
-            break;
+            return state;
     }
 }
+
+export default mainPageNewsReducer;
+
+export const setMainPageNewsActionCreator = (body) => ({type: SET_MAIN_PAGE_NEWS, body: body});
