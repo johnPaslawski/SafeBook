@@ -1,6 +1,6 @@
 import HeaderContainer from './Header/HeaderContainer';
 import ContentRouter from './Content/ContentRouter'
-import Footer from './Footer/Footer';
+//import Footer from './Footer/Footer';
 import mainPage from './MainPage.module.css'
 
 const MainPage = () => {
@@ -9,7 +9,7 @@ const MainPage = () => {
         <div className={mainPage.mainPage}>
             <HeaderContainer />
             <ContentRouter/>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

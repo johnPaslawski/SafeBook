@@ -1,35 +1,48 @@
-import "./../Content.css";
-import NewsElem from "./Components/NewsElem";
-import React from "react";
-import * as axios from "axios";
+import news from "./News.module.css";
+import NewsMainElem from "./Components/NewsMainElem";
+import NewsSecondaryElem from "./Components/NewsSecondaryElem";
+import grid from "./../../css/GridSystem.module.css";
 
-class News extends React.Component{
+const News = (props) => {
 
-    renderNews = (data, type) => (
-        data.map( element => 
-            <NewsElem type={type} newsData={element} key={element.id} />
-        )
-    )
-
-    componentDidMount(){
-        axios.get(`https://localhost:44325/api/News?like=${this.props.like}`)
-        .then( response => { this.props.onFetchNews(response.data)});
+    const upClick = () => {
+        let newCurNews = props.allNews.slice(props.lastIndex - 4, props.lastIndex);
+        props.onChangeCurNews(newCurNews);
+        props.setLastIndex(props.lastIndex - 1);
     }
 
-    render(){
+    const downClick = () => {
+        let newCurNews = props.allNews.slice(props.lastIndex - 2, props.lastIndex + 2)
+        props.onChangeCurNews(newCurNews);
+        props.setLastIndex(props.lastIndex + 1);
+    }
+
+    const renderNews = () => {
         return(
-            <div className="news_page">
-                <div className="news title-content-grid main-content">
-                    <div className="news-title">
-                        <h1 className="news-title-content">Aktualności</h1>
+            <div className={`${news.newsContainer} ${grid.grid} ${grid.colTwo}`}>
+                <div className={`${news.newsMain}`}>
+                    <NewsMainElem news={props.curNews[0]}/>
+                </div>
+                <div className={`${news.newsSecondary}`}>
+                    <div className={`${news.newsSecondaryScrollTop}`}>
+                        {props.lastIndex > 3
+                        && <img alt="" src={process.env.PUBLIC_URL + '/Arrow-Top.png'} onClick={upClick}/>}
                     </div>
-                    <div className="news-list title-content-content">
-                        {this.props.news.length > 0 ? this.renderNews(this.props.news, "news") : <div>Loading...</div>}
+                    <div className={`${news.newsSecondaryElements}`}>
+                        {props.curNews.slice(1).map( n => <NewsSecondaryElem news={n} key={`${n.type}${n.id}`}/>)}
+                    </div>
+                    <div className={`${news.newsSecondaryScrollBottom}`}>
+                    {props.lastIndex < props.allNews.length - 1
+                        && <img alt="" src={process.env.PUBLIC_URL + '/Arrow-Down.png'} onClick={downClick}/>}
                     </div>
                 </div>
             </div>
         );
     }
+
+    return(
+        props.curNews.length > 0 ? renderNews() : <div>Loading...</div>
+    );
 }
 
 export default News;

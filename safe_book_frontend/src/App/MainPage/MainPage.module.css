@@ -3,11 +3,13 @@
     grid-template-areas: 
     "content"
     "footer";
-    grid-template-rows: 92vh 8vh;
+    grid-template-rows: 100vh 100px;
     background-attachment: fixed;
     position: relative;
     font-family: 'Arvo', serif;
-    margin-top: 100px;
+    padding-top: 100px;
+    box-sizing: border-box;
+    min-height: 100%;
 }
 
 body{
