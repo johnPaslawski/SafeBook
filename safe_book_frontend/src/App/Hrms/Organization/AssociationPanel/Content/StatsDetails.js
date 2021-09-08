@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 const StatsDetails = ({ details }) => {
     return (<div>
+        <div className="userProfileContainerContent">
+                STATYSTYKI
+            </div>
 
 <div className='optionsFlex'>
             <button className='optionsButton'><i class="bi bi-files"></i> Copy</button>

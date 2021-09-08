@@ -13,7 +13,7 @@ const OrgData = () => {
     return ( 
         <div>
             { error && <div className="failedToFetch"><h6><i class="bi bi-exclamation-triangle-fill"> </i> { error}</h6></div> }
-        { isLoading && <div className="loading"><h6><i class="bi bi-arrow-repeat"></i> {"Loading . . ."}</h6></div> }
+            { isLoading && <div className="text-center"><div className="loading spinner-border"></div><div>Ładuję dane . . .</div></div> }
             { orgDetails && <OrgDetails details={ orgDetails } /> }
         </div>
      );

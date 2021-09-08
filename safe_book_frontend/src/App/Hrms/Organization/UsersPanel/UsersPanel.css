@@ -74,6 +74,13 @@ justify-content: space-around;
     /* word-wrap: break-word; */
     /* width: 15%; */
 }
+.column-narrow3 {
+    /* table-layout: fixed; */
+    /* border: 3px grey solid; */
+    width:20%;
+    /* word-wrap: break-word; */
+    /* width: 15%; */
+}
 
 .userOptionsFlex{
     display: flex;
@@ -149,4 +156,49 @@ justify-content: space-around;
     font-weight: 600;
     font-size: 115%;
     margin-top: 2rem;
+}
+.editIcon{
+    padding: 0.1rem;
+    
+}
+.editIcon:hover{
+    padding: 0.1rem;
+border-radius: 5%;
+background: rgba(176, 181, 255, 0.878);
+transition: 0.1s;
+}
+
+.Brak {
+    color: rgb(165, 165, 165);
+}
+
+.userDetailsContainer {
+    display: flex;
+    flex-flow: row;
+}
+.userPhoto {
+    
+}
+
+.userDetailsContainerDetails {
+    margin-left: 2rem;
+    width: 50%;
+}
+
+.userDetailsRow{
+ display: flex;
+ flex-flow: row;
+ width: 100%;
+ border-bottom: 1px solid rgba(0, 0, 0, 0.166);
+ margin-top: 0.5rem;
+
+}
+
+.userDetailsRowTitle{
+ width: 40%;
+
+}
+
+.userDetailsRowValue{
+    font-weight: 600;
 }

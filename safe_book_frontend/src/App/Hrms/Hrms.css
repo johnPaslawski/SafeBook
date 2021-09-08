@@ -24,12 +24,12 @@ body {
     left: 0;
     top: 0;
     z-index: -1;
-    opacity: 0.4;
+    opacity: 0.9;
 
 }
 a:hover{
     /* color: grey; */
-    transition: 0.3s;
+    transition: 0.2s;
 }
 a:active{
     color: white;
@@ -232,5 +232,12 @@ justify-content: center;
     border-top: solid 5px rgba(128, 128, 128, 0.576);
      border: solid grey 3px; 
 } */
-
+.alertIcon {
+    width: 1.2rem;
+    margin-right: 0.5rem;
+}
+.loading{
+    color: rgba(0, 0, 255, 0.57);
+    
+}
 

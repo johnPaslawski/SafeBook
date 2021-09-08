@@ -50,6 +50,7 @@ const OrgDataEditDetails = ({ details }) => {
   return (
     <div>
       <div className="optionsFlex">
+      <img className="alertIcon" src={process.env.PUBLIC_URL + '/alert.png'}></img>
         <h6 className="orgEditWarning">
           Edytujesz teraz dane organizacji, nie zamykaj przeglądarki
         </h6>

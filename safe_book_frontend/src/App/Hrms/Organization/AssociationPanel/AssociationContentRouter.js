@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router-dom"
 import OrgData from "./Content/OrgData"
-import Planning from "./Content/Planning"
+import Planning from "./Content/PlanningContent/Planning"
 import Stats from "./Content/Stats"
 import OrgDataEdit from "./Content/OrgDataEdit"
 

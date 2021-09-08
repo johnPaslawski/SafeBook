@@ -38,7 +38,7 @@ const UserProfile = (props) => {
     return (<div>
 
         { error && <div>{error}</div> }
-        { isLoading && <div>Loading . . .</div> }
+        { isLoading && <div className="text-center"><div className="loading spinner-border"></div><div>Ładuję dane . . .</div></div> }
         { user && <UserProfileDetails user={ user } handleDelete={ handleDelete } /> }
         
 

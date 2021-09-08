@@ -4,6 +4,9 @@ const OrgDetails = ({ details }) => {
     
     return (
         <div>
+            <div className="userProfileContainerContent">
+                DANE ORGANIZACJI
+            </div>
             <div className='optionsFlex'>
             <button className='optionsButton'><i class="bi bi-files"></i> Copy</button>
             <button className='optionsButton'><i class="bi bi-printer"></i> Print</button>

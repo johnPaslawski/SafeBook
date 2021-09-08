@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Safebook.EfCore.EFData;
 
 namespace SafeBook.EfCore.Migrations
 {
     [DbContext(typeof(SafeBookDbContext))]
-    partial class SafeBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210903143459_email-added")]
+    partial class emailadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +82,7 @@ namespace SafeBook.EfCore.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SecondName")
+                    b.Property<string>("SecondtName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "../UsersPanel.css";
 
 const UsersListDetails = ({ usersList }) => {
+  
+  const [usersListsorted, setUsersList] = useState(usersList);
+  
   var counter = 1;
 
   return (
@@ -15,7 +19,7 @@ const UsersListDetails = ({ usersList }) => {
         </button>
         <Link to="/hrms/organization/users/add">
           <button className="userOptionsButton">
-            <i class="bi bi-plus-lg"></i> Dodaj
+            <i class="bi bi-plus-lg"></i> Dodaj użytkownika
           </button>
         </Link>
       </div>
@@ -23,37 +27,39 @@ const UsersListDetails = ({ usersList }) => {
         <table class="table table-sm">
           <thead>
             <tr>
-              <th scope="col"></th>
+              <th scope="col">Przejdź:</th>
               <th scope="col">Nr</th>
-              <th scope="col">Imię</th>
-              <th scope="col">Nazwisko</th>
-              <th scope="col">Adres</th>
+              <th scope="col">Imię <i class="bi bi-caret-down-fill"></i><i class="bi bi-caret-up-fill"></i></th>
+              <th scope="col">Nazwisko <i class="bi bi-caret-down-fill"></i> <i class="bi bi-caret-up-fill"></i></th>
+              <th scope="col">Email </th>
+              <th scope="col">Adres </th>
               <th scope="col">Kod pocztowy</th>
-              <th scope="col">Miasto</th>
-              <th scope="col">Telefonu</th>
-              <th scope="col">Rola</th>
+              <th scope="col">Miasto <i class="bi bi-caret-down-fill"></i> <i class="bi bi-caret-up-fill"></i></th>
+              <th scope="col">Telefon</th>
+              <th scope="col">Rola <i class="bi bi-caret-down-fill"></i> <i class="bi bi-caret-up-fill"></i></th>
             </tr>
           </thead>
           <tbody>
-            {usersList.map((user) => (
+            {usersListsorted.map((user) => (
               <tr key={user.id}>
-                <Link to={`/hrms/organization/users/${parseInt(user.id)}`}>
-                  {" "}
-                  <th
+                  <td
                     data-toggle="tooltip"
                     data-placement="top"
-                    title="Edycja danych"
+                    title="Szczegółowe dane użytkownika" className="text-center"
                   >
-                    <i class="bi bi-pencil-square"></i>
-                  </th>
-                </Link>
+                    <Link to={`/hrms/organization/users/${parseInt(user.id)}`}>
+                    <div className="editIcon"> <i class="bi bi-pencil-square"></i></div>
+                    </Link>
+                  </td>
+                
                 <th>{counter++}</th>
                 <td>{user.firstName}</td>
                 <td>{user.lastName}</td>
+                <td>{user.email}</td>
                 <td>{user.adressLine1}</td>
                 <td>{user.postalCode}</td>
-                <td>{user.phoneNumber}</td>
                 <td>{user.city}</td>
+                <td>{user.phoneNumber}</td>
                 <td>{user.role.name}</td>
               </tr>
             ))}
