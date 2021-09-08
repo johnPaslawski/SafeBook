@@ -2,11 +2,11 @@ import { Route, Redirect, Switch} from 'react-router-dom';
 
 import NewsContainer from "./News/NewsContainer";
 import AboutNews from './News/AboutNews/AboutNews';
-import Projects from  './Projects/Projects';
 import AboutProject from  './Projects/AboutProject/AboutProject';
 import About from './About/About';
 import Offer from './Offer/Offer';
 import Contacts from './Contacts/Contacts';
+import ProjectsContainer from './Projects/ProjectsContainer';
 
 const ContentRouter = () => {
     return(
@@ -23,7 +23,7 @@ const ContentRouter = () => {
                 <Route exact path="/main/news/:id" component={AboutNews} />
 
                 <Route exact path="/main/projects">
-                    <Projects />
+                    <ProjectsContainer />
                 </Route>
 
                 <Route path="/main/projects/:id" component={AboutProject} />
