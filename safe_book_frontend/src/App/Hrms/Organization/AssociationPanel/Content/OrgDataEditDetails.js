@@ -2,23 +2,29 @@ import React, { Componenet } from "react";
 import { Component } from "react";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router";
+import "../AssociationPanel.css";
 
-const OrgDataEditDetails = ({ details }) => {
-  const [name, setName] = useState(details.name);
-  const [adress, setAdress] = useState(details.adress);
-  const [krs, setKrs] = useState(details.krs);
-  const [regon, setRegon] = useState(details.regon);
-  const [nip, setNip] = useState(details.nip);
-  const [bankAccountNumber, setBankAccountNumber] = useState(details.bankAccountNumber);
+
+const OrgDataEditDetails = (props) => {
+  const [name, setName] = useState(props.details.name);
+  const [adress, setAdress] = useState(props.details.adress);
+  const [krs, setKrs] = useState(props.details.krs);
+  const [regon, setRegon] = useState(props.details.regon);
+  const [nip, setNip] = useState(props.details.nip);
+  const [bankAccountNumber, setBankAccountNumber] = useState(props.details.bankAccountNumber);
 
   const [isLoading, setIsLoading] = useState(true);
   const [isDone, setIsDone] = useState(false);
   const [error, setError] = useState(null);
 
+  const [success, setSuccess] = useState(false);
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const url = `https://localhost:44325/api/Organization/${details.id}`;
+    const url = `https://localhost:44325/api/Organization/${props.details.id}`;
 
     const orgUpdated = { name, adress, krs, regon, nip, bankAccountNumber };
 
@@ -30,7 +36,11 @@ const OrgDataEditDetails = ({ details }) => {
       .then(() => {
         console.log("UPDATED ORG DATA! apiPUT");
         setIsLoading(false);
-        setIsDone(true);
+        setSuccess(true);
+        setTimeout(() => {
+          props.history.push("/hrms/organization/association/orgdata/");
+        }, 2000);
+
       })
       .catch((err) => {
         if (err.name === "Abort error") {
@@ -48,14 +58,27 @@ const OrgDataEditDetails = ({ details }) => {
   };
 
   return (
+    
     <div>
-      <div className="optionsFlex">
+      { success && (
+                <div className="success">
+                    <div onClick={() => { props.history.push("/hrms/organization/association/orgdata/") }} className="successContent">
+                        <div>
+                            <i className="small material-icons">done</i>
+                        </div>
+                        <div>UAKTUALNIONO DANE</div>
+                        <div> </div>
+                        <div>Wracam do Panelu . . .</div>
+                    </div>
+                </div>) }
+      
+      {!success && (<div><div className="optionsFlex">
       <img className="alertIcon" src={process.env.PUBLIC_URL + '/alert.png'}></img>
         <h6 className="orgEditWarning">
           Edytujesz teraz dane organizacji, nie zamykaj przeglądarki
         </h6>
       </div>
-      <form id="orgEdit" onSubmit={handleSubmit}>
+      <form id="orgEdit" onSubmit={ handleSubmit }>
         <div>
           <label htmlFor="orgName">Nazwa organizacji:</label>
           <div>
@@ -138,11 +161,15 @@ const OrgDataEditDetails = ({ details }) => {
         </div>
       </form>
       <br></br>
-      <button className="btn btn-success btn-sm" type="submit" form="orgEdit">
+      <div className="saveOrCancelContainer"><button className="btn btn-success btn-sm" type="submit" form="orgEdit">
         Zapisz
       </button>
-      {isDone && <Redirect to="/hrms/organization/association/orgdata" />}
+      <button onClick={ () => {props.history.push("/hrms/organization/association/orgdata/") }} className="btn btn-danger btn-sm">
+        Anuluj
+      </button></div></div>)}
+      
+      
     </div>
   );
 };
-export default OrgDataEditDetails;
+export default withRouter(OrgDataEditDetails);

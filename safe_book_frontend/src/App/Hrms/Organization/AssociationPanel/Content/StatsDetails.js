@@ -2,14 +2,30 @@ import "../AssociationPanel.css";
 import { Link } from "react-router-dom";
 
 const StatsDetails = ({ details }) => {
+
+    const HandleClick = (e) => {
+        e.preventDefault();
+        
+        navigator.clipboard.writeText(JSON.stringify(details));
+          const copyButton = document.querySelector("#copyButton");
+    
+          copyButton.className = 'copied';
+          copyButton.innerHTML = '<i class="bi bi-check-lg"></i> Skopiowano';
+          
+          setTimeout(()=>{
+            copyButton.className = 'optionsButton';
+            copyButton.innerHTML = '<i class="bi bi-files"></i> Kopiuj';
+          }, 2000);
+        }
+
     return (<div>
         <div className="userProfileContainerContent">
                 STATYSTYKI
             </div>
 
 <div className='optionsFlex'>
-            <button className='optionsButton'><i class="bi bi-files"></i> Copy</button>
-            <button className='optionsButton'><i class="bi bi-printer"></i> Print</button>
+            <button onClick={ HandleClick } className='optionsButton' id="copyButton"><i class="bi bi-files"></i> Kopiuj</button>
+            <button className='optionsButton'><i class="bi bi-printer"></i> Drukuj</button>
             
             </div>
         <table className="table table-sm ">

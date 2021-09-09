@@ -48,7 +48,7 @@ const AddUserDetails = (props) => {
 
         setTimeout(() => {
           props.history.push("/hrms/organization/users");
-        }, 1500);
+        }, 3000);
       })
       .catch((err) => {
         if (err.name === "Abort error") {
@@ -61,18 +61,18 @@ const AddUserDetails = (props) => {
 
   return (
     <div>
-      {isLoading && <div>Loading . . . xd</div>}
+      {isLoading && <div className="text-center"><div className="loading spinner-border"></div><div>Ładuję dane . . .</div></div>}
       {error && <div>{error}</div>}
       {success && (
         <div className="success">
-        <button disabled type="button" class="btn-sm btn-primary">
+        <div onClick={ () => { props.history.push("/hrms/organization/users") } } className="successContent">
           <div>
-            <i class="small material-icons">done</i>
+            <i className="small material-icons">done</i>
           </div>
           <div>DODANO UŻYTKOWNIKA</div>
           <div> </div>
           <div>Powrót do Panelu . . .</div>
-        </button>
+        </div>
       </div>
       )}
       {roles && (

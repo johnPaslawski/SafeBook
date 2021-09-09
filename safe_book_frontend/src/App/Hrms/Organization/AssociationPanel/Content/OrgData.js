@@ -1,5 +1,7 @@
 import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
 import OrgDetails from "./OrgDetails";
+import "../AssociationPanel.css";
+
 
 const OrgData = () => {
 

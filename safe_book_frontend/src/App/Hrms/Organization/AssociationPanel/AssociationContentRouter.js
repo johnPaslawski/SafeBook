@@ -3,6 +3,8 @@ import OrgData from "./Content/OrgData"
 import Planning from "./Content/PlanningContent/Planning"
 import Stats from "./Content/Stats"
 import OrgDataEdit from "./Content/OrgDataEdit"
+import "./AssociationPanel.css";
+
 
 const AssociationContentRouter = () => {
     return ( 

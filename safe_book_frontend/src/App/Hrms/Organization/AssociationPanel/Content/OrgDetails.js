@@ -2,15 +2,38 @@ import { Link } from "react-router-dom";
 
 const OrgDetails = ({ details }) => {
     
+    const HandleClick = (e) => {
+        e.preventDefault();
+        const orgData = {
+            Nazwa: details.name,
+            Adres: details.adress,
+            KRS: details.krs,
+            REGON: details.regon,
+            NIP: details.nip,
+            Konto: details.bankAccountNumber
+        }
+        navigator.clipboard.writeText(JSON.stringify(orgData));
+          const copyButton = document.querySelector("#copyButton");
+    
+          copyButton.className = 'copied';
+          copyButton.innerHTML = '<i class="bi bi-check-lg"></i> Skopiowano';
+          
+          setTimeout(()=>{
+            copyButton.className = 'optionsButton';
+            copyButton.innerHTML = '<i class="bi bi-files"></i> Kopiuj';
+          }, 2000);
+          
+      }
+
     return (
         <div>
             <div className="userProfileContainerContent">
                 DANE ORGANIZACJI
             </div>
             <div className='optionsFlex'>
-            <button className='optionsButton'><i class="bi bi-files"></i> Copy</button>
-            <button className='optionsButton'><i class="bi bi-printer"></i> Print</button>
-            <Link to="/hrms/organization/association/edit"><button className='optionsButton'><i class="bi bi-pencil-square"></i> Edit</button></Link>
+            <button onClick={ HandleClick } className='optionsButton' id="copyButton"><i class="bi bi-files"></i> Kopiuj</button>
+            <button className='optionsButton'><i class="bi bi-printer"></i> Drukuj</button>
+            <Link to="/hrms/organization/association/edit"><button className='optionsButton'><i class="bi bi-pencil-square"></i> Edytuj</button></Link>
             </div>
             <table className="table table-borderless table-hover">
                 <tbody>

@@ -38,7 +38,7 @@ const useHrmsApi = (url) => {
         return () => {
             console.log('cleanup after apiGET')
         }
-    }, []);
+    }, [url]);
 
     return { data, isLoading, error }
 }

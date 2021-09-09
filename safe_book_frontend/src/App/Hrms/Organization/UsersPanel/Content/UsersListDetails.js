@@ -4,27 +4,13 @@ import "../UsersPanel.css";
 
 const UsersListDetails = ({ usersList }) => {
   
-  const [usersListsorted, setUsersList] = useState(usersList);
-  
   var counter = 1;
 
   return (
     <div>
-      <div className="userOptionsFlex">
-        <button className="userOptionsButton">
-          <i class="bi bi-files"></i> Kopiuj
-        </button>
-        <button className="userOptionsButton">
-          <i class="bi bi-printer"></i> Drukuj
-        </button>
-        <Link to="/hrms/organization/users/add">
-          <button className="userOptionsButton">
-            <i class="bi bi-plus-lg"></i> Dodaj użytkownika
-          </button>
-        </Link>
-      </div>
+      
       <div className="UsersPanel-content">
-        <table class="table table-sm">
+      { usersList?.length == 0 ? <div className="notFound">BRAK WYNIKÓW</div> : (<table class="table table-sm">
           <thead>
             <tr>
               <th scope="col">Przejdź:</th>
@@ -40,7 +26,8 @@ const UsersListDetails = ({ usersList }) => {
             </tr>
           </thead>
           <tbody>
-            {usersListsorted.map((user) => (
+            
+            { usersList.map((user) => (
               <tr key={user.id}>
                   <td
                     data-toggle="tooltip"
@@ -64,7 +51,8 @@ const UsersListDetails = ({ usersList }) => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table>)}
+        
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ namespace SafeBook.Domain.Persistence
 {
     public interface IUsersRepository : IRepository<User>
     {
-        IEnumerable<User> FindString(string like);
+        IEnumerable<User> FindByString(string like);
         
     }
 }

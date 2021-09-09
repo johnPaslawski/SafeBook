@@ -5,10 +5,10 @@
     align-content: flex-start;
     position: absolute;
     width: 75vw;
-    height: 80vh;
+    height: 83vh;
     top: 5rem;
     margin-left: 16vw;
-    background-color:whitesmoke;
+    background-color: rgba(255, 255, 255, 0.85);
     border-radius: 0.5%;
     /* justify-content: center;
     align-items: center; */
@@ -27,13 +27,15 @@
     height: 75%;
     width: 85%;
     font-size: 80%;
+    position: relative;
     
 }
 .UsersPanel-content {
     /* border: 1px solid grey; */
     /* width: min-content; */
-   height: 20rem;
-    overflow-x:scroll;
+   height: 50vh;
+   width: 60vw;
+    overflow-y: scroll;
 }
 
 .box2-right {
@@ -46,6 +48,7 @@
 .userProfileContainer {
 /* border: rgba(128, 128, 128, 0.398) 1px solid; */
 padding: 1rem;
+padding-top: 0;
 display: flex;
 flex-flow: row;
 justify-content: space-around;
@@ -54,6 +57,8 @@ justify-content: space-around;
 .userProfileContainer2 {
     /* border: rgba(128, 128, 128, 0.398) 1px solid; */
     padding: 0.5rem;
+padding-top: 0;
+
     display: flex;
     flex-flow: column;
     /* 
@@ -91,18 +96,20 @@ justify-content: space-around;
 }
 
 .userOptionsButton {
+    transition: 0.2s;
+
     margin-right: 0.5rem;
     border: solid 1px grey;
-    transition: 0.2s;
     border-radius: 7%;
     height: 1.5rem;
     margin-bottom: 1rem;
     font-size: 0.8rem; 
 }
 .userOptionsButtonDelete {
+    transition: 0.2s;
+
     margin-right: 0.5rem;
     border: solid 1px grey;
-    transition: 0.2s;
     border-radius: 7%;
     height: 1.5rem;
     margin-bottom: 1rem;
@@ -149,7 +156,23 @@ justify-content: space-around;
 
 .success {
     display: flex;
-    align-content: center;
+    /* border: 1px solid grey; */
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+}
+
+.successContent {
+    border-radius: 4%;
+    background-color: rgb(0, 0, 102);
+    /* background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 2, 51, 0.426), rgba(12, 0, 118, 0.686)); */
+    color: white;
+    /* opacity: 10%; */
+    padding: 0.6rem;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .table-sm-custom {
@@ -159,13 +182,18 @@ justify-content: space-around;
 }
 .editIcon{
     padding: 0.1rem;
+border-radius: 10%;
+
     
 }
 .editIcon:hover{
+transition: 0.3s;
+
     padding: 0.1rem;
-border-radius: 5%;
-background: rgba(176, 181, 255, 0.878);
-transition: 0.1s;
+border-radius: 10%;
+background: rgb(0, 9, 128);
+color: white;
+
 }
 
 .Brak {
@@ -201,4 +229,25 @@ transition: 0.1s;
 
 .userDetailsRowValue{
     font-weight: 600;
+}
+
+.notFound {
+    color: grey;
+    width: 100%;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.copied {
+    transition: 0.2s;
+
+    background: green;
+    color: white;
+
+    margin-right: 0.5rem;
+    border: solid 1px grey;
+    border-radius: 7%;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem; 
 }

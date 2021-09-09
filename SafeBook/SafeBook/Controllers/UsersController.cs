@@ -27,17 +27,29 @@ namespace SafeBook.Controllers
             _mapper = mapper;
         }
 
-        // GET .. api/users
+        // GET .. api/users?like={}
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetUsers()
+        public IActionResult GetUsers([FromQuery] string like)
         {
+            if (!string.IsNullOrWhiteSpace(like))
+            {
+                // dodać sortowanie in title first, in description second
+                //var news = _unitOfWork.News.FindString(like);
+
+                //sposób 2:
+                var users = _unitOfWork.Users.FindByString(like);
+
+                return Ok(users);
+            }
             var allUsers = _unitOfWork.Users.GetAll();
 
 
             return Ok(allUsers);
         }
+
+
 
         // GET .. api/users/{id:int}
         [HttpGet("{id:int}", Name = "GetUser")]

@@ -18,7 +18,7 @@ const BottomPart = (props) => {
             <Link to="/main/contact" style={{gridArea: "contacts-btn"}}>Kontakt</Link>
             <Link to="/shop" style={{gridArea: "shop-btn"}}>Sklep</Link>
             <div className="search">
-                <input className="search-input" onChange={ ChangeSearchValue}type="textbox" placeholder="Search" id="header-search"></input>
+                <input className="search-input" onChange={ ChangeSearchValue }type="textbox" placeholder="Search" id="header-search"></input>
                 <a onClick={ () => {props.SetLookingValue(searchValue)}} className="search-btn">Wyszukaj</a>
             </div>
         </div>

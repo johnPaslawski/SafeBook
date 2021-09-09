@@ -31,12 +31,15 @@ namespace SafeBook.EfCore.Infrastructure.Persistance.Implementations.Common
                 .Include(x => x.Role);
         }
 
-        public IEnumerable<User> FindString(string like)
+        public IEnumerable<User> FindByString(string like)
         {
             return GetDbContext().Users
-                    .Where(x => x.FirstName.Contains(like) ||
-                                x.LastName.Contains(like) ||
-                                x.ToString().Contains(like)) //do przemyślenia ten sposób wyszukiwania
+                    .Where(x => x.FirstName.Contains(like) 
+                    || x.LastName.Contains(like)
+                    || x.AdressLine1.Contains(like)
+                    || x.Email.Contains(like)
+                    || x.PhoneNumber.Contains(like)) //do przemyślenia ten sposób wyszukiwania
+                    .Include(x => x.Role)
                     .ToList();
         }
 

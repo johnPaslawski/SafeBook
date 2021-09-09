@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import UsersPanelContentRouter from "./UsersPanelContentRouter";
 
 const UsersPanel = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
   return (
     <div>
       <div className="usersPanel">
