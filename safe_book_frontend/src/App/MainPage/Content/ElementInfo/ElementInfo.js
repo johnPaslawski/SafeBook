@@ -1,7 +1,6 @@
 import "./../Content.css"
 
 const ElementInfo = (props) => {
-    
     return(
         <div className="element_info">
             <div className="element_info-front main-content" style={{backgroundImage: "url(/news_logo.jpg)"}}>

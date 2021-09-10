@@ -11,6 +11,7 @@ class Header extends React.Component{
         switch (searchPanel.style.display){
             case "grid":
                 searchPanel.style.display = "none";
+                this.props.onChangeSearchBody("");
                 break;
             default:
                 searchPanel.style.display = "grid";
@@ -18,9 +19,13 @@ class Header extends React.Component{
     }
 
     changeSearchBody = (e) => {
-        this.props.onChangeSearchBody(e.target.value)
+        const value = e.target.value;
+        value[value.length - 1] != " " && this.props.onChangeSearchBody(e.target.value);
     }
 
+    onSearchClick = () => {
+        this.props.setNewSearch(true);
+    }
     render(){
         return(
             <div className={`${header.header} ${grid.grid} ${grid.colNine}`}>
@@ -50,7 +55,7 @@ class Header extends React.Component{
                         <img onClick={this.openCloseSerchPanel} src={process.env.PUBLIC_URL + '/SearchStart.png'} alt=""/>
                         <div className={`${header.serchPanel} ${grid.colTwoA}`}>
                             <input type="textBox" placeholder="Wpisz" onChange={this.changeSearchBody}></input>
-                            <button className={`${header.searchBtn}`}>Wyszukaj</button>
+                            {/* <button className={`${header.searchBtn}`} onClick={this.onSearchClick}>Wyszukaj</button> */}
                         </div>
                     </div>
                 </div>
