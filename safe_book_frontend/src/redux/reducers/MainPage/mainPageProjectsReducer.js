@@ -1,8 +1,10 @@
 const SET_MAIN_PAGE_PROJECTS = "SET_MAIN_PAGE_PROJECTS";
-const PROJECTS_TYPE = "Project";//Need to add type of project in DB then delete this one
+const SET_LOADING = "SET_LOADING";
+const PROJECTS_TYPE = "Projects";//Need to add type of project in DB then delete this one
 
 let initializeState = {
-    projects : []
+    projects : [],
+    loading: false
 };
 
 const mainPageProjectsReducer = (state = initializeState, action) => {
@@ -12,6 +14,11 @@ const mainPageProjectsReducer = (state = initializeState, action) => {
                 ...state,
                 projects: action.body
             };
+        case SET_LOADING:
+            return{
+                ...state,
+                loading: action.body
+            }
         default:
             return state;
     }
@@ -20,6 +27,7 @@ const mainPageProjectsReducer = (state = initializeState, action) => {
 export default mainPageProjectsReducer;
 
 export const setMainPageProjects = (body) => ({type: SET_MAIN_PAGE_PROJECTS, body: body});
+export const setLoading = (body) => ({type: SET_LOADING, body: body});
 
 export const addProjectsType = (body) => {
     body.map( n => n.type = PROJECTS_TYPE);
