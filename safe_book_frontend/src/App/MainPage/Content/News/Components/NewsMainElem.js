@@ -11,7 +11,7 @@ const NewsMainElem = (props) => {
             <div className={`${news.newsMainBottom}`}>
                 <div className={`${news.newsMainContent}`}>
                     <div className={`${news.newsMainTitle}`}>
-                        <Link to="/">{props.news.title}</Link>
+                        <Link to={`/main/element/${props.news.type}/${props.news.id}`}>{props.news.title}</Link>
                     </div>
                     <div className={`${news.newsMainDescription}`}>
                         {props.news.description}
@@ -21,7 +21,7 @@ const NewsMainElem = (props) => {
                     <div className={`${news.date}`}>{props.news.creationDate.split("T")[0]}</div>
                     <div className={`${news.newsMainType}`}>{props.news.type}</div>
                     <div className={`${news.showMore}`}>
-                        <Link to="/">Szczegóły</Link>
+                        <Link to={`/main/element/${props.news.type}/${props.news.id}`}>Szczegóły</Link>
                     </div>
                 </div>
             </div>

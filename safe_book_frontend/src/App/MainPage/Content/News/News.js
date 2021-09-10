@@ -41,7 +41,8 @@ const News = (props) => {
     }
 
     return(
-        props.curNews.length > 0 ? renderNews() : <div>Loading...</div>
+        props.loading ? <div>Loading...</div> : 
+        props.curNews.length > 0 ? renderNews() : <div>Niema danych :)</div>
     );
 }
 

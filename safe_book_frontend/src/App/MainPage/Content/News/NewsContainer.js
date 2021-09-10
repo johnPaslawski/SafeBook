@@ -3,13 +3,15 @@ import News from "./News";
 import React from "react";
 import * as axios from "axios";
 import {
-    setMainPageNewsActionCreator, addNewsType, setLastNewsIndexActionCreator, setMainPageCurNewsActionCreator
+    setMainPageNewsActionCreator, addNewsType, setLastNewsIndexActionCreator, setMainPageCurNewsActionCreator, setLoading
 } from '../../../../redux/reducers/MainPage/mainPageNewsReducer';
 import {addProjectsType} from '../../../../redux/reducers/MainPage/mainPageProjectsReducer';
+import {setNewSearch} from '../../../../redux/reducers/MainPage/mainPageHeaderReducer'
 
 class NewsApiComponent extends React.Component{
 
     getNews(){
+        this.props.setLoading(true);
         axios.get(`https://localhost:44325/api/News?like=${this.props.like}`)
         .then( response => {
             let newsWithType = this.props.setNewsType(response.data);
@@ -23,6 +25,7 @@ class NewsApiComponent extends React.Component{
             let projectsWithType = this.props.setProjectsType(response.data);
             let combinedArrays = this.combineArrays(dataBefore, projectsWithType);
             this.props.onFetchNews(combinedArrays);
+            this.props.setLoading(false);
         });
     }
 
@@ -48,12 +51,18 @@ class NewsApiComponent extends React.Component{
         this.getNews();
     }
 
+    componentDidUpdate(prevProps){
+        if(this.props.like !== prevProps.like){
+            this.getNews();
+        }
+    }
+
     render(){
         return(
             <News
                 allNews={this.props.allNews} lastIndex={this.props.lastIndex}
                 curNews={this.props.curNews} onChangeCurNews={this.props.onChangeCurNews}
-                setLastIndex={this.props.setLastIndex}
+                setLastIndex={this.props.setLastIndex} loading={this.props.loading}
             />
         );
     }
@@ -64,7 +73,9 @@ const mapStateToProps = (state) => {
         curNews: state.mainPageNews.curNews,
         allNews: state.mainPageNews.news,
         like: state.mainPageHeader.newSearchBody,
-        lastIndex: state.mainPageNews.lastNewsIndex
+        lastIndex: state.mainPageNews.lastNewsIndex,
+        newSearch: state.mainPageHeader.newSearch,
+        loading: state.mainPageNews.loading
     }
 }
 
@@ -80,7 +91,9 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(setMainPageCurNewsActionCreator(body))
         },
         setProjectsType:  body => {return addProjectsType(body)},
-        setNewsType: body => {return addNewsType(body)}
+        setNewsType: body => {return addNewsType(body)},
+        setNewSearch: body => { dispatch(setNewSearch(body))},
+        setLoading: body => {dispatch(setLoading(body))}
     }
 }
 

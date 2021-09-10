@@ -2,7 +2,7 @@ import { Route, Redirect, Switch} from 'react-router-dom';
 
 import NewsContainer from "./News/NewsContainer";
 import AboutNews from './News/AboutNews/AboutNews';
-import AboutProject from  './Projects/AboutProject/AboutProject';
+import ElementInfoContainer from './ElementInfo/ElementInfoContainer';
 import About from './About/About';
 import Offer from './Offer/Offer';
 import Contacts from './Contacts/Contacts';
@@ -26,7 +26,7 @@ const ContentRouter = () => {
                     <ProjectsContainer />
                 </Route>
 
-                <Route path="/main/projects/:id" component={AboutProject} />
+                <Route exact path="/main/element/:type/:id" component={ElementInfoContainer} />
 
                 <Route exact path="/main/about" component={About} />
 

@@ -1,12 +1,14 @@
 const SET_MAIN_PAGE_NEWS = "SET_MAIN_PAGE_NEWS";
 const SET_MAIN_PAGE_CUR_NEWS = "SET_MAIN_PAGE_CUR_NEWS";
 const SET_LAST_NEWS_INDEX = "SET_LAST_NEWS_INDEX";
-const NEWS_TYPE = "Nowość";//Need to add type of news in DB then delete this one
+const NEWS_TYPE = "News";//Need to add type of news in DB then delete this one
+const SET_LOADING = "SET_LOADING";
 
 let initializeState = {
     news : [],
     curNews: [],
-    lastNewsIndex: 0
+    lastNewsIndex: 0,
+    loading: false
 };
 
 const mainPageNewsReducer = (state = initializeState, action) => {
@@ -28,6 +30,11 @@ const mainPageNewsReducer = (state = initializeState, action) => {
                 ...state,
                 lastNewsIndex: action.body
             }
+        case SET_LOADING:
+            return{
+                ...state,
+                loading: action.body
+            }
         default:
             return state;
     }
@@ -38,6 +45,7 @@ export default mainPageNewsReducer;
 export const setMainPageNewsActionCreator = (body) => ({type: SET_MAIN_PAGE_NEWS, body: body});
 export const setMainPageCurNewsActionCreator = (body) => ({type: SET_MAIN_PAGE_CUR_NEWS, body: body});
 export const setLastNewsIndexActionCreator = (body) => ({type: SET_LAST_NEWS_INDEX, body: body});
+export const setLoading = (body) => ({type: SET_LOADING, body: body});
 
 export const addNewsType = (body) => {
     body.map( n => n.type = NEWS_TYPE);
