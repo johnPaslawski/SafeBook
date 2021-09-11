@@ -20,7 +20,7 @@ class Header extends React.Component{
 
     changeSearchBody = (e) => {
         const value = e.target.value;
-        value[value.length - 1] != " " && this.props.onChangeSearchBody(e.target.value);
+        value[value.length - 1] !== " " && this.props.onChangeSearchBody(e.target.value);
     }
 
     onSearchClick = () => {

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Projects from "./Projects";
 import {setMainPageProjects, setLoading} from '../../../../redux/reducers/MainPage/mainPageProjectsReducer';
-import * as axios from "axios";
+import {projectsApi} from "../../../../api/MainPageApi";
 
 class ProjectsApiComponent extends React.Component{
 
@@ -12,11 +12,11 @@ class ProjectsApiComponent extends React.Component{
 
     getProjects = () => {
         this.props.setLoading(true);
-        axios.get(`https://localhost:44325/api/Projects?like=${this.props.like}`)
-        .then( responce => {
-            this.props.setMainPageProjects(responce.data);
+        projectsApi.getAllProjects(this.props.like)
+        .then( data => {
+            this.props.setMainPageProjects(data);
             this.props.setLoading(false);
-        });
+        })
     }
 
     componentDidUpdate(prevProps){

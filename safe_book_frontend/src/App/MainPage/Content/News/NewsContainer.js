@@ -1,50 +1,24 @@
 import { connect } from "react-redux";
 import News from "./News";
 import React from "react";
-import * as axios from "axios";
+import { newsApi } from "../../../../api/MainPageApi";
+import { sortObjectsArrayByDate } from "../../../../dataManager/dataManager";
 import {
-    setMainPageNewsActionCreator, addNewsType, setLastNewsIndexActionCreator, setMainPageCurNewsActionCreator, setLoading
+    setNews, addNewsType, setLastNewsIndex, setCurNews, setLoading
 } from '../../../../redux/reducers/MainPage/mainPageNewsReducer';
 import {addProjectsType} from '../../../../redux/reducers/MainPage/mainPageProjectsReducer';
 import {setNewSearch} from '../../../../redux/reducers/MainPage/mainPageHeaderReducer'
 
 class NewsApiComponent extends React.Component{
 
-    getNews(){
+    getNews(){ //like, setNewsType, setLoading, setProjectsType=undefined
         this.props.setLoading(true);
-        axios.get(`https://localhost:44325/api/News?like=${this.props.like}`)
-        .then( response => {
-            let newsWithType = this.props.setNewsType(response.data);
-            this.projectsFetch(newsWithType);
-        });
-    }
-
-    projectsFetch(dataBefore){
-        axios.get(`https://localhost:44325/api/Projects?like=${this.props.like}`)
-        .then( response => {
-            let projectsWithType = this.props.setProjectsType(response.data);
-            let combinedArrays = this.combineArrays(dataBefore, projectsWithType);
-            this.props.onFetchNews(combinedArrays);
+        newsApi.getAllNews(this.props.like, addNewsType, addProjectsType)
+        .then(data => {
             this.props.setLoading(false);
-        });
-    }
-
-    combineArrays(mainArray, secondaryArray){
-        let combinedArray = mainArray.concat(secondaryArray);
-        return this.sortArrayByDate(combinedArray);
-    }
-
-    sortArrayByDate(array){
-        for(let j = 0; j < array.length; j++){
-            for(let i = 0; i < array.length; i++){
-                if(i+1 <= array.length - 1 && array[i].creationDate < array[i+1].creationDate){
-                    let save = array[i];
-                    array[i] = array[i+1];
-                    array[i+1] = save;
-                }
-            }
-        }
-        return array;
+            let sortedArray = sortObjectsArrayByDate(data);
+            this.props.setNews(sortedArray);
+        })
     }
 
     componentDidMount(){
@@ -61,8 +35,8 @@ class NewsApiComponent extends React.Component{
         return(
             <News
                 allNews={this.props.allNews} lastIndex={this.props.lastIndex}
-                curNews={this.props.curNews} onChangeCurNews={this.props.onChangeCurNews}
-                setLastIndex={this.props.setLastIndex} loading={this.props.loading}
+                curNews={this.props.curNews} setCurNews={this.props.setCurNews}
+                setLastNewsIndex={this.props.setLastNewsIndex} loading={this.props.loading}
             />
         );
     }
@@ -79,24 +53,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return{
-        onFetchNews: body => {
-            dispatch(setMainPageNewsActionCreator(body));
-        },
-        setLastIndex: body => {
-            dispatch(setLastNewsIndexActionCreator(body))
-        },
-        onChangeCurNews: body => {
-            dispatch(setMainPageCurNewsActionCreator(body))
-        },
-        setProjectsType:  body => {return addProjectsType(body)},
-        setNewsType: body => {return addNewsType(body)},
-        setNewSearch: body => { dispatch(setNewSearch(body))},
-        setLoading: body => {dispatch(setLoading(body))}
-    }
-}
-
-const NewsContainer = connect(mapStateToProps, mapDispatchToProps)(NewsApiComponent);
+const NewsContainer = connect(mapStateToProps, {
+    setNews, setLastNewsIndex, setCurNews, setNewSearch, setLoading
+})(NewsApiComponent);
 
 export default NewsContainer;

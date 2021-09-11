@@ -42,9 +42,9 @@ const mainPageNewsReducer = (state = initializeState, action) => {
 
 export default mainPageNewsReducer;
 
-export const setMainPageNewsActionCreator = (body) => ({type: SET_MAIN_PAGE_NEWS, body: body});
-export const setMainPageCurNewsActionCreator = (body) => ({type: SET_MAIN_PAGE_CUR_NEWS, body: body});
-export const setLastNewsIndexActionCreator = (body) => ({type: SET_LAST_NEWS_INDEX, body: body});
+export const setNews = (body) => ({type: SET_MAIN_PAGE_NEWS, body: body});
+export const setCurNews = (body) => ({type: SET_MAIN_PAGE_CUR_NEWS, body: body});
+export const setLastNewsIndex = (body) => ({type: SET_LAST_NEWS_INDEX, body: body});
 export const setLoading = (body) => ({type: SET_LOADING, body: body});
 
 export const addNewsType = (body) => {

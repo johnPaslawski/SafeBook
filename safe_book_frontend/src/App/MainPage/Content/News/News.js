@@ -7,14 +7,14 @@ const News = (props) => {
 
     const upClick = () => {
         let newCurNews = props.allNews.slice(props.lastIndex - 4, props.lastIndex);
-        props.onChangeCurNews(newCurNews);
-        props.setLastIndex(props.lastIndex - 1);
+        props.setCurNews(newCurNews);
+        props.setLastNewsIndex(props.lastIndex - 1);
     }
 
     const downClick = () => {
         let newCurNews = props.allNews.slice(props.lastIndex - 2, props.lastIndex + 2)
-        props.onChangeCurNews(newCurNews);
-        props.setLastIndex(props.lastIndex + 1);
+        props.setCurNews(newCurNews);
+        props.setLastNewsIndex(props.lastIndex + 1);
     }
 
     const renderNews = () => {
