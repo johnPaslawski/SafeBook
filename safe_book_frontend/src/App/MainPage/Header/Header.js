@@ -11,7 +11,7 @@ class Header extends React.Component{
         switch (searchPanel.style.display){
             case "grid":
                 searchPanel.style.display = "none";
-                this.props.onChangeSearchBody("");
+                this.props.setSearchBody("");
                 break;
             default:
                 searchPanel.style.display = "grid";
@@ -20,7 +20,7 @@ class Header extends React.Component{
 
     changeSearchBody = (e) => {
         const value = e.target.value;
-        value[value.length - 1] !== " " && this.props.onChangeSearchBody(e.target.value);
+        value[value.length - 1] !== " " && this.props.setSearchBody(e.target.value);
     }
 
     onSearchClick = () => {

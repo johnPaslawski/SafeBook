@@ -23,7 +23,8 @@ const mainPageHeaderReducer = (state = initialState, action) => {
     }
 }
 
-export const newMainPageHeaderSearchBodyActionCreator = (body) => ({
+//Actions
+export const setSearchBody = (body) => ({
     type: UPPDATE_MAIN_PAGE_HEADER_SEARCH_BODY,
     body: body
 });

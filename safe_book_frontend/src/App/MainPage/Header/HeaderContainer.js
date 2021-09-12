@@ -1,6 +1,6 @@
 import Header from "./Header";
 import { connect } from "react-redux";
-import {newMainPageHeaderSearchBodyActionCreator, setNewSearch} from "./../../../redux/reducers/MainPage/mainPageHeaderReducer";
+import {setSearchBody, setNewSearch} from "./../../../redux/reducers/MainPage/mainPageHeaderReducer";
 import { withRouter } from "react-router";
 
 let mapStateToProps = (state) => {
@@ -10,17 +10,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        onChangeSearchBody: (body) => {
-            dispatch(newMainPageHeaderSearchBodyActionCreator(body))
-        },
-        setNewSearch: (body) =>  {dispatch(setNewSearch(body))} 
-    }
-};
-
 let HeaderContainerWithUrl = withRouter(Header);
 
-const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(HeaderContainerWithUrl)
+const HeaderContainer = connect(mapStateToProps, { setSearchBody, setNewSearch})(HeaderContainerWithUrl)
 
 export default HeaderContainer;
