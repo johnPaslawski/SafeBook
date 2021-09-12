@@ -1,3 +1,6 @@
+import { sortObjectsArrayByDate } from "../../../dataManager/dataManager";
+import { newsApi } from "../../../api/MainPageApi";
+
 const SET_MAIN_PAGE_NEWS = "SET_MAIN_PAGE_NEWS";
 const SET_MAIN_PAGE_CUR_NEWS = "SET_MAIN_PAGE_CUR_NEWS";
 const SET_LAST_NEWS_INDEX = "SET_LAST_NEWS_INDEX";
@@ -42,10 +45,25 @@ const mainPageNewsReducer = (state = initializeState, action) => {
 
 export default mainPageNewsReducer;
 
+//Actions
 export const setNews = (body) => ({type: SET_MAIN_PAGE_NEWS, body: body});
 export const setCurNews = (body) => ({type: SET_MAIN_PAGE_CUR_NEWS, body: body});
 export const setLastNewsIndex = (body) => ({type: SET_LAST_NEWS_INDEX, body: body});
 export const setLoading = (body) => ({type: SET_LOADING, body: body});
+
+//Middleware
+export const getNewsAndProjects = (like,addProjectsType) => {
+    return (dispatch) => {
+        dispatch(setLoading(true));
+        
+        newsApi.getAllNews(like, addNewsType, addProjectsType)
+        .then(data => {
+            let sortedArray = sortObjectsArrayByDate(data);
+            dispatch(setLoading(false));
+            dispatch(setNews(sortedArray));
+        })
+    }
+}
 
 export const addNewsType = (body) => {
     body.map( n => n.type = NEWS_TYPE);
