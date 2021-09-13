@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Projects from "./Projects";
 import { getProjects} from '../../../../redux/reducers/MainPage/mainPageProjectsReducer';
+import { compose } from "redux";
 
 class ProjectsApiComponent extends React.Component{
 
@@ -20,6 +21,8 @@ const mapStateToProps = (state) => ({
     loading: state.mainPageProjects.loading
 })
 
-const ProjectsContainer = connect( mapStateToProps, { getProjects} )(ProjectsApiComponent);
+const ProjectsContainer = compose(
+    connect( mapStateToProps, { getProjects} )
+)(ProjectsApiComponent)
 
 export default ProjectsContainer;

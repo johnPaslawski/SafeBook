@@ -2,6 +2,7 @@ import Header from "./Header";
 import { connect } from "react-redux";
 import {setSearchBody, setNewSearch} from "./../../../redux/reducers/MainPage/mainPageHeaderReducer";
 import { withRouter } from "react-router";
+import { compose } from "redux";
 
 let mapStateToProps = (state) => {
     return {
@@ -10,8 +11,9 @@ let mapStateToProps = (state) => {
     }
 }
 
-let HeaderContainerWithUrl = withRouter(Header);
-
-const HeaderContainer = connect(mapStateToProps, { setSearchBody, setNewSearch})(HeaderContainerWithUrl)
+const HeaderContainer = compose(
+    withRouter,
+    connect(mapStateToProps, { setSearchBody, setNewSearch})
+)(Header)
 
 export default HeaderContainer;

@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { compose } from "redux";
 import News from "./News";
 import React from "react";
 import { setLastNewsIndex, setCurNews, getNewsAndProjects } from '../../../../redux/reducers/MainPage/mainPageNewsReducer';
@@ -34,6 +35,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-const NewsContainer = connect( mapStateToProps, { setLastNewsIndex, setCurNews, getNewsAndProjects })(NewsApiComponent);
+const NewsContainer = compose(
+    connect( mapStateToProps, { setLastNewsIndex, setCurNews, getNewsAndProjects })
+)(NewsApiComponent)
 
 export default NewsContainer;
