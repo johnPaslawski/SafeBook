@@ -2,6 +2,7 @@ import { getAuth } from "../../../redux/reducers/Authentication/authenticationRe
 import React from "react";
 
 const LoginRequest = () => {
+    debugger;
     getAuth();
     return (
         <div></div>

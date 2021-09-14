@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const SignIn = () => {
+const SignIn = () => {
     var userManager = new Oidc.UserManager({
         userStore: new Oidc.WebStorageStateStore({ store: window.localStorage }),
         response_mode: "query" // PKCE
@@ -8,7 +8,7 @@ export const SignIn = () => {
 
     userManager.signinCallback().then(result => {
 
-        window.location.href = "/home/index";
+        window.location.href = "/";
     });
     return (
         <div style="visibility:hidden">
@@ -16,3 +16,5 @@ export const SignIn = () => {
         </div>
     );
 };
+
+export default SignIn;
