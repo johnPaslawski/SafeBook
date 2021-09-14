@@ -7,7 +7,7 @@ const CONFIG = {
     authority: "https://localhost:44324/",
     client_id: "client_id_js",
     response_type: "code", // instead of "id_token token" because of PKCE
-    redirect_uri: "https://localhost:44366/Home/SignIn",
+    redirect_uri: "https://localhost:44366/home/signin",
     post_logout_redirect_uri: "https://localhost:44366/Home/Index",
     scope: "openid MyApiOne Blob my.api.claim my.scope" // TODO Iss1, not-todo: Iss3
 };
@@ -61,6 +61,7 @@ let instance = axios.create({
 
 export const authApi = {
     auth : (setUserManager) => {
+        debugger;
         setUserManager(userManager);
         userManager.signinRedirect();
         userManager.getUser().then(user => {

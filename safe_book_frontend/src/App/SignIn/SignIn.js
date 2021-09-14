@@ -1,0 +1,18 @@
+import * as React from 'react';
+
+export const SignIn = () => {
+    var userManager = new Oidc.UserManager({
+        userStore: new Oidc.WebStorageStateStore({ store: window.localStorage }),
+        response_mode: "query" // PKCE
+    });
+
+    userManager.signinCallback().then(result => {
+
+        window.location.href = "/home/index";
+    });
+    return (
+        <div style="visibility:hidden">
+            
+        </div>
+    );
+};

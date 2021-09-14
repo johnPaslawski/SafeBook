@@ -3,6 +3,7 @@ import { BrowserRouter as Router , Switch, Route, Redirect} from 'react-router-d
 import MainPage from './MainPage/MainPage';
 import Hrms from './Hrms/Hrms';
 import Shop from './Shop/Shop';
+import UserRouter from './User/UserRouter';
 
 import './App.css'
 
@@ -27,6 +28,10 @@ function App() {
           <Route exact path="/shop">
             <Shop/>
           </Route>
+          <Route path="/login">
+            <UserRouter/>
+          </Route>
+          <Route exact path="/home/signin"/>
         </Switch>
       </Router>
     </div>
