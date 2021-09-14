@@ -4,6 +4,7 @@ import MainPage from './MainPage/MainPage';
 import Hrms from './Hrms/Hrms';
 import Shop from './Shop/Shop';
 import UserRouter from './User/UserRouter';
+import SignIn from "./SignIn/SignIn";
 
 import './App.css'
 
@@ -31,7 +32,9 @@ function App() {
           <Route path="/user">
             <UserRouter/>
           </Route>
-          <Route exact path="/home/signin"/>
+          <Route exact path="/home/signin">
+            <SignIn />
+          </Route>
         </Switch>
       </Router>
     </div>

@@ -1,17 +1,18 @@
 import * as React from 'react';
+import { UserManager, WebStorageStateStore } from 'oidc-client';
 
 const SignIn = () => {
-    var userManager = new Oidc.UserManager({
-        userStore: new Oidc.WebStorageStateStore({ store: window.localStorage }),
+    debugger;
+    var userManager = new UserManager({
+        userStore: new WebStorageStateStore({ store: window.localStorage }),
         response_mode: "query" // PKCE
     });
 
-    userManager.signinCallback().then(result => {
-
-        window.location.href = "/";
+    userManager.signinCallback().then( result => {
+        window.location.href = "/main";
     });
     return (
-        <div style="visibility:hidden">
+        <div >
             
         </div>
     );
