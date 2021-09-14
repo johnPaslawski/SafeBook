@@ -42,8 +42,8 @@ export const setUserId = (userId) => ({type: SET_USER_ID, body: userId});
 export const getAuth = () => {
     return (dispatch) => {
         authApi.auth( (userManager) => { dispatch(setUserManager(userManager) )})
-        .then(isAuthorized =>
-            isAuthorized && dispatch(setAuth(true))); // TODO not sure if this is a good way to setAuth()
+        // .then(isAuthorized =>
+        //     isAuthorized && dispatch(setAuth(true))); // TODO not sure if this is a good way to setAuth()
     }
 }
 
