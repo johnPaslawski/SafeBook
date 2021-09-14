@@ -14,6 +14,7 @@ const CONFIG = {
 var refreshing = false;
 const userManager = new UserManager(CONFIG); // TODO this is probably not the best place to initiate UserManager?
 
+
 axios.interceptors.response.use(
     response => { return response },
     async error => {
@@ -53,13 +54,13 @@ axios.interceptors.response.use(
     }
 );
 
-// let instance = axios.create({
-//     baseUrl: "UrlToLogin"
-// })
+let instance = axios.create({
+    baseUrl: "UrlToLogin"
+})
 
 
 export const authApi = {
-    auth(setUserManager){
+    auth : (setUserManager) => {
         setUserManager(userManager);
         userManager.signinRedirect();
         userManager.getUser().then(user => {

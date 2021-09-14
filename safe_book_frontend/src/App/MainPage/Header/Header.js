@@ -3,7 +3,6 @@ import header from './Header.module.css'
 import grid from './../css/GridSystem.module.css'
 import { NavLink } from 'react-router-dom';
 import Logo from './Content/Logo';
-import { authApi } from "../../../api/AuthApi";
 
 class Header extends React.Component{
 
