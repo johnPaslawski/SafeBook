@@ -3,6 +3,7 @@ import header from './Header.module.css'
 import grid from './../css/GridSystem.module.css'
 import { NavLink } from 'react-router-dom';
 import Logo from './Content/Logo';
+import { authApi } from "../../../api/AuthApi";
 
 class Header extends React.Component{
 
@@ -92,7 +93,7 @@ class Header extends React.Component{
                     </div>
                 </div>
                 <div className={`${grid.grid} ${grid.colTwo} ${header.secondBtn}`}>
-                    <NavLink to="/login" className={`${grid.grid}`} activeClassName={`${header.active}`}>
+                    <NavLink to={authApi.auth} className={`${grid.grid}`} activeClassName={`${header.active}`}>
                         <img alt=""  src={process.env.PUBLIC_URL + '/LoginStart.png'}/>
                     </NavLink>
                     <NavLink to="/register" className={`${grid.grid}`} activeClassName={`${header.active}`}>

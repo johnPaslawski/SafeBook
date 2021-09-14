@@ -1,5 +1,18 @@
 import * as axios from "axios";
-import { UserManager, User } from 'oidc-client';
+import { UserManager, WebStorageStateStore, User } from 'oidc-client';
+
+
+const CONFIG = {
+    userStore: new WebStorageStateStore({ store: window.localStorage }), // use local storage instead of session storage
+    authority: "https://localhost:44324/",
+    client_id: "client_id_js",
+    response_type: "code", // instead of "id_token token" because of PKCE
+    redirect_uri: "https://localhost:44366/Home/SignIn",
+    post_logout_redirect_uri: "https://localhost:44366/Home/Index",
+    scope: "openid MyApiOne Blob my.api.claim my.scope" // TODO Iss1, not-todo: Iss3
+};
+var refreshing = false;
+const userManager = new UserManager(CONFIG); // TODO this is probably not the best place to initiate UserManager?
 
 axios.interceptors.response.use(
     response => { return response },
@@ -40,25 +53,21 @@ axios.interceptors.response.use(
     }
 );
 
-const CONFIG = {
-    userStore: new Oidc.WebStorageStateStore({ store: window.localStorage }), // use local storage instead of session storage
-    authority: "https://localhost:44324/",
-    client_id: "client_id_js",
-    response_type: "code", // instead of "id_token token" because of PKCE
-    redirect_uri: "https://localhost:44366/Home/SignIn",
-    post_logout_redirect_uri: "https://localhost:44366/Home/Index",
-    scope: "openid MyApiOne Blob my.api.claim my.scope" // TODO Iss1, not-todo: Iss3
-};
-
-var userManager = new Oidc.UserManager(config);
-
 // let instance = axios.create({
 //     baseUrl: "UrlToLogin"
 // })
 
 
-const authApi = {
-    auth(){
-        this.manager = new UserManager(CONFIG);
+export const authApi = {
+    auth(setUserManager){
+        debugger;
+        setUserManager(userManager);
+        userManager.signinRedirect();
+        userManager.getUser().then(user => {
+            console.log("user:", user); // TODO delete this
+            if(user) {
+                axios.defaults.headers.common["Authorization"] = "Bearer " + user.access_token;
+            }
+        });
     }
 }

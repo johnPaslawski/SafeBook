@@ -1,11 +1,12 @@
 import { Switch, Route} from 'react-router-dom';
+import LoginRequest from './Components/LoginRequest';
 
-const UserRouter = ({setUserId, setUserLogged}) => {
+const UserRouter = () => {
     return(
         <div>
             <Switch>
-                <Route exact path="/login">
-                    
+                <Route exact path="/login-request">
+                    <LoginRequest/>
                 </Route>
                 <Route exact path="/logout">
                     
