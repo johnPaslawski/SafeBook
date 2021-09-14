@@ -46,19 +46,18 @@ class Header extends React.Component{
         value[value.length - 1] !== " " && this.props.setSearchBody(e.target.value);
     }
 
-    onSearchClick = () => {
-        this.props.setNewSearch(true);
-    }
+    onSearchClick = () => { this.props.setNewSearch(true) }
+
     render(){
         return(
             <div className={`${header.header} ${grid.grid} ${grid.colNine}`}>
                 <div className={header.sector} onClick={this.changeDeep}>
                     <div className={header.mainBtnElem}>
-                        <div href="#" className={`${header.mainBtn} ${header.pressForDeeo}`}>O nas</div>
+                        <div className={`${header.mainBtn} ${header.pressForDeeo}`}>O nas</div>
                     </div>
                     <div className={header.deep}>
                         <div className={header.deepElem}>
-                            <NavLink to="/main/desc" className={header.mainBtn}>Opis</NavLink>
+                            <NavLink to="/main/about" className={header.mainBtn}>Opis</NavLink>
                         </div>
                         <div className={header.deepElem}>
                             <NavLink to="/main/media" className={header.mainBtn}>Media</NavLink>

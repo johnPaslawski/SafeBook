@@ -15,6 +15,7 @@ class NewsApiComponent extends React.Component{
 
     render(){
         return(
+            
             <News
                 allNews={this.props.allNews} lastIndex={this.props.lastIndex}
                 curNews={this.props.curNews} setCurNews={this.props.setCurNews}
