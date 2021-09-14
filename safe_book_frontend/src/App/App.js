@@ -28,7 +28,7 @@ function App() {
           <Route exact path="/shop">
             <Shop/>
           </Route>
-          <Route path="/login">
+          <Route path="/user">
             <UserRouter/>
           </Route>
           <Route exact path="/home/signin"/>

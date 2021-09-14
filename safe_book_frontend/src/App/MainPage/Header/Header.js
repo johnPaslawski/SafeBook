@@ -92,7 +92,7 @@ class Header extends React.Component{
                     </div>
                 </div>
                 <div className={`${grid.grid} ${grid.colTwo} ${header.secondBtn}`}>
-                    <NavLink to={"/login"} className={`${grid.grid}`} activeClassName={`${header.active}`}>
+                    <NavLink to={"/user/login-request"} className={`${grid.grid}`} activeClassName={`${header.active}`}>
                         <img alt=""  src={process.env.PUBLIC_URL + '/LoginStart.png'}/>
                     </NavLink>
                     <NavLink to="/register" className={`${grid.grid}`} activeClassName={`${header.active}`}>

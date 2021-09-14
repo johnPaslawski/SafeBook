@@ -1,18 +1,15 @@
 import { Switch, Route, Redirect} from 'react-router-dom';
-import LoginRequest from './Components/LoginRequest';
-
+import LoginRequest from './Components/LoginRequest'
 const UserRouter = () => {
+    
     return(
         <div>
             <Switch>
-                <Route exact path="/login">
-                    <Redirect to="/login-request"/>
-                </Route>
-                <Route exact path="/login-request">
-                    <LoginRequest/>
+                <Route exact path="/user/login-request">
+                    <LoginRequest />
                 </Route>
                 <Route exact path="/logout">
-                    
+                    <div>Hello</div>
                 </Route>
                 <Route exact path="/register">
                     

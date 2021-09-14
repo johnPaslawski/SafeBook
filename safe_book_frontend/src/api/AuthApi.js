@@ -60,8 +60,7 @@ let instance = axios.create({
 
 
 export const authApi = {
-    auth : (setUserManager) => {
-        debugger;
+    auth(setUserManager){
         setUserManager(userManager);
         userManager.signinRedirect();
         userManager.getUser().then(user => {

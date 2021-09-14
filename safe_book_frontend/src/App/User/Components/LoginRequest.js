@@ -1,11 +1,23 @@
 import { getAuth } from "../../../redux/reducers/Authentication/authenticationReducer";
 import React from "react";
+import { connect } from "react-redux";
 
-const LoginRequest = () => {
-    getAuth();
-    return (
-        <div></div>
-    );
+class LoginRequest extends React.Component{
+
+    componentDidMount(){
+        debugger;
+        this.props.getAuth();
+    }
+
+    render(){
+        return(
+            <div></div>
+        );
+    }
 }
 
-export default LoginRequest;
+const mapStateToProps = (state) =>({
+
+})
+
+export default connect(mapStateToProps, {getAuth} )(LoginRequest)
