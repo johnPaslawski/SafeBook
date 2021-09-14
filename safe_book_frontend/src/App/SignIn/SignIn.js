@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 const SignIn = () => {
+    debugger;
     var userManager = new Oidc.UserManager({
         userStore: new Oidc.WebStorageStateStore({ store: window.localStorage }),
         response_mode: "query" // PKCE

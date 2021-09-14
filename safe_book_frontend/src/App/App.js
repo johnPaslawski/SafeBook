@@ -31,7 +31,7 @@ function App() {
           <Route path="/user">
             <UserRouter/>
           </Route>
-          <Route exact path="/home/signin"/>
+          <Route path="/home/signin"/>
         </Switch>
       </Router>
     </div>
