@@ -3,20 +3,19 @@ import { connect } from "react-redux";
 import {setSearchBody, setNewSearch} from "./../../../redux/reducers/MainPage/mainPageHeaderReducer";
 import { withRouter } from "react-router";
 import { compose } from "redux";
-import { authApi } from "../../../api/AuthApi";
-import { getUser } from "../../../redux/reducers/Authentication/usersReducer";
+import { getAuth } from "../../../redux/reducers/Authentication/authenticationReducer";
 import React from "react";
 
 class UserApiComponent extends React.Component {
 
     componentDidMount() {
-        this.props.getUser("HERE COMES ID");
+        this.props.getAuth("HERE COMES ID");
     }
 
     render() {
         return <Header searchValue={this.props.searchValue} actualComponent={this.props.actualComponent}
         setSearchBody={this.props.setSearchBody} setNewSearch={this.props.setNewSearch}
-        getUser={this.props.getUser} userManager={this.props.userManager}></Header>
+        getAuth={this.props.getAuth} userManager={this.props.userManager}></Header>
     }
 }
 
@@ -31,7 +30,7 @@ let mapStateToProps = (state) => {
 
 const HeaderContainer = compose(
     withRouter,
-    connect(mapStateToProps, { setSearchBody, setNewSearch, getUser})
+    connect(mapStateToProps, { setSearchBody, setNewSearch, getAuth})
 )(UserApiComponent)
 
 export default HeaderContainer;

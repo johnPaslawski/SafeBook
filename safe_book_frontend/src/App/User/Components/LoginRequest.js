@@ -4,7 +4,6 @@ export default class LoginRequest extends React.Component {
 
     constructor (props) {
         super(props);
-
         getAuth();
     }
 

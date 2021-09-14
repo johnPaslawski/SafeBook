@@ -60,7 +60,6 @@ axios.interceptors.response.use(
 
 export const authApi = {
     auth(setUserManager){
-        debugger;
         setUserManager(userManager);
         userManager.signinRedirect();
         userManager.getUser().then(user => {
