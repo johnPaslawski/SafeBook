@@ -3,25 +3,53 @@ import { withRouter } from "react-router";
 
 const PlanningDetails = (props) => {
     return (
+        
         <div className="planningContainer">
+            <div className="userProfileContainerContent">
+                PLANOWANIE
+            </div>
             <div className="planningColumns">
                 <div className="planningColumn" id="toDo">
                     <div className="planningColumnTitle">Do zrobienia:</div>
                     <div className="planningColumnContent">
                         <div className="planningCard">
+                            <div className="planningCardContent">
+                                Tytuł:
+                            </div>
                             <div className="planningCardTitle">
-                                Zadanie pierwsze
+                                Wysłać ofertę koncertową do klienta
                             </div>
                             <div className="planningCardContent">
-                                content roboczy, lorem ipsum, opis zadania i podobne szczegóły, chociaż samą listę osób bym ukrył
+                                Dodano:
+                            </div>
+                            <div className="planningCardContent">
+                                00.00.0000
+                            </div>
+                            <div className="planningCardContent">
+                                Opis:
+                            </div>
+                            <div className="planningCardContent">
+                                Należy wysłać szczegółową ofertę koncertową do klienta
                             </div>
                         </div>
                         <div className="planningCard">
+                            <div className="planningCardContent">
+                                Tytuł:
+                            </div>
                             <div className="planningCardTitle">
-                                Zadanie drugie
+                                Zaprojektowanie i stworzenie oferty
                             </div>
                             <div className="planningCardContent">
-                                Zastosujemy tutaj inny opis, dłuższy, zobaczmy jak poradzą sobie overflowy. , lorem ipsum, opis zadania i podobne szczegóły, chociaż samą listę osób bym ukrył
+                                Dodano:
+                            </div>
+                            <div className="planningCardContent">
+                                00.00.0000
+                            </div>
+                            <div className="planningCardContent">
+                                Opis:
+                            </div>
+                            <div className="planningCardContent">
+                                Należy zaprojektować i wykonać przy użyciu "Canva" szczegółową ofertę stowarzyszenia
                             </div>
                         </div>
                     </div>
@@ -29,13 +57,25 @@ const PlanningDetails = (props) => {
                 <div className="planningColumn" id="inProgress">
                     <div className="planningColumnTitle">W trakcie realizacji:</div>
                     <div className="planningColumnContent">
-                    <div className="planningCard">
-                            <div className="planningCardTitle">
-                                Zadanie trzecie
+                        <div className="planningCard">
+                        <div className="planningCardContent">
+                                Tytuł:
                             </div>
-                            <div className="planningCardContent"> 
-                                listę osób bym ukryłdasdsasdasdas dasdasdasdukryłd asdsasdasdasdasdasda sdukryłdasdsasdasda sdasdasda sdukryłdasds asdasdasdasdasdasd
-                            </div>  
+                            <div className="planningCardTitle">
+                                Sponsorzy
+                            </div>
+                            <div className="planningCardContent">
+                                Dodano:
+                            </div>
+                            <div className="planningCardContent">
+                                00.00.0000
+                            </div>
+                            <div className="planningCardContent">
+                                Opis:
+                            </div>
+                            <div className="planningCardContent">
+                                Wyszukiwanie sponsorów przy użyciu listy lokalnych przedsiębiorców/firm potencjalnie zainteresowanych mecenatem
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -46,7 +86,7 @@ const PlanningDetails = (props) => {
                     </div>
                 </div>
             </div>
-            
+
         </div>);
 }
 

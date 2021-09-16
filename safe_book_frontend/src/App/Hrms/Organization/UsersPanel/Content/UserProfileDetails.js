@@ -1,5 +1,6 @@
 import "../UsersPanel.css";
 import { Link } from "react-router-dom";
+import * as React from "react";
 
 const UserProfileDetails = ({ user, handleDelete }) => {
 
@@ -59,6 +60,7 @@ const UserProfileDetails = ({ user, handleDelete }) => {
             <div className="userDetailsRow">
               <div className="userDetailsRowTitle">Email:</div> <div className="userDetailsRowValue">{user.email ?? lack}</div>
             </div>
+            
             <div className="userDetailsRow">
               <div className="userDetailsRowTitle">Adres 1:</div> <div className="userDetailsRowValue">{user.adressLine1 ?? lack}</div>
             </div>

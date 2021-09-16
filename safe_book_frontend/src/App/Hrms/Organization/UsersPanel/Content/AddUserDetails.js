@@ -8,7 +8,6 @@ const AddUserDetails = (props) => {
   console.log(props);
   const urlForRoles = "https://localhost:44325/api/Users/roles";
   const { data: roles, isLoading, error } = useHrmsApi(urlForRoles);
-  const [issLoading, setIssLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const [firstName, setName] = useState("");
@@ -22,33 +21,25 @@ const AddUserDetails = (props) => {
     const optionsValue = document.getElementById("optionsValue").value;
     setRoleId(optionsValue);
     setRoleName(`${roles[optionsValue - 1].name}`);
-    // console.log(optionsValue);
-    // console.log('-----');
-    // console.log();
+    
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIssLoading(true);
-
-    console.log("roleId wynosi", roleId);
     const user = { firstName, lastName, adressLine1, phoneNumber, roleId };
-    console.log(user);
+    
     fetch("https://localhost:44325/api/Users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
+      body: JSON.stringify(user)
     })
       .then((response) => {
-        console.log("added new blog");
-        console.log(user);
-        console.log(response);
-        setIssLoading(false);
         document.querySelector(".userProfileContainer").innerHTML = "";
         setSuccess(true);
 
         setTimeout(() => {
           props.history.push("/hrms/organization/users");
-        }, 3000);
+        }, 2000);
+        
       })
       .catch((err) => {
         if (err.name === "Abort error") {
@@ -61,9 +52,9 @@ const AddUserDetails = (props) => {
 
   return (
     <div>
-      {isLoading && <div className="text-center"><div className="loading spinner-border"></div><div>Ładuję dane . . .</div></div>}
-      {error && <div>{error}</div>}
-      {success && (
+      { isLoading && <div className="text-center"><div className="loading spinner-border"></div><div>Ładuję dane . . .</div></div> }
+      { error && <div>{error}</div> }
+      { success && (
         <div className="success">
         <div onClick={ () => { props.history.push("/hrms/organization/users") } } className="successContent">
           <div>
@@ -75,7 +66,7 @@ const AddUserDetails = (props) => {
         </div>
       </div>
       )}
-      {roles && (
+      {!success && roles && (
         <div className="userProfileContainer">
           <div>
           <div className="userProfileContainerContent">
