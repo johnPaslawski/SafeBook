@@ -14,15 +14,15 @@ const HrmsMainMenu = () => {
                 <h5>Serwisy:</h5>
             </div>
             <div className="mainMenuContainer">
-                <div className="box_hmrsm">
-                    <Link to="/hrms/organization">Organizacja</Link>
-                </div>
-                <div className="box_hmrsm">
-                    <Link to="/hrms/webservice">Witryna</Link>
-                </div>
-                <div className="box_hmrsm">
-                    <Link to="/hrms/shop">Sklep</Link>
-                </div>
+            <Link to="/hrms/organization"><div className="box_hmrsm">
+                    Organizacja
+                </div></Link>
+                <Link to="/hrms/webservice"><div className="box_hmrsm">
+                    Witryna
+                </div></Link>
+                <Link to="/hrms/shop"><div className="box_hmrsm">
+                    Sklep
+                </div></Link>
             </div>
         </div>
 

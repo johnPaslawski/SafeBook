@@ -31,7 +31,7 @@ const UserProfileDetails = ({ user, handleDelete }) => {
             <i className="bi bi-files"></i> Kopiuj
           </button>
 
-          <Link to="">
+          <Link to={`/hrms/organization/users/${ user.id }/edit`}>
             <button className="userOptionsButton">
               <i className="bi bi-pencil-square"></i> Edytuj dane
             </button>

@@ -25,6 +25,6 @@ namespace SafeBook.Domain.Common
         public Role Role { get; set; } // set to virtual ????
         //[ForeignKey(nameof(Role))]
         public int RoleId { get; set; }
-        
+
     }
 }
