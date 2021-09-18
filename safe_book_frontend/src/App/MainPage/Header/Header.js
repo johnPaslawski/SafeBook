@@ -28,6 +28,14 @@ class Header extends React.Component{
         else if(target.classList.contains(header.pressForDeeo)){
             deep = target.parentElement.parentElement.querySelector(`.${header.deep}`);
         }
+        else if(target.classList.contains(header.mainBtn) && target.parentElement.classList.contains(header.deepElem)){
+            let curElem = target;
+            while(!curElem.classList.contains(header.deep)){
+                curElem = curElem.parentElement;
+            }
+            curElem.style.display = "";
+            return;
+        }
         
         if (deep){
             if(deep.style.display === ""){
