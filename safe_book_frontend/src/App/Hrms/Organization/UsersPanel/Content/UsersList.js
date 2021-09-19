@@ -10,12 +10,29 @@ const UsersList = ( props ) => {
 
     const { data: usersList, isLoading, error} = useHrmsApi(route) 
     
+    const HandleClick = (e) => {
+      e.preventDefault();
+      const usersListCopied = {
+        // UZUPEŁNIĆ
+      }
+      navigator.clipboard.writeText(JSON.stringify(usersList));
+        const copyButton = document.querySelector("#copyButton");
+  
+        copyButton.className = 'copied';
+        copyButton.innerHTML = '<i class="bi bi-check-lg"></i> Skopiowano';
+        
+        setTimeout(()=>{
+          copyButton.className = 'optionsButton';
+          copyButton.innerHTML = '<i class="bi bi-files"></i> Kopiuj';
+        }, 2000);
+        
+    }
 
     return ( <div>
         <h5>Lista użytkowników</h5>
         <br/>
         <div className="userOptionsFlex">
-        <button className="userOptionsButton">
+        <button onClick={ HandleClick } id="copyButton" className="userOptionsButton">
           <i class="bi bi-files"></i> Kopiuj
         </button>
         <button className="userOptionsButton">
@@ -32,7 +49,7 @@ const UsersList = ( props ) => {
             </div>
       </div>
 
-        { error && <div className="failedToFetch"><h6><i class="bi bi-exclamation-triangle-fill"> </i> { error}</h6></div> }
+        { error && <div className="failedToFetch"><h6><i class="bi bi-exclamation-triangle-fill"> </i> { error }</h6></div> }
         { isLoading && <div className="text-center"><div className="loading spinner-border"></div><div>Ładuję dane . . .</div></div> }
         { usersList && <UsersListDetails usersList={ usersList }/> }
         

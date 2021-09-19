@@ -8,6 +8,10 @@ const PlanningDetails = (props) => {
             <div className="userProfileContainerContent">
                 PLANOWANIE
             </div>
+            <div className='optionsFlex'>
+            <button className='optionsButton'><i class="bi bi-plus-lg"></i> Nowe zadanie</button>
+            
+            </div>
             <div className="planningColumns">
                 <div className="planningColumn" id="toDo">
                     <div className="planningColumnTitle">Do zrobienia:</div>
