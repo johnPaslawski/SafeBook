@@ -4,7 +4,6 @@ import useHrmsApi from '../../HrmsApi/useHrmsApiGet'
 import { useParams } from 'react-router'
 import { withRouter } from "react-router";
 import config from "../../../../../config.json"
-import config from "../../../../../config.json"
 
 const UserProfile = (props) => {
 

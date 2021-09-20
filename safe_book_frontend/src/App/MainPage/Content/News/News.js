@@ -2,8 +2,7 @@ import FacebookSide from "../Sidebars/FacebookSide";
 import "./../Content.css";
 import NewsElem from "./Components/NewsElem";
 import useGetApi from "../../../Api/useGetApi";
-import config from "../../../../../config.json"
-import config from "../../../../../config.json"
+import config from "../../../../config.json"
 
 
 const News = (prop) => {

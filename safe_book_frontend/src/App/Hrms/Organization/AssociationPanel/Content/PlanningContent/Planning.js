@@ -1,6 +1,6 @@
 import useHrmsApi from "../../../HrmsApi/useHrmsApiGet";
 import PlanningDetails from "./PlanningDetails";
-import config from "../../../../../config.json"
+import config from "../../../../../../config.json"
 
 
 const Planning = () => {
