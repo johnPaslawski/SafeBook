@@ -39,7 +39,13 @@ namespace SafeBook.IdentityServer
                 options.LogoutPath = "/Auth/Logout";
             });
 
-            services.AddIdentityServer();
+            services.AddIdentityServer()
+                .AddAspNetIdentity<IdentityUser>()
+                .AddInMemoryIdentityResources(IdentityServer.Configuration.IdentityResources)
+                .AddInMemoryApiResources(IdentityServer.Configuration.ApiResources)
+                .AddInMemoryApiScopes(IdentityServer.Configuration.ApiScopes)
+                .AddInMemoryClients(IdentityServer.Configuration.Clients)
+                .AddDeveloperSigningCredential(); // TODO roduction config
 
             services.AddControllersWithViews();
         }
