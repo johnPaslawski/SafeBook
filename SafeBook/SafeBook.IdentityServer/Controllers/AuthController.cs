@@ -79,5 +79,20 @@ namespace SafeBook.IdentityServer.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout(string logoutId)
+        {
+            await _signInManager.SignOutAsync();
+
+            var logoutRequest = await _interactionService.GetLogoutContextAsync(logoutId);
+
+            if (string.IsNullOrEmpty(logoutRequest.PostLogoutRedirectUri))
+            {
+                return BadRequest("No post logout redirect URI specified"); // TODO is this necessary?
+            }
+
+            return Redirect(logoutRequest.PostLogoutRedirectUri);
+        }
     }
 }
