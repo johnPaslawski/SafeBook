@@ -30,7 +30,7 @@ namespace SafeBook
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();                      
+                        builder.WithOrigins("http://localhost:44366").AllowAnyHeader().AllowAnyMethod();                      
                     });
             });
 
