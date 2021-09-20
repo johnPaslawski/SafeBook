@@ -4,7 +4,7 @@ import config from "../../../../../config.json"
 
 const Stats = () => {
 
-    const route = config.API_URL + 'api/Organization';
+    const route = config.API_URL + '/Organization';
 
     const { data: orgDetails, isLoading, error } = useHrmsApi(route)
 

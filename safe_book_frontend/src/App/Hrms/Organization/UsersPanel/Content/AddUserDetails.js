@@ -7,7 +7,7 @@ import config from "../../../../../config.json"
 
 const AddUserDetails = (props) => {
   console.log(props);
-  const urlForRoles = config.API_URL + "api/Users/roles";
+  const urlForRoles = config.API_URL + "/Users/roles";
   const { data: roles, isLoading, error } = useHrmsApi(urlForRoles);
   const [issLoading, setIssLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -34,7 +34,7 @@ const AddUserDetails = (props) => {
     console.log("roleId wynosi", roleId);
     const user = { firstName, lastName, adressLine1, phoneNumber, roleId };
     console.log(user);
-    fetch(config.API_URL + "api/Users", {
+    fetch(config.API_URL + "/Users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),

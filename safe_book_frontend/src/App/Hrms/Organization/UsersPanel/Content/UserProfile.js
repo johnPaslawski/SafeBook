@@ -8,13 +8,13 @@ import config from "../../../../../config.json"
 const UserProfile = (props) => {
 
     const { id } = useParams();
-    const route = config.API_URL + 'api/Users/' + id;
+    const route = config.API_URL + '/Users/' + id;
     const { data: user, isLoading, error} = useHrmsApi(route)
 
     const handleDelete = (id) => {
         console.log(id)
         alert("Usunięto użytkownika !");
-        fetch(`${config.API_URL}api/Users/${id}`, {
+        fetch(`${config.API_URL}/Users/${id}`, {
       method: "DELETE"
       
     })

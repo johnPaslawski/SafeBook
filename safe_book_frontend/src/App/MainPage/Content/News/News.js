@@ -8,9 +8,9 @@ import config from "../../../../config.json"
 const News = (prop) => {
     
     if(prop.like !== ""){
-        var url = config.API_URL + 'api/News?like=' + prop.like;
+        var url = config.API_URL + '/News?like=' + prop.like;
     }else{
-        var url = config.API_URL + 'api/News';
+        var url = config.API_URL + '/News';
     };
     
     console.log('oto szukany string like:'+ prop.like);
