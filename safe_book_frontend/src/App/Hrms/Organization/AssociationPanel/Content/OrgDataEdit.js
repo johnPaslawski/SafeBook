@@ -1,11 +1,12 @@
 import OrgDataEditDetails from "./OrgDataEditDetails";
 import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
 import "../AssociationPanel.css";
+import config from "../../../../../config.json"
 
 
 const OrgDataEdit = () => {
 
-    const route = 'https://localhost:44325/api/Organization';
+    const route = config.API_URL + '/Organization';
 
     const { data: orgDetails, isLoading, error } = useHrmsApi(route)
 

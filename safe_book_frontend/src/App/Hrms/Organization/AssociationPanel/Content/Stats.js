@@ -1,9 +1,10 @@
 import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
 import StatsDetails from "./StatsDetails";
+import config from "../../../../../config.json"
 
 const Stats = () => {
 
-    const route = 'https://localhost:44325/api/Organization';
+    const route = config.API_URL + 'api/Organization';
 
     const { data: orgDetails, isLoading, error } = useHrmsApi(route)
 

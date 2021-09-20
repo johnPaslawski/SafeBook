@@ -2,14 +2,16 @@ import FacebookSide from "../Sidebars/FacebookSide";
 import "./../Content.css";
 import NewsElem from "./Components/NewsElem";
 import useGetApi from "../../../Api/useGetApi";
+import config from "../../../../../config.json"
+import config from "../../../../../config.json"
 
 
 const News = (prop) => {
     
     if(prop.like !== ""){
-        var url = 'https://localhost:44325/api/News?like=' + prop.like;
+        var url = config.API_URL + 'api/News?like=' + prop.like;
     }else{
-        var url = 'https://localhost:44325/api/News';
+        var url = config.API_URL + 'api/News';
     };
     
     console.log('oto szukany string like:'+ prop.like);

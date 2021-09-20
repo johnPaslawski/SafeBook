@@ -3,11 +3,11 @@ import UsersListDetails from "./UsersListDetails";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import '../UsersPanel.css'
+import config from "../../../../../config.json"
 
 const UsersList = ( props ) => {
 
-    var route = 'https://localhost:44325/api/Users?like=' + props.searchValue;
-
+    var route = config.API_URL + '/Users?like=' + props.searchValue;
     const { data: usersList, isLoading, error} = useHrmsApi(route) 
     
 

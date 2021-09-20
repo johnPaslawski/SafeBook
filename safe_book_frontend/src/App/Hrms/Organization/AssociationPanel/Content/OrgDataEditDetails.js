@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
 import "../AssociationPanel.css";
+import config from "../../../../../config.json"
 
 
 const OrgDataEditDetails = (props) => {
@@ -24,7 +25,7 @@ const OrgDataEditDetails = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const url = `https://localhost:44325/api/Organization/${props.details.id}`;
+    const url = `${config.API_URL}/Organization/${props.details.id}`;
 
     const orgUpdated = { name, adress, krs, regon, nip, bankAccountNumber };
 

@@ -3,17 +3,19 @@ import UserProfileDetails from './UserProfileDetails'
 import useHrmsApi from '../../HrmsApi/useHrmsApiGet'
 import { useParams } from 'react-router'
 import { withRouter } from "react-router";
+import config from "../../../../../config.json"
+import config from "../../../../../config.json"
 
 const UserProfile = (props) => {
 
     const { id } = useParams();
-    const route = 'https://localhost:44325/api/Users/' + id;
+    const route = config.API_URL + 'api/Users/' + id;
     const { data: user, isLoading, error} = useHrmsApi(route)
 
     const handleDelete = (id) => {
         console.log(id)
         alert("Usunięto użytkownika !");
-        fetch(`https://localhost:44325/api/Users/${id}`, {
+        fetch(`${config.API_URL}api/Users/${id}`, {
       method: "DELETE"
       
     })
