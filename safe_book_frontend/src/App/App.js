@@ -11,9 +11,9 @@ import { AuthProvider } from '../Auth/AuthContext';
 import './App.css'
 
 function App() {
-  //console.warn = () => {};  Hide yellow warnings
-  const [userLogged, setUserLogged] = useState(false);
-  const [userId, setUserId] = useState(null);
+   console.warn = () => {}; // Hide yellow warnings
+  //  const [userLogged, setUserLogged] = useState(false);
+  //  const [userId, setUserId] = useState(null);
 
   return (
     <div className='app'>
@@ -24,13 +24,13 @@ function App() {
               <Redirect to="/main" />
             </Route>
             <Route path="/main">
-              <MainPage userId={userId} userLogged={userLogged}/>
+              <MainPage/>
             </Route>
             <Route path="/hrms">
-              <Hrms userId={userId}/>
+              <Hrms/>
             </Route>
             <Route path="/shop">
-              <Shop userId={userId}/>
+              <Shop/>
             </Route>
             <Route>
               <SignIn/>

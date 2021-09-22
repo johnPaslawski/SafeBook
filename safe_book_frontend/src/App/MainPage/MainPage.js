@@ -10,7 +10,7 @@ const MainPage = (props) => {
 
     return(
         <div className="main-page">
-            <Header userInfo={props.userInfo} SetLookingValue={SetLookingValue} />
+            <Header SetLookingValue={SetLookingValue} />
             <ContentRouter lookingValue={lookingValue} />
             <Footer />
         </div>

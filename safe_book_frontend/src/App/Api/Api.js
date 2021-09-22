@@ -79,10 +79,10 @@ axios.interceptors.response.use(
     async function(error) {
         //var userInStore = await userManager.getUser().then(user => user != null);
         console.error("axios intercepted error: ", error.response); // TODO delete this
-        const axiosConfig = error.response.config;
+        const axiosConfig = error.response?.config;
         
         // if error response is 401 try to refresh token
-        if (error.response.status === 401 /*&& userInStore*/) {
+        if (error.response?.status === 401 /*&& userInStore*/) {
             console.error("access token expired");
             
             // if already refreshing don't make another request
