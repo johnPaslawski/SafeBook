@@ -9,6 +9,7 @@ using SafeBook.Domain.Persistence;
 using Microsoft.AspNetCore.Http;
 using SafeBook.DTOs.MainPage;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using SafeBook.DTOs.Common;
 using SafeBook.Domain.Common;
 
@@ -29,6 +30,7 @@ namespace SafeBook.Controllers
 
         // GET .. api/users?like={}
         [HttpGet]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetUsers([FromQuery] string like)

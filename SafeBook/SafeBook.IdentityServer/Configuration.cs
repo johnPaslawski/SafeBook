@@ -54,7 +54,7 @@ namespace SafeBook.IdentityServer
                     },
 
                     AllowAccessTokensViaBrowser = true,
-                    AccessTokenLifetime = 50, // TODO refresh
+                    AccessTokenLifetime = 1, // TODO refresh
                 }
             };
     }

@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using Safebook.EfCore.EFData;
 using SafeBook.Domain.Persistence;
 using SafeBook.EfCore.Infrastructure.Persistance.Implementations.UOWs;
 using System.Reflection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace SafeBook
 {
@@ -24,6 +26,18 @@ namespace SafeBook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "https://localhost:44312";
+                    options.Audience = "SafeBookApi";
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ClockSkew = TimeSpan.Zero
+                    };
+                });
+
+            services.AddAuthorization();
 
             services.AddCors(options =>
             {
@@ -72,6 +86,7 @@ namespace SafeBook
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
