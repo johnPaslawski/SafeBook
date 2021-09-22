@@ -1,6 +1,6 @@
 import '../UsersPanel.css'
 import UserProfileDetails from './UserProfileDetails'
-import useHrmsApi from '../../HrmsApi/useHrmsApiGet'
+import { useGet as useHrmsApi} from '../../../../Api/Api'
 import { useParams } from 'react-router'
 import { withRouter } from "react-router";
 import config from "../../../../../config.json"

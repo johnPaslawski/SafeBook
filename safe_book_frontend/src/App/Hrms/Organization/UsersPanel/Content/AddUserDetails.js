@@ -1,5 +1,5 @@
 import "../UsersPanel.css";
-import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
+import { useGet as useHrmsApi} from "../../../../Api/Api";
 import { useState } from "react";
 import { withRouter } from "react-router";
 import { select } from "async";

@@ -1,6 +1,6 @@
 import "./../Content.css";
 import ProjectElement from "./Components/ProjectElement";
-import useGetApi from "../../../Api/useGetApi";
+import { useGet as useGetApi } from "../../../Api/Api";
 
 const Projects = () => {
 

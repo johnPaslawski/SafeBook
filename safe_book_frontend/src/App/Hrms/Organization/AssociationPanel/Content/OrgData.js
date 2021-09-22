@@ -1,4 +1,4 @@
-import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
+import { useGet as useHrmsApi} from "../../../../Api/Api";
 import OrgDetails from "./OrgDetails";
 import "../AssociationPanel.css";
 import config from "../../../../../config.json"

@@ -1,4 +1,4 @@
-import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
+import { useGet as useHrmsApi} from "../../../../Api/Api";
 import UsersListDetails from "./UsersListDetails";
 import { useState } from "react";
 import { Link } from "react-router-dom";
