@@ -1,6 +1,7 @@
 import { Switch, Route, Redirect } from "react-router";
 import { useState } from "react";
 import UsersList from "./Content/UsersList.js";
+import EditUser from './Content/EditUser';
 
 import UserProfile from "./Content/UserProfile.js";
 import AddUserDetails from "./Content/AddUserDetails.js";
@@ -27,6 +28,9 @@ const UsersPanelContentRouter = () => {
             </Route>
             <Route path="/hrms/organization/users/add">
                 <AddUserDetails />
+            </Route>
+            <Route path="/hrms/organization/users/:id/edit">
+                <EditUser />
             </Route>
             <Route path="/hrms/organization/users/:id">
                 <UserProfile />

@@ -33,14 +33,23 @@ namespace SafeBook.EfCore.Infrastructure.Persistance.Implementations.Common
 
         public IEnumerable<User> FindByString(string like)
         {
-            return GetDbContext().Users
-                    .Where(x => x.FirstName.Contains(like) 
-                    || x.LastName.Contains(like)
-                    || x.AdressLine1.Contains(like)
-                    || x.Email.Contains(like)
-                    || x.PhoneNumber.Contains(like)) //do przemyślenia ten sposób wyszukiwania
+            var stringSplit = like.Split(' ');
+            var result = new List<User>();
+
+            foreach (var item in stringSplit)
+            {
+                var tempList = GetDbContext().Users
+                    .Where(x => x.FirstName.Contains(item)
+                    || x.LastName.Contains(item)
+                    || x.AdressLine1.Contains(item)
+                    || x.Email.Contains(item)
+                    || x.PhoneNumber.Contains(item)) //do przemyślenia ten sposób wyszukiwania
                     .Include(x => x.Role)
                     .ToList();
+
+               result = result.Concat(tempList).ToList();
+            }
+            return result;
         }
 
 

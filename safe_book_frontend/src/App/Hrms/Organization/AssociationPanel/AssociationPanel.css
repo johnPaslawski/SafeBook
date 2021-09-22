@@ -55,6 +55,7 @@
     /* table-layout: fixed; */
     /* border: 3px grey solid; */
     width:30%;
+    font-weight: 500;
     /* word-wrap: break-word; */
     /* width: 15%; */
 }
@@ -148,4 +149,67 @@
     padding: 0.6rem;
     cursor: pointer;
     z-index: 1;
+}
+
+.planningContainer{
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+.planningColumns{
+    /* border: 1px solid rgb(255, 247, 0); */
+    display: flex;
+    flex-flow: nowrap;
+
+}
+.planningColumn{
+    /* border: 1px solid rgb(0, 17, 255); */
+    flex: 1;
+    padding: 10px;
+
+
+
+}
+.planningColumnTitle{
+    /* border: 1px solid rgb(0, 230, 19); */
+    text-align: center;
+    font-size:1.1rem;
+    /* font-weight: 600; */
+
+
+}
+.planningColumnContent{
+    /* border: 1px solid rgb(213, 6, 6); */
+
+}
+.planningCard{
+    transition: 0.2s;
+    
+    position: relative;
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 2%;
+    background-color: rgba(255, 255, 255, 0.892);
+    color: rgb(48, 48, 48);
+    margin: 4px 0;
+    padding: 4px;
+    /* height: 3.5rem; */
+    display: flex;
+    flex-flow: column;
+    cursor: pointer;
+
+}
+.planningCard:hover{
+    transition: 0.2s;
+    background-color: rgb(233, 233, 233);
+    border: 2px solid rgb(0, 1, 43);
+
+
+}
+.planningCardTitle{
+    color: black;
+}
+.planningCardContent{
+    font-size: 0.7rem;
+    max-width: 13rem;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
 }

@@ -85,6 +85,7 @@ justify-content: center;
     flex-flow: column;
     justify-content: flex-start;
     background-color:rgba(255, 255, 255, 0.85);
+    
     height: 85vh;
     max-width: 15vw;
     border-top:grey;
@@ -96,16 +97,23 @@ justify-content: center;
 
 .box_hmrsm{
     display: flex;
-    background-color:rgba(255, 255, 255, 0.85);
+    background-color:rgba(9, 0, 106, 0.7);
     opacity: 0.9;
     /* border-radius: 4%; */
     align-items: center;
     justify-content: center;
     width: 11vw;
     height: 2.5vw;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     margin-right: 0.1rem;
     margin-left:0.1rem;
+    color: rgb(214, 214, 214) !important;
+}
+.box_hmrsm:hover{
+    background-color:rgb(214, 214, 214);
+    color: rgb(0, 3, 77) !important;
+    transition: 0.2s;
+
 }
 
 .box1 {
@@ -163,7 +171,7 @@ justify-content: center;
     /* display: flo; */
     position:absolute;
     text-align: center;
-    
+    color: rgb(232, 232, 232);
 
     /* justify-content: center; */
     top: 15vh;
@@ -179,6 +187,8 @@ justify-content: center;
     top: 40vh;
     width: 100%;
     text-align: center;
+    color: rgb(232, 232, 232);
+
     /* left: 47vw; */
     /* text-align: center; */
 }
@@ -194,6 +204,7 @@ justify-content: center;
     text-align: center;
     margin-top: 3vh;
     margin-bottom: 2rem;
+    color: black;
 }
 
 .backgroundBoxDiv {
@@ -209,9 +220,10 @@ justify-content: center;
     
     width: 39vw;
     height: 70vh;
-    
-    background-color: rgba(255, 255, 255, 0.809);
-    
+    border: 1px rgb(232, 232, 232) solid;
+    border-radius: 1%;
+    box-shadow: 10px 15px 20px rgb(213, 213, 213);
+    background-color: rgba(0, 0, 0, 0.789);
     z-index: 0;
 }
 

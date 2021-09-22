@@ -52,6 +52,8 @@ padding-top: 0;
 display: flex;
 flex-flow: row;
 justify-content: space-around;
+height: 25rem;
+overflow-y: scroll;
 }
 
 .userProfileContainer2 {
@@ -177,7 +179,6 @@ padding-top: 0;
 
 .table-sm-custom {
     font-weight: 600;
-    font-size: 115%;
     margin-top: 2rem;
 }
 .editIcon{
@@ -250,4 +251,8 @@ color: white;
     height: 1.5rem;
     margin-bottom: 1rem;
     font-size: 0.8rem; 
+}
+
+.editUserContainer{
+    display: flex;
 }
