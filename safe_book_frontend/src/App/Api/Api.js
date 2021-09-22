@@ -34,7 +34,7 @@ export const useGet = (url) => {
             //     }
             // });
         });
-    }, [url]);
+    }, [url]); // TODO check if we should pass dependencies as hook parameters
 
     return { data, isLoading, error }
 }
