@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from 'axios';
 import { useAuth } from "../../Auth/AuthContext";
+import { NETWORK_ERROR, DEFAULT_ERROR } from "../../userMessages";
 
 export const useGet = (url) => {
     var isRefresing =  { status: false};
@@ -23,16 +24,16 @@ export const useGet = (url) => {
                 setError(null);
                 isRefresing = false;
                 return res.data;
-            }) // TODO catch login required error!!! IMPORTANT!
-            // .catch((err) => {
-            //     if (axios.isCancel(err)) {
-            //         console.log('Aborted: ', err.message);
-            //     } else {
-            //         setError(err.message);
-            //         setIsLoading(false);
-            //         console.log(err.message);
-            //     }
-            // });
+            }) // TODO try to replicate login required error!!! seems to be resolved, but make sure.
+            .catch((err) => {
+                if (axios.isCancel(err)) {
+                    console.log('Aborted: ', err.message);
+                } else {
+                    setErrorMessage(err, setError);
+                    setIsLoading(false);
+                    console.log(err.message);
+                }
+            });
         });
     }, [url]); // TODO check if we should pass dependencies as hook parameters
 
@@ -74,41 +75,46 @@ export const useGet = (url) => {
 
 const useTokenRefresh = (auth, isRefreshing) => {
     // axios http middleware. token refresh. DO NOT use oidc-client-js automaticSilentRenew flag, it's deprecated and buggy.
-axios.interceptors.response.use(
-    function(response) { return response; },
-    async function(error) {
-        //var userInStore = await userManager.getUser().then(user => user != null);
-        console.error("axios intercepted error: ", error.response); // TODO delete this
-        const axiosConfig = error.response?.config;
+    axios.interceptors.response.use(
+        function(response) { return response; },
+        async function(error) {
+            if (error.response) {
+                const axiosConfig = error.response?.config;
+                
+                // if error response is 401 try to refresh token
+                if (error.response?.status === 401) {
+                    
+                    // if already refreshing don't make another request
+                    if (!isRefreshing.status) {
+                        // maybe catch required login here? something like session expired?
         
-        // if error response is 401 try to refresh token
-        if (error.response?.status === 401 /*&& userInStore*/) {
-            console.error("access token expired");
-            
-            // if already refreshing don't make another request
-            if (!isRefreshing.status) {
-                console.log("starting token refresh"); // TODO delete this
-
-                // maybe catch required login here? something like session expired?
-
-                isRefreshing.status = true;
-
-                // do the refresh
-                return auth.signinSilent().then(user => {
-                    console.log("new user: ", user) // TODO delete this
-
-                    // update the http request and axios client
-                    axios.defaults.headers.common["Authorization"] = "Bearer " + user.access_token;
-                    axiosConfig.headers["Authorization"] = "Bearer " + user.access_token;
-
-                    // retry the http request
-                    isRefreshing.status = false;
-                    return axios(axiosConfig);
-                }); // TODO Iss 4 make this signinSilentCallback() - needs a dedicated silenSignIn page in SPA
+                        isRefreshing.status = true;
+        
+                        // do the refresh
+                        return auth.signinSilent().then(user => {
+                            // update the http request and axios client
+                            axios.defaults.headers.common["Authorization"] = "Bearer " + user.access_token;
+                            axiosConfig.headers["Authorization"] = "Bearer " + user.access_token;
+        
+                            // retry the http request
+                            isRefreshing.status = false;
+                            return axios(axiosConfig);
+                        }); // TODO Iss 4 make this signinSilentCallback() - needs a dedicated silenSignIn page in SPA
+                    }
+                }
             }
-        }
 
-        return Promise.reject(error)
+            return Promise.reject(error)
+        }
+    );
+}
+
+function setErrorMessage(err, setError) {
+    switch (err.message) {
+        case "Network Error":
+            setError(NETWORK_ERROR);
+            break;
+        default:
+            setError(DEFAULT_ERROR);
     }
-);
 }
