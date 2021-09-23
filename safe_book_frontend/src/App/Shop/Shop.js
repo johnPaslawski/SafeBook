@@ -1,9 +1,9 @@
 import { Route, Switch } from "react-router-dom"
 import config from '../../config.json'
-import axios from 'axios';
+import { axiosClient } from "../Api/Api";
 
 const Shop = () => {
-    const callApi = () => axios.get(`${config.API_URL}/News`).then(news => console.log(news));
+    const callApi = () => axiosClient().get(`${config.API_URL}/Users`).then(news => console.log(news));
     
     return(
             <div>

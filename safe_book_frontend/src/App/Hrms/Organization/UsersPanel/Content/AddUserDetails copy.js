@@ -4,12 +4,15 @@ import { useState } from "react";
 import { withRouter } from "react-router";
 import { select } from "async";
 import config from "../../../../../config.json"
-import { axiosClient } from "../../../../Api/Api";
+import axiosClient from "../../../../Api/Api";
 
 const AddUserDetails = (props) => {
   console.log(props);
   const urlForRoles = config.API_URL + "/Users/roles";
   const { data: roles, isLoading, error } = useHrmsApi(urlForRoles);
+  const [response, apiPost] = usePost(`${config.API_URL}/Users`, {
+    headers: { "Content-Type": "application/json" },
+  })
   const [success, setSuccess] = useState(false);
 
   const [firstName, setName] = useState("");
@@ -28,24 +31,34 @@ const AddUserDetails = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = { firstName, lastName, adressLine1, phoneNumber, roleId };
-    
-    axiosClient().post(`${config.API_URL}/Users`, user)
-      .then((response) => {
-        document.querySelector(".userProfileContainer").innerHTML = "";
-        setSuccess(true);
+    await apiPost(user);
+    if(!response.error) console.log("yay")
+    else console.log("nay")
+    // axiosClient.post(`${config.API_URL}/Users`, user)
+    //   .then(r => console.log("yay", r))
+    //   .catch(err => console.log("nay", err))
 
-        setTimeout(() => {
-          props.history.push("/hrms/organization/users");
-        }, 2000);
+  //   fetch(`${config.API_URL}/Users`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(user)
+  //   })
+  //     .then((response) => {
+  //       document.querySelector(".userProfileContainer").innerHTML = "";
+  //       setSuccess(true);
+
+  //       setTimeout(() => {
+  //         props.history.push("/hrms/organization/users");
+  //       }, 2000);
         
-      })
-      .catch((err) => {
-        if (err.name === "Abort error") {
-          console.log("Abortowano");
-        } else {
-          console.log(err.message);
-        }
-      });
+  //     })
+  //     .catch((err) => {
+  //       if (err.name === "Abort error") {
+  //         console.log("Abortowano");
+  //       } else {
+  //         console.log(err.message);
+  //       }
+  //     });
   };
 
   return (

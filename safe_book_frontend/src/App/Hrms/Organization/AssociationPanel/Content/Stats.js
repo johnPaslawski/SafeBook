@@ -1,4 +1,4 @@
-import { useGet as useHrmsApi} from "../../../../Api/Api";
+import { useApi as useHrmsApi} from "../../../../Api/Api";
 import StatsDetails from "./StatsDetails";
 import config from "../../../../../config.json"
 

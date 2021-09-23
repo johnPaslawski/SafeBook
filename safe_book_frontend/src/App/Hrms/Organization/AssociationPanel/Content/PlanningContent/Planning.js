@@ -1,4 +1,4 @@
-import { useGet as useHrmsApi} from "../../../../../Api/Api";
+import { useApi } from "../../../../../Api/Api";
 import PlanningDetails from "./PlanningDetails";
 import config from "../../../../../../config.json"
 

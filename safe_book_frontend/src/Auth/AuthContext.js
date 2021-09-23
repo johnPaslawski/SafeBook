@@ -17,10 +17,12 @@ const config = {
 
 const AuthContext = React.createContext();
 
+export const userManagerInstance = new UserManager(config);
+
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-    const [userManager, setUserManager] = useState(new UserManager(config))
+    const [userManager, setUserManager] = useState(userManagerInstance)
     
     return (
         <AuthContext.Provider value={userManager}>

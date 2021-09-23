@@ -1,5 +1,5 @@
 import OrgDataEditDetails from "./OrgDataEditDetails";
-import { useGet as useHrmsApi} from "../../../../Api/Api";
+import { useApi as useHrmsApi} from "../../../../Api/Api";
 import "../AssociationPanel.css";
 import config from "../../../../../config.json"
 

@@ -1,6 +1,6 @@
 import '../UsersPanel.css'
 import UserProfileDetails from './UserProfileDetails'
-import { useGet as useHrmsApi} from '../../../../Api/Api'
+import { useApi as useHrmsApi, axiosClient} from '../../../../Api/Api'
 import { useParams } from 'react-router'
 import { withRouter } from "react-router";
 import config from "../../../../../config.json"
@@ -14,7 +14,7 @@ const UserProfile = (props) => {
     const handleDelete = (id) => {
         console.log(id)
         alert("Usunięto użytkownika !");
-        fetch(`${config.API_URL}/Users/${id}`, {
+        axiosClient()(`${config.API_URL}/Users/${id}`, {
       method: "DELETE"
       
     })

@@ -1,7 +1,7 @@
 import FacebookSide from "../Sidebars/FacebookSide";
 import "./../Content.css";
 import NewsElem from "./Components/NewsElem";
-import { useGet as useGetApi } from "../../../Api/Api";
+import { useApi as useGetApi } from "../../../Api/Api";
 import config from "../../../../config.json"
 
 

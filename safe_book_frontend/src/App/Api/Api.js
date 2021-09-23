@@ -1,11 +1,19 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useState } from "react";
 import axios from 'axios';
-import { useAuth } from "../../Auth/AuthContext";
+import { useAuth, userManagerInstance } from "../../Auth/AuthContext";
 import { NETWORK_ERROR, DEFAULT_ERROR } from "../../userMessages";
 
-export const useGet = (url) => {
-    var isRefresing =  { status: false};
+export const axiosClient = () => {
+    const client = axios.create();
+    const isRefreshing = { status: false };
+    userManagerInstance.getUser().then(user => client.defaults.headers.common["Authorization"] = `Bearer ${user?.access_token}`);
+    addTokenRefresh(client, userManagerInstance, isRefreshing);
+    return client;
+}
+
+export const useApi = (url, config) => {
+    const isRefresing =  { status: false};
 
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -13,25 +21,26 @@ export const useGet = (url) => {
     const auth = useAuth();
     const cancelTokenSource = axios.CancelToken.source();
 
-    useTokenRefresh(auth, isRefresing);
+    addTokenRefresh(axios, auth, isRefresing);
 
     useEffect(() => {
         auth.getUser().then(user => {
-            axios.get(url, { cancelToken: cancelTokenSource.token, headers: { 'Authorization': `Bearer ${user?.access_token}` }})
-            .then(res => {
-                setData(res.data);
+            axios(url, { ...config, cancelToken: cancelTokenSource.token, headers: { 'Authorization': `Bearer ${user?.access_token}` }})
+            .then(response => {
+                setData(response.data);
                 setIsLoading(false);
                 setError(null);
-                isRefresing = false;
-                return res.data;
+                isRefresing.status = false;
+                return config?.method ? response : response.data
             }) // TODO try to replicate login required error!!! seems to be resolved, but make sure.
-            .catch((err) => {
-                if (axios.isCancel(err)) {
-                    console.log('Aborted: ', err.message);
+            .catch(error => {
+                if (axios.isCancel(error)) {
+                    console.log('Aborted: ', error.message);
                 } else {
-                    setErrorMessage(err, setError);
+                    if (error.message === "login_required") auth.signinRedirect(); //  TODO add user message and redirect after a second. maybe move this to interceptors.
+                    setErrorMessage(error, setError);
                     setIsLoading(false);
-                    console.log(err.message);
+                    console.log(error.message);
                 }
             });
         });
@@ -40,42 +49,28 @@ export const useGet = (url) => {
     return { data, isLoading, error }
 }
 
-// export const usePost = (url) => {
-//     const abortConst = new AbortController();
-
-//     const [data, setData] = useState(null);
-//     const [isLoading, setIsLoading] = useState(true);
-//     const [error, setError] = useState(null);
+// export const usePost = (url, config) => { // TODO check this!!!!! with AddUserDetails copy
+//     const isRefreshing = { status: false };
+//     const [response, setResponse] = useState({ data: null, error: null, isLoading: false });
 //     const auth = useAuth();
 //     const cancelTokenSource = axios.CancelToken.source();
 
-//     useEffect(() => {
-//         auth.getUser().then(user => {
-//             axios.post(url, { cancelToken: cancelTokenSource.token, headers: { 'Authorization': `Bearer ${user?.access_token}` }})
-//             .then(res => {
-//                 setData(res.data);
-//                 setIsLoading(false);
-//                 setError(null);
-//                 return res.data;
-//             })
-//             .catch((err) => {
-//                 if (axios.isCancel(err)) {
-//                     console.log('Aborted: ', err.message);
-//                 } else {
-//                     setError(err.message);
-//                     setIsLoading(false);
-//                     console.log(err.message);
-//                 }
-//             });
-//         });
-//     }, [url]);
+//     addTokenRefresh(auth, isRefreshing);
 
-//     return { data, isLoading, error }
+//     const callApi = useCallback((payload) => {
+//         auth.getUser().then(user => {
+//             setResponse(previousState => ({...previousState, isLoading: true}));
+//             axios.post(url, payload, {...config, cancelToken: cancelTokenSource.token, headers: { 'Authorization': `Bearer ${user?.access_token}` }})
+//             .then(response => setResponse({ data: response.data, isLoading: false, error: null}))
+//             .catch(error => setResponse({ data: null, isLoading: false, error}))
+//         })
+//     }, [])
+//     return [response, callApi];
 // }
 
-const useTokenRefresh = (auth, isRefreshing) => {
+const addTokenRefresh = (client, auth, isRefreshing) => {
     // axios http middleware. token refresh. DO NOT use oidc-client-js automaticSilentRenew flag, it's deprecated and buggy.
-    axios.interceptors.response.use(
+    client.interceptors.response.use(
         function(response) { return response; },
         async function(error) {
             if (error.response) {
@@ -86,6 +81,7 @@ const useTokenRefresh = (auth, isRefreshing) => {
                     
                     // if already refreshing don't make another request
                     if (!isRefreshing.status) {
+                        console.log("refreshing...")
                         // maybe catch required login here? something like session expired?
         
                         isRefreshing.status = true;
@@ -93,12 +89,12 @@ const useTokenRefresh = (auth, isRefreshing) => {
                         // do the refresh
                         return auth.signinSilent().then(user => {
                             // update the http request and axios client
-                            axios.defaults.headers.common["Authorization"] = "Bearer " + user.access_token;
+                            client.defaults.headers.common["Authorization"] = "Bearer " + user.access_token;
                             axiosConfig.headers["Authorization"] = "Bearer " + user.access_token;
         
                             // retry the http request
                             isRefreshing.status = false;
-                            return axios(axiosConfig);
+                            return client(axiosConfig);
                         }); // TODO Iss 4 make this signinSilentCallback() - needs a dedicated silenSignIn page in SPA
                     }
                 }
