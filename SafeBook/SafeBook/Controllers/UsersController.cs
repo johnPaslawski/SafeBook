@@ -30,7 +30,6 @@ namespace SafeBook.Controllers
 
         // GET .. api/users?like={}
         [HttpGet]
-        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetUsers([FromQuery] string like)

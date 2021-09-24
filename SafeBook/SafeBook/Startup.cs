@@ -33,7 +33,7 @@ namespace SafeBook
                     options.Audience = "SafeBookApi";
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ClockSkew = TimeSpan.Zero
+                        ClockSkew = TimeSpan.Zero,
                     };
                 });
 

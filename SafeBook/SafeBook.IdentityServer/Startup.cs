@@ -5,6 +5,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using SafeBook.Domain.Common;
+using SafeBook.EfCore.Configuration;
 using SafeBook.EfCore.EFData;
 
 namespace SafeBook.IdentityServer
@@ -12,6 +14,8 @@ namespace SafeBook.IdentityServer
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        public UserManager<AppUser> UserManager { get; }
+        public RoleManager<IdentityRole> RoleManager { get; }
 
         public Startup(IConfiguration configuration)
         {
@@ -22,7 +26,7 @@ namespace SafeBook.IdentityServer
             services.AddDbContext<SafeBookIdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Identity")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<AppUser, IdentityRole>(options =>
                 {
                     options.Password.RequiredLength = 3;
                     options.Password.RequireDigit = false;
@@ -40,7 +44,7 @@ namespace SafeBook.IdentityServer
             });
 
             services.AddIdentityServer()
-                .AddAspNetIdentity<IdentityUser>()
+                .AddAspNetIdentity<AppUser>()
                 .AddInMemoryIdentityResources(IdentityServer.Configuration.IdentityResources)
                 .AddInMemoryApiResources(IdentityServer.Configuration.ApiResources)
                 .AddInMemoryApiScopes(IdentityServer.Configuration.ApiScopes)

@@ -16,7 +16,7 @@ namespace SafeBook.IdentityServer
         public static IEnumerable<ApiResource> ApiResources =>
             new List<ApiResource>()
             {
-                new ApiResource("SafeBookApi", new [] { "Role" })
+                new ApiResource("SafeBookApi", new [] { "role" })
                 {
                     Scopes = { "PlaceholderScope" }
                 }
@@ -27,7 +27,7 @@ namespace SafeBook.IdentityServer
             {
                 new ApiScope("SafeBookApi"),
                 new ApiScope("PlaceholderScope"),
-                new ApiScope("Role"),
+                new ApiScope("role"),
             };
 
         public static IEnumerable<Client> Clients =>
@@ -50,7 +50,7 @@ namespace SafeBook.IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         "SafeBookApi",
                         "PlaceholderScope",
-                        "Role"
+                        "role"
                     },
 
                     AllowAccessTokensViaBrowser = true,
