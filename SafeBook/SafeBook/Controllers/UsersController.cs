@@ -17,6 +17,7 @@ namespace SafeBook.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles="BoardMember, Admin")]
     public class UsersController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
