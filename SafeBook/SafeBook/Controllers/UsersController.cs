@@ -35,6 +35,8 @@ namespace SafeBook.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetUsers([FromQuery] string like)
         {
+            if (User.IsInRole("Admin")); // TODO return everything
+            else // TODO return only users first and last names
             if (!string.IsNullOrWhiteSpace(like))
             {
                 // dodać sortowanie in title first, in description second
