@@ -11,6 +11,14 @@ namespace SafeBook.IdentityServer
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
+                new IdentityResource()
+                {
+                    Name = "ProfileRole",
+                    UserClaims =
+                    {
+                        "role"
+                    }
+                }
             };
 
         public static IEnumerable<ApiResource> ApiResources =>
@@ -50,7 +58,8 @@ namespace SafeBook.IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         "SafeBookApi",
                         "PlaceholderScope",
-                        "role"
+                        "role",
+                        "ProfileRole"
                     },
 
                     AllowAccessTokensViaBrowser = true,

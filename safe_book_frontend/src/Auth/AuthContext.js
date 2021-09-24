@@ -12,7 +12,7 @@ const config = {
     post_logout_redirect_uri: "https://localhost:44366/",
     //loadUserInfo: true, //supposed to load info from userInfo endpoint into id token but doesnt really?
     //clockSkew: 0, // TODO apparently can be used here, doesn't seem to wrok though.
-    scope: "openid profile SafeBookApi PlaceholderScope role"
+    scope: "openid profile SafeBookApi PlaceholderScope role ProfileRole"
 };
 
 const AuthContext = React.createContext();
