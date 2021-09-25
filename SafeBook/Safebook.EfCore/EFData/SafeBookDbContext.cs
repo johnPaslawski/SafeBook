@@ -22,7 +22,7 @@ namespace Safebook.EfCore.EFData
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
 
-        public SafeBookDbContext(DbContextOptions options) : base(options)
+        public SafeBookDbContext(DbContextOptions<SafeBookDbContext> options) : base(options)
         {
         }
 

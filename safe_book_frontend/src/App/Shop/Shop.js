@@ -3,7 +3,7 @@ import config from '../../config.json'
 import { axiosClient } from "../Api/Api";
 
 const Shop = () => {
-    const callApi = () => axiosClient().get(`${config.API_URL}/Users`).then(news => console.log(news));
+    const callApi = () => axiosClient().get(`${config.API_URL}/Users?like=Ad`).then(news => console.log(news));
     
     return(
             <div>

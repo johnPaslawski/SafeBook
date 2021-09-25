@@ -34,7 +34,7 @@ const UsersListDetails = ({ usersList }) => {
                     data-placement="top"
                     title="Szczegółowe dane użytkownika" className="text-center"
                   >
-                    <Link to={`/hrms/organization/users/${parseInt(user.id)}`}>
+                    <Link to={`/hrms/organization/users/${user.id}`}>
                     <div className="editIcon"> <i class="bi bi-pencil-square"></i></div>
                     </Link>
                   </td>

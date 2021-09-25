@@ -10,7 +10,10 @@ using Safebook.EfCore.EFData;
 using SafeBook.Domain.Persistence;
 using SafeBook.EfCore.Infrastructure.Persistance.Implementations.UOWs;
 using System.Reflection;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using SafeBook.Domain.Common;
+using SafeBook.EfCore.EFData;
 
 namespace SafeBook
 {
@@ -57,6 +60,11 @@ namespace SafeBook
             //Database Injection:
             //services.AddDbContext<SafeBookDbContextInMemory>(options => options.UseInMemoryDatabase("SafeBookInMemoryDb"));           
             services.AddDbContext<SafeBookDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("MssqlConnection")));
+            services.AddDbContext<SafeBookIdentityDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Identity")));
+
+            services.AddIdentity<AppUser, IdentityRole>()
+                .AddEntityFrameworkStores<SafeBookIdentityDbContext>()
+                .AddDefaultTokenProviders();
             
             // UnitOfWork Injection:
             services.AddScoped<IUnitOfWork, UnitOfWork>();

@@ -22,7 +22,7 @@ const AddUserDetails = (props) => {
   const handleChange = () => {
     const optionsValue = document.getElementById("optionsValue").value;
     setRoleId(optionsValue);
-    setRoleName(`${roles[optionsValue - 1].name}`);
+    setRoleName(`${roles.find(role => role.id === optionsValue).name}`);
     
   };
   const handleSubmit = async (e) => {
