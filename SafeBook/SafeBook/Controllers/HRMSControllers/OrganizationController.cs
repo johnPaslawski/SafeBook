@@ -14,7 +14,7 @@ namespace SafeBook.Controllers.HRMSControllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Member, BoardMember, Admin")]
+    [Authorize(Roles = "Member, BoardMember, Admin", AuthenticationSchemes = "Bearer")]
     public class OrganizationController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
