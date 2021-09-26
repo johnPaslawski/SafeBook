@@ -370,3 +370,6 @@ MigrationBackup/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# identity server
+/SafeBook/SafeBook.IdentityServer/tempkey.jwk

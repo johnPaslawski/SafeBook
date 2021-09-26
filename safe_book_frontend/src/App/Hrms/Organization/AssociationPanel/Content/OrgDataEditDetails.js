@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
 import "../AssociationPanel.css";
+import config from "../../../../../config.json"
+import { useApi, axiosClient } from "../../../../Api/Api";
 
 
 const OrgDataEditDetails = (props) => {
@@ -24,14 +26,14 @@ const OrgDataEditDetails = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const url = `https://localhost:44325/api/Organization/${props.details.id}`;
+    const url = `${config.API_URL}/Organization/${props.details.id}`;
 
     const orgUpdated = { name, adress, krs, regon, nip, bankAccountNumber };
 
-    fetch(url, {
+    axiosClient()(url, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(orgUpdated),
+      data: orgUpdated,
     })
       .then(() => {
         console.log("UPDATED ORG DATA! apiPUT");

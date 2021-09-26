@@ -1,12 +1,14 @@
 import "../UsersPanel.css";
-import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
+import { useApi as useHrmsApi, usePost} from "../../../../Api/Api";
 import { useState } from "react";
 import { withRouter } from "react-router";
 import { select } from "async";
+import config from "../../../../../config.json"
+import { axiosClient } from "../../../../Api/Api";
 
 const AddUserDetails = (props) => {
   console.log(props);
-  const urlForRoles = "https://localhost:44325/api/Users/roles";
+  const urlForRoles = config.API_URL + "/Users/roles";
   const { data: roles, isLoading, error } = useHrmsApi(urlForRoles);
   const [success, setSuccess] = useState(false);
 
@@ -20,18 +22,14 @@ const AddUserDetails = (props) => {
   const handleChange = () => {
     const optionsValue = document.getElementById("optionsValue").value;
     setRoleId(optionsValue);
-    setRoleName(`${roles[optionsValue - 1].name}`);
+    setRoleName(`${roles.find(role => role.id === optionsValue).name}`);
     
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const user = { firstName, lastName, adressLine1, phoneNumber, roleId };
     
-    fetch("https://localhost:44325/api/Users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user)
-    })
+    axiosClient().post(`${config.API_URL}/Users`, user)
       .then((response) => {
         document.querySelector(".userProfileContainer").innerHTML = "";
         setSuccess(true);

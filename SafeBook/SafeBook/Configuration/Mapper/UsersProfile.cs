@@ -12,9 +12,9 @@ namespace SafeBook.Configuration.Mapper
     {
         public UsersProfile()
         {
-            CreateMap<User, UserDto>().ReverseMap();
-            CreateMap<User, CreateUserDto>().ReverseMap();
-            CreateMap<User, UpdateUserDto>().ReverseMap();
+            CreateMap<AppUser, UserDto>().ReverseMap();
+            CreateMap<AppUser, CreateUserDto>().ReverseMap();
+            CreateMap<AppUser, UpdateUserDto>().ReverseMap();
         }
     }
 }

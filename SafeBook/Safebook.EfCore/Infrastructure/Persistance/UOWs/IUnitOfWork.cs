@@ -2,6 +2,8 @@
 using SafeBook.EfCore.Infrastructure.Persistance.Repositories.HRMS;
 using SafeBook.EfCore.Infrastructure.Persistance.Repositories.Shop;
 using System;
+using Microsoft.AspNetCore.Identity;
+using SafeBook.Domain.Common;
 
 namespace SafeBook.Domain.Persistence
 {
@@ -10,9 +12,9 @@ namespace SafeBook.Domain.Persistence
     {
         IOrganizationRepository Organization { get; }
         INewsRepository News { get; }
-        IUsersRepository Users { get; }
+        UserManager<AppUser> UserManager { get; }
         IProjectsRepository Projects { get; }
-        IRolesRepository Roles { get; }
+        RoleManager<IdentityRole> RoleManager { get; }
         IProductsRepository Products { get; }
         IProductCategoryRepository ProductCategories { get; }
         int Save();

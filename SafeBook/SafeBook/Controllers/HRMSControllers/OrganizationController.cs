@@ -8,11 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SafeBook.Controllers.HRMSControllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "Member, BoardMember, Admin", AuthenticationSchemes = "Bearer")]
     public class OrganizationController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -43,6 +45,7 @@ namespace SafeBook.Controllers.HRMSControllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles = "Admin")]
         public IActionResult UpdateOrganization(int id, [FromBody] UpdateOrganizationDto updateOrganization)
         {
             if (!ModelState.IsValid)

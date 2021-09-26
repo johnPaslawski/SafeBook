@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,10 @@ using Safebook.EfCore.EFData;
 using SafeBook.Domain.Persistence;
 using SafeBook.EfCore.Infrastructure.Persistance.Implementations.UOWs;
 using System.Reflection;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using SafeBook.Domain.Common;
+using SafeBook.EfCore.EFData;
 
 namespace SafeBook
 {
@@ -24,13 +29,25 @@ namespace SafeBook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "https://localhost:44312";
+                    options.Audience = "SafeBookApi";
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ClockSkew = TimeSpan.Zero,
+                    };
+                });
+
+            services.AddAuthorization();
 
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();                      
+                        builder.WithOrigins("https://localhost:44366").AllowAnyHeader().AllowAnyMethod();                      
                     });
             });
 
@@ -43,6 +60,11 @@ namespace SafeBook
             //Database Injection:
             //services.AddDbContext<SafeBookDbContextInMemory>(options => options.UseInMemoryDatabase("SafeBookInMemoryDb"));           
             services.AddDbContext<SafeBookDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("MssqlConnection")));
+            services.AddDbContext<SafeBookIdentityDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Identity")));
+
+            services.AddIdentity<AppUser, IdentityRole>()
+                .AddEntityFrameworkStores<SafeBookIdentityDbContext>()
+                .AddDefaultTokenProviders();
             
             // UnitOfWork Injection:
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -72,6 +94,7 @@ namespace SafeBook
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

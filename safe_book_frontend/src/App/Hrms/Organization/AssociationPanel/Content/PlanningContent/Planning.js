@@ -1,10 +1,11 @@
-import useHrmsApi from "../../../HrmsApi/useHrmsApiGet";
+import { useApi } from "../../../../../Api/Api";
 import PlanningDetails from "./PlanningDetails";
+import config from "../../../../../../config.json"
 
 
 const Planning = () => {
+    const route = config.API_URL + '/Organization';
 
-    // const route = 'https://localhost:44325/api/Organization';
     // const { data: orgDetails, isLoading, error } = useHrmsApi(route)
 
     const isLoading = true;

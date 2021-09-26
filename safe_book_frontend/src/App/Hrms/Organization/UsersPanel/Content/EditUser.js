@@ -1,4 +1,4 @@
-import useHrmsApi from "../../HrmsApi/useHrmsApiGet";
+import { useApi as useHrmsApi } from "../../../../Api/Api.js";
 import EditUserDetails from "./EditUserDetails";
 import { useParams } from "react-router";
 
