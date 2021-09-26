@@ -1,14 +1,15 @@
 import { useApi as useHrmsApi } from "../../../../Api/Api.js";
 import EditUserDetails from "./EditUserDetails";
 import { useParams } from "react-router";
+import config from '../../../../../config.json';
 
 
 const EditUser = () => {
 
     const { id } = useParams();
 
-    const route = 'https://localhost:44325/api/Users/' + id;
-    const urlForRoles = "https://localhost:44325/api/Users/roles";
+    const route = `${config.API_URL}/Users/` + id;
+    const urlForRoles = `${config.API_URL}/Users/roles`;
 
     const { data: user, isLoading, error} = useHrmsApi(route);
     const { data: roles, isLoadingRoles, errorRoles } = useHrmsApi(urlForRoles);
