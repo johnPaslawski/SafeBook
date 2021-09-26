@@ -179,8 +179,15 @@ namespace SafeBook.Controllers
 
 
                 _mapper.Map(updateUserDto, user);
+                var userUpdated = _unitOfWork.UserManager.UpdateAsync(user).Result.Succeeded;
+                if (!userUpdated) throw new Exception("Cannot update this user");
 
-                _unitOfWork.Save();
+                var role = _unitOfWork.RoleManager.FindByIdAsync(updateUserDto.RoleId).Result;
+                if (!_unitOfWork.UserManager.IsInRoleAsync(user, role.Name).Result)
+                {
+                    var result = _unitOfWork.UserManager.AddToRoleAsync(user, role.Name).Result;
+                    if(!result.Succeeded) throw new Exception("Cannot set a role for this user");
+                }
 
                 return NoContent();
             }

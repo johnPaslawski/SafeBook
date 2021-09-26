@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { withRouter } from "react-router";
+import { axiosClient } from "../../../../Api/Api";
+import config from '../../../../../config.json';
+import axios from "axios";
 
 const EditUserDetails = (props) => {
     const [success, setSuccess] = useState(false);
@@ -21,7 +24,7 @@ const EditUserDetails = (props) => {
     const handleChange = () => {
         const optionsValue = document.getElementById("optionsValue").value;
         setRoleId(optionsValue);
-        setRoleName(`${props.roles[optionsValue - 1].name}`);
+        setRoleName(`${props.roles.find(role => role.id === optionsValue).name}`);
         
     };
     const lack = "";
@@ -30,11 +33,7 @@ const EditUserDetails = (props) => {
         console.log('submitted');
 
         const user = { firstName, secondName, lastName, email, adressLine1, adressLine2, city, postalCode, country, phoneNumber, phoneNumber2, roleId };
-        fetch(`https://localhost:44325/api/Users/${props.user.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(user)
-        })
+        axios.put(`${config.API_URL}/Users/${props.user.id}`, user)
         .then(() => {
             setSuccess(true);
             setTimeout(() => {
