@@ -61,7 +61,7 @@ namespace SafeBook.Controllers
 
             foreach (var user in usersWithRoles)
             {
-                var roleName = _unitOfWork.UserManager.GetRolesAsync(user).Result.First();
+                var roleName = _unitOfWork.UserManager.GetRolesAsync(user).Result.First(); // TODO catch error for users with no roles assigned
                 var role = _unitOfWork.RoleManager.FindByNameAsync(roleName).Result;
                 var userDTO = _mapper.Map<UserDto>(user);
                 userDTO.Role = role;
