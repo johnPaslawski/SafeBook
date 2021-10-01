@@ -145,7 +145,7 @@ namespace SafeBook.Controllers
                     return CreatedAtRoute("GetUser", new { id = user.Id }, user);
                 }
 
-                throw new Exception("Cannot create this user.");
+                throw new Exception(result.Errors.FirstOrDefault()?.Description);
 
             }
             catch (Exception exception)
