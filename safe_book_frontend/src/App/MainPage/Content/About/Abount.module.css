@@ -1,0 +1,460 @@
+.content{
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    align-content: center;
+    margin: 5% 10% 5% 10%;
+}
+
+.title{
+    position: relative;
+}
+
+.titleBackground{
+    width: 100%;
+    box-shadow: 0 0 10px rgb(80, 80, 80);
+    border-radius: 20px;
+}
+
+.titleContent{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.titleContentMain{
+    font-size: 35px;
+    text-shadow: 0 0 5px rgb(95, 95, 95);
+}
+
+.titleContentSub{
+    text-align: center;
+}
+
+.descriptionMain{
+    margin: 5% 20% 5% 20%;
+    background: linear-gradient(to left, rgb(0, 213, 228), rgb(198, 248, 252));
+    border-radius: 20px;
+    display: grid;
+    box-shadow: 0 0 10px rgb(94, 94, 94);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.descriptionMainTitle{
+    text-align: center;
+    margin: 15px 10px 15px 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.descriptionMainDesc{
+    margin: 15px 20px 15px 20px;
+    font-size: 17px;
+    text-align: justify;
+}
+
+.descriptionHide{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.descriptionHideTitle{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    text-align: center;
+}
+
+.descriptionHideRight{
+    height: 100%;
+    background: linear-gradient(to bottom, rgb(0, 213, 228), rgb(198, 248, 252));
+    position: absolute;
+    right: 0;
+    width: 50%;
+}
+
+.descriptionHideLeft{
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background: linear-gradient(to bottom, rgb(0, 213, 228), rgb(198, 248, 252));
+    width: 50%;
+}
+
+.descriptionHideTitleSub{
+    font-size: 20px;
+}
+
+.rightHideToAdd{
+    animation: rightHide 1s forwards;
+}
+
+.leftHideToAdd{
+    animation: leftHide 1s forwards;
+}
+
+.titleHideToAdd{
+    animation: titleHide 1s forwards;
+}
+
+@keyframes rightHide {
+    0%{
+        border-left: 2px solid black;
+    }
+    99%{
+        border-left: 2px solid black;
+    }
+    100%{
+        width: 0%;
+    }
+}
+
+@keyframes leftHide {
+    0%{
+        border-right: 2px solid black;
+    }
+    99%{
+        border-right: 2px solid black;
+    }
+    100%{
+        width: 0%;
+    }
+}
+
+@keyframes titleHide {
+    100%{
+        opacity: 0%;
+    }
+}
+
+.descriptionBubble{
+    height: 70vh;
+    position: relative;
+    margin: 50px 0 50px 0;
+}
+
+.mainBubble{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(to bottom, rgb(0, 213, 228), rgb(2, 226, 88));
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    animation: mainBubblePlay 2s infinite alternate;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+@keyframes mainBubblePlay {
+    0%{
+        /* box-shadow: 0 0 100px rgb(219, 66, 46); */
+        box-shadow: 0 0 10px rgb(46, 219, 118);
+    }
+    25%{
+        /* box-shadow: 0 0 100px rgb(226, 191, 34); */
+    }
+    50%{
+        /* box-shadow: 0 0 100px rgb(56, 226, 34); */
+    }
+    75%{
+        /* box-shadow: 0 0 100px rgb(34, 117, 226); */
+    }
+    100%{
+        /* box-shadow: 0 0 100px rgb(199, 46, 219); */
+        box-shadow: 0 0 100px rgb(46, 219, 118);
+    }
+}
+
+
+
+.mainBubbleText{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.mainBubbleContent{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-sizing: border-box;
+}
+
+
+.mainBubbleContent > div{
+    box-shadow: 0 0 10px rgb(109, 109, 109);
+    transition: width 0.5s, height 0.5s;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.hidenBubbleText{
+    width: 100%;
+    height: auto;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: none;
+}
+
+.mainBubbleContent > div:hover{
+    box-shadow: 0 0 20px black;
+}
+
+
+.mainBubbleContent > div span{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    font-size: 15px;
+    transition: font-size 0.5s;
+}
+
+:root{
+    --bubble-duration: 1s;
+}
+
+.topBubble{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background-color: blue;
+    border-radius: 50%;
+}
+
+.topBubbleText{
+    color: white;
+}
+
+.topBubbleShowCall{
+    animation: topBubbleShow var(--bubble-duration) forwards;
+}
+
+@keyframes topBubbleShow {
+    0%{
+        top: 0;
+    }
+    100%{
+        top: -300px;
+    }
+}
+
+.topLeftBubble{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background-color: rgb(241, 41, 225);
+    border-radius: 50%;
+    box-shadow: 0 0 10px black;
+}
+
+.topLeftBubbleShowCall{
+    animation: topLeftBubbleShow var(--bubble-duration) forwards;
+}
+
+@keyframes topLeftBubbleShow {
+    0%{
+        left: 0;
+        top: 0;
+    }
+    100%{
+        left: -200px;
+        top: -200px;
+    }
+}
+
+.leftBubble{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px black;
+}
+
+.leftBubbleShowCall{
+    animation: leftBubbleShow var(--bubble-duration) forwards;
+}
+
+@keyframes leftBubbleShow {
+    0%{
+        left: 0;
+    }
+    100%{
+        left: -300px;
+    }
+}
+
+.leftBottomBubble{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background-color: rgb(230, 24, 24);
+    border-radius: 50%;
+    box-shadow: 0 0 10px black;
+}
+
+.leftBottomBubbleShowCall{
+    animation: leftBottomBubbleShow var(--bubble-duration) forwards;
+}
+
+@keyframes leftBottomBubbleShow {
+    0%{
+        left: 0;
+        top: 0;
+    }
+    100%{
+        left: -200px;
+        top: 200px;
+    }
+}
+
+.bottomBubble{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background-color: rgb(10, 168, 10);
+    border-radius: 50%;
+}
+
+.bottomBubbleShowCall{
+    animation: bottomBubbleShow var(--bubble-duration) forwards;
+}
+
+@keyframes bottomBubbleShow {
+    0%{
+        top: 0;
+    }
+    100%{
+        top: 300px;
+    }
+}
+
+.bottomRightBubble{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background-color: rgb(221, 145, 31);
+    border-radius: 50%;
+    box-shadow: 0 0 10px black;
+}
+
+.bottomRightBubbleText{
+    color: white;
+}
+
+.bottomRightBubbleShowCall{
+    animation: bottomRightBubbleShow var(--bubble-duration) forwards;
+}
+
+@keyframes bottomRightBubbleShow {
+    0%{
+        left: 0;
+        top: 0;
+    }
+    100%{
+        left: 200px;
+        top: 200px;
+    }
+}
+
+.rightBubble{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background-color: rgb(238, 238, 23);
+    border-radius: 50%;
+}
+
+.rightBubbleShowCall{
+    animation: rightBubbleShow var(--bubble-duration) forwards;
+}
+
+@keyframes rightBubbleShow {
+    0%{
+        left: 0;
+    }
+    100%{
+        left: 300px;
+    }
+}
+
+.topRightBubble{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background-color: rgb(40, 243, 233);
+    border-radius: 50%;
+    box-shadow: 0 0 10px black;
+}
+
+.topRightBubbleShowCall{
+    animation: topRightBubbleShow var(--bubble-duration) forwards;
+}
+
+@keyframes topRightBubbleShow {
+    0%{
+        left: 0;
+        top: 0;
+    }
+    100%{
+        left: 200px;
+        top: -200px;
+    }
+}
+
+.colorWhite{
+    color: white;
+}
+
+.thanks{
+    margin-top: 60px;
+    background-color: rgb(31, 164, 168);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.thanksContentMain{
+    color: white;
+    text-align: center;
+}
+
+.thanksContentSub{
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+}

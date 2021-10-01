@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import "../UsersPanel.css";
 
 const UsersListDetails = ({ usersList }) => {
@@ -10,7 +9,7 @@ const UsersListDetails = ({ usersList }) => {
     <div>
       
       <div className="UsersPanel-content">
-      { usersList?.length == 0 ? <div className="notFound">BRAK WYNIKÓW</div> : (<table class="table table-sm">
+      { usersList?.length === 0 ? <div className="notFound">BRAK WYNIKÓW</div> : (<table class="table table-sm">
           <thead>
             <tr>
               <th scope="col">Przejdź:</th>

@@ -34,7 +34,7 @@ namespace Safebook.EfCore.EFData
 
             //modelBuilder.ApplyConfiguration(new RoleConfiguration());
             //modelBuilder.ApplyConfiguration(new NewsConfiguration());
-            //modelBuilder.ApplyConfiguration(new ProjectConfiguration());          
+            //modelBuilder.ApplyConfiguration(new ProjectConfiguration());
             //modelBuilder.ApplyConfiguration(new UserConfiguration());
 
             //modelBuilder.ApplyConfiguration(new ProductCategoryConfiguration());

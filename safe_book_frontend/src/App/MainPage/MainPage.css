@@ -1,9 +1,0 @@
-.main-page{
-    height: 100vh;
-    display: grid;
-    grid-template-areas: 
-    "header"
-    "content"
-    "footer";
-    grid-template-rows: 150px auto 50px;
-}

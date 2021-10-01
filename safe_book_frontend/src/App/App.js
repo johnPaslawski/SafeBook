@@ -1,5 +1,4 @@
 import { BrowserRouter as Router , Switch, Route, Redirect} from 'react-router-dom';
-import { useState } from 'react';
 
 import MainPage from './MainPage/MainPage';
 import Hrms from './Hrms/Hrms';
@@ -11,10 +10,6 @@ import { AuthProvider } from '../Auth/AuthContext';
 import './App.css'
 
 function App() {
-   console.warn = () => {}; // Hide yellow warnings
-  //  const [userLogged, setUserLogged] = useState(false);
-  //  const [userId, setUserId] = useState(null);
-
   return (
     <div className='app'>
       <AuthProvider>

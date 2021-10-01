@@ -1,17 +1,12 @@
-import "./../Content.css";
 import ProjectElement from "./Components/ProjectElement";
-import { useApi as useGetApi } from "../../../Api/Api";
+import projects from "./Projects.module.css";
 
-const Projects = () => {
+const Projects = (props) => {
 
-    const {data, isPadding, error} = useGetApi("/api/Projects");
-    
+    const renderProjects = () => (props.projects.map( project => <ProjectElement projectData={project} key={project.id}/>));
     return(
-        <div className="projects title-content-grid">
-            <div className="title-content-title projects-title">Projekty</div>
-            <div className="title-content-content projects-list">
-                {data && data.map( project => <ProjectElement projectData={project}/>)}
-            </div>
+        <div className={projects.content}>
+            {props.loading ? <div>Loading...</div> : props.projects.length > 0 ? renderProjects() : <div>Niema danych :)</div>}
         </div>
     );
 }

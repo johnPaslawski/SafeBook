@@ -1,0 +1,11 @@
+.footer{
+    grid-area: footer;
+    background-color: black;
+    display: grid;
+    position: relative;
+}
+
+.footer p{
+    justify-self: center;
+    align-self: center;
+}

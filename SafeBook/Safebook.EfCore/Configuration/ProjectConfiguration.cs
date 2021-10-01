@@ -17,7 +17,7 @@ namespace SafeBook.EfCore.Configuration
                 new Project { Id = 1, Title = "Taki fajny projekt", Description = "kolejny ładny projekt", CreationDate = DateTime.Now },
                 new Project { Id = 2, Title = "A ten jaki ładny", Description = "dobrze kolega mówi, zacny", CreationDate = DateTime.Now },
                 new Project { Id = 3, Title = "No, ten to nie siadł", Description = "program ewidentnie im nie leżał", CreationDate = DateTime.Now }
-            );
+            ); ;
         }
     }
 }

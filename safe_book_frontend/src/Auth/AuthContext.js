@@ -22,7 +22,7 @@ export const userManagerInstance = new UserManager(config);
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-    const [userManager, setUserManager] = useState(userManagerInstance)
+    const [userManager] = useState(userManagerInstance)
     
     return (
         <AuthContext.Provider value={userManager}>

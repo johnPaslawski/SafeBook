@@ -1,0 +1,17 @@
+.mainPage{
+    display: grid;
+    grid-template-areas: 
+    "content"
+    "footer";
+    grid-template-rows: minmax(100vh, auto) 100px;
+    background-attachment: fixed;
+    position: relative;
+    font-family: 'Arvo', serif;
+    padding-top: 100px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+body{
+    overflow-y: scroll;
+}

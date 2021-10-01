@@ -1,6 +1,5 @@
 import { useApi as useHrmsApi} from "../../../../Api/Api";
 import UsersListDetails from "./UsersListDetails";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import '../UsersPanel.css'
 import config from "../../../../../config.json"
@@ -12,9 +11,9 @@ const UsersList = ( props ) => {
     
     const HandleClick = (e) => {
       e.preventDefault();
-      const usersListCopied = {
-        // UZUPEŁNIĆ
-      }
+      // const usersListCopied = {
+      //   // UZUPEŁNIĆ
+      // }
       navigator.clipboard.writeText(JSON.stringify(usersList));
         const copyButton = document.querySelector("#copyButton");
   

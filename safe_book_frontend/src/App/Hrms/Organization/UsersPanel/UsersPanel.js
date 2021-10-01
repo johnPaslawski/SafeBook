@@ -1,6 +1,4 @@
-import { useParams } from "react-router";
 import './UsersPanel.css'
-import { Link } from "react-router-dom";
 import UsersPanelContentRouter from "./UsersPanelContentRouter";
 
 const UsersPanel = () => {

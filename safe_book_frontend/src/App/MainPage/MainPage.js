@@ -1,18 +1,15 @@
-import Header from './Header/Header';
+import HeaderContainer from './Header/HeaderContainer';
 import ContentRouter from './Content/ContentRouter'
-import Footer from './Footer/Footer';
-import './MainPage.css'
-import { useState, useEffect } from "react";
+//import Footer from './Footer/Footer';
+import mainPage from './MainPage.module.css'
 
-const MainPage = (props) => {
-
-    const [lookingValue, SetLookingValue] = useState("");
+const MainPage = () => {
 
     return(
-        <div className="main-page">
-            <Header SetLookingValue={SetLookingValue} />
-            <ContentRouter lookingValue={lookingValue} />
-            <Footer />
+        <div className={mainPage.mainPage}>
+            <HeaderContainer />
+            <ContentRouter/>
+            {/* <Footer /> */}
         </div>
     );
 }
