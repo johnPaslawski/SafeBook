@@ -3,6 +3,7 @@ import header from './Header.module.css'
 import grid from './../css/GridSystem.module.css'
 import { NavLink } from 'react-router-dom';
 import Logo from './Content/Logo';
+import {useAuth, userManagerInstance} from '../../../Auth/AuthContext.js';
 
 class Header extends React.Component{
 
@@ -99,9 +100,12 @@ class Header extends React.Component{
                     </div>
                 </div>
                 <div className={`${grid.grid} ${grid.colTwo} ${header.secondBtn}`}>
-                    <NavLink to="/login" className={`${grid.grid}`} activeClassName={`${header.active}`}>
+                    {/* <NavLink to="/login" className={`${grid.grid}`} activeClassName={`${header.active}`}>
                         <img alt=""  src={process.env.PUBLIC_URL + '/LoginStart.png'}/>
-                    </NavLink>
+                    </NavLink> */}
+                    <a activeClassName={`${header.active}`} className={`${grid.grid}`} onClick={ () => userManagerInstance.signinRedirect()}>
+                        <img alt=""  src={process.env.PUBLIC_URL + '/LoginStart.png'}/>
+                    </a>
                     <NavLink to="/register" className={`${grid.grid}`} activeClassName={`${header.active}`}>
                         <img alt="" src={process.env.PUBLIC_URL + '/RegisterStart.png'}/>
                     </NavLink>

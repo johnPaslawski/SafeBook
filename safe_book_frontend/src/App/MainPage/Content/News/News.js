@@ -4,7 +4,7 @@ import NewsSecondaryElem from "./Components/NewsSecondaryElem";
 import grid from "./../../css/GridSystem.module.css";
 
 const News = (props) => {
-
+    
     const upClick = () => {
         let newCurNews = props.allNews.slice(props.lastIndex - 4, props.lastIndex);
         props.setCurNews(newCurNews);

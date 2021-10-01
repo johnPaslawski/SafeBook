@@ -1,0 +1,258 @@
+.usersPanel {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content: flex-start;
+    position: absolute;
+    width: 75vw;
+    height: 83vh;
+    top: 5rem;
+    margin-left: 16vw;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 0.5%;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.usersPanelHeader {
+    width: 100%;
+    height:2rem;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    /* border: 1px solid grey; */
+}
+
+.UsersPanel-contentRouter {
+    /* border: 1px solid grey; */
+    height: 75%;
+    width: 85%;
+    font-size: 80%;
+    position: relative;
+    
+}
+.UsersPanel-content {
+    /* border: 1px solid grey; */
+    /* width: min-content; */
+   height: 50vh;
+   width: 60vw;
+    overflow-y: scroll;
+}
+
+.box2-right {
+    display: flex;   
+    /* justify-content: right; */
+    border: 1px solid grey;
+    /* text-align: center; */
+}
+
+.userProfileContainer {
+/* border: rgba(128, 128, 128, 0.398) 1px solid; */
+padding: 1rem;
+padding-top: 0;
+display: flex;
+flex-flow: row;
+justify-content: space-around;
+height: 25rem;
+overflow-y: scroll;
+}
+
+.userProfileContainer2 {
+    /* border: rgba(128, 128, 128, 0.398) 1px solid; */
+    padding: 0.5rem;
+padding-top: 0;
+
+    display: flex;
+    flex-flow: column;
+    /* 
+    
+    justify-content: space-around; */
+    }
+
+.userProfileContainerContent {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.59);
+    padding: 0.3rem;
+    margin-bottom: 0.7rem;
+    }
+
+.column-narrow2 {
+    /* table-layout: fixed; */
+    /* border: 3px grey solid; */
+    width:10%;
+    /* word-wrap: break-word; */
+    /* width: 15%; */
+}
+.column-narrow3 {
+    /* table-layout: fixed; */
+    /* border: 3px grey solid; */
+    width:20%;
+    /* word-wrap: break-word; */
+    /* width: 15%; */
+}
+
+.userOptionsFlex{
+    display: flex;
+    justify-content: left;
+    border-bottom: 1px lightgray solid;
+    align-items: flex-start;
+    /* margin-top: 1.5rem; */
+}
+
+.userOptionsButton {
+    transition: 0.2s;
+
+    margin-right: 0.5rem;
+    border: solid 1px grey;
+    border-radius: 7%;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem; 
+}
+.userOptionsButtonDelete {
+    transition: 0.2s;
+
+    margin-right: 0.5rem;
+    border: solid 1px grey;
+    border-radius: 7%;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem; 
+    color: red;
+}
+
+.userOptionsButton:hover {
+    transition: 0.2s;
+    border: solid 1px transparent;
+    background-color: rgb(230, 230, 230); 
+}
+.userOptionsButtonDelete:hover{
+    transition: 0.2s;
+    border: solid 1px transparent;
+    background-color: rgb(0, 0, 0);
+    color: red;
+    
+}
+
+
+.form-select {
+    width: 10rem;
+    height: 1.8rem;
+}
+
+.newUserInput {
+    width: 15rem;
+}
+
+.addNewUserButtonText {
+    margin-left: 5px;
+}
+
+.addUserWarning {
+    color: red;
+}
+
+.addUserDataContainer {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+}
+
+.success {
+    display: flex;
+    /* border: 1px solid grey; */
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+}
+
+.successContent {
+    border-radius: 4%;
+    background-color: rgb(0, 0, 102);
+    /* background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 2, 51, 0.426), rgba(12, 0, 118, 0.686)); */
+    color: white;
+    /* opacity: 10%; */
+    padding: 0.6rem;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.table-sm-custom {
+    font-weight: 600;
+    margin-top: 2rem;
+}
+.editIcon{
+    padding: 0.1rem;
+border-radius: 10%;
+
+    
+}
+.editIcon:hover{
+transition: 0.3s;
+
+    padding: 0.1rem;
+border-radius: 10%;
+background: rgb(0, 9, 128);
+color: white;
+
+}
+
+.Brak {
+    color: rgb(165, 165, 165);
+}
+
+.userDetailsContainer {
+    display: flex;
+    flex-flow: row;
+}
+.userPhoto {
+    
+}
+
+.userDetailsContainerDetails {
+    margin-left: 2rem;
+    width: 50%;
+}
+
+.userDetailsRow{
+ display: flex;
+ flex-flow: row;
+ width: 100%;
+ border-bottom: 1px solid rgba(0, 0, 0, 0.166);
+ margin-top: 0.5rem;
+
+}
+
+.userDetailsRowTitle{
+ width: 40%;
+
+}
+
+.userDetailsRowValue{
+    font-weight: 600;
+}
+
+.notFound {
+    color: grey;
+    width: 100%;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.copied {
+    transition: 0.2s;
+
+    background: green;
+    color: white;
+
+    margin-right: 0.5rem;
+    border: solid 1px grey;
+    border-radius: 7%;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem; 
+}
+
+.editUserContainer{
+    display: flex;
+}

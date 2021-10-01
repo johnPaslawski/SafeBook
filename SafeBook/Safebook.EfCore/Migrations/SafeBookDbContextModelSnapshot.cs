@@ -56,11 +56,17 @@ namespace SafeBook.EfCore.Migrations
                     b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
@@ -74,14 +80,46 @@ namespace SafeBook.EfCore.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SecondtName")
+                    b.Property<string>("SecondName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrganizationId");
+
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("SafeBook.Domain.HRMS.Organization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Adress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BankAccountNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KRS")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NIP")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("REGON")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Organization");
                 });
 
             modelBuilder.Entity("SafeBook.Domain.News", b =>
@@ -156,104 +194,6 @@ namespace SafeBook.EfCore.Migrations
                     b.HasIndex("ProductCategoryId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DefaultPrice = 2.99m,
-                            Description = "",
-                            Name = "Ołówek 1",
-                            ProductCategoryId = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DefaultPrice = 3.99m,
-                            Description = "",
-                            Name = "Ołówek 2",
-                            ProductCategoryId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DefaultPrice = 10m,
-                            Description = "",
-                            Name = "Ołówek 3",
-                            ProductCategoryId = 2
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DefaultPrice = 25.99m,
-                            Description = "",
-                            Name = "Kubek 1",
-                            ProductCategoryId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DefaultPrice = 10.99m,
-                            Description = "",
-                            Name = "Kubek 2",
-                            ProductCategoryId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            DefaultPrice = 14m,
-                            Description = "",
-                            Name = "Kubek 3",
-                            ProductCategoryId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            DefaultPrice = 39m,
-                            Description = "",
-                            Name = "Tłumik skrzypcowy",
-                            ProductCategoryId = 3
-                        },
-                        new
-                        {
-                            Id = 8,
-                            DefaultPrice = 59m,
-                            Description = "",
-                            Name = "Tłumik wiolonczelowy",
-                            ProductCategoryId = 3
-                        },
-                        new
-                        {
-                            Id = 9,
-                            DefaultPrice = 114.99m,
-                            Description = "",
-                            Name = "Tłumik do trąbki C",
-                            ProductCategoryId = 3
-                        },
-                        new
-                        {
-                            Id = 10,
-                            DefaultPrice = 108.9m,
-                            Description = "",
-                            Name = "Pulpit srebrny",
-                            ProductCategoryId = 4
-                        },
-                        new
-                        {
-                            Id = 11,
-                            DefaultPrice = 190.99m,
-                            Description = "",
-                            Name = "Pulpit koncertowy - czarny",
-                            ProductCategoryId = 4
-                        },
-                        new
-                        {
-                            Id = 12,
-                            DefaultPrice = 349.9m,
-                            Description = "",
-                            Name = "Pulpit Dyrygencki",
-                            ProductCategoryId = 4
-                        });
                 });
 
             modelBuilder.Entity("SafeBook.Domain.Shop.ProductCategory", b =>
@@ -302,6 +242,10 @@ namespace SafeBook.EfCore.Migrations
 
             modelBuilder.Entity("SafeBook.Domain.Common.User", b =>
                 {
+                    b.HasOne("SafeBook.Domain.HRMS.Organization", null)
+                        .WithMany("MembersList")
+                        .HasForeignKey("OrganizationId");
+
                     b.HasOne("SafeBook.Domain.Common.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
@@ -325,6 +269,11 @@ namespace SafeBook.EfCore.Migrations
             modelBuilder.Entity("SafeBook.Domain.Common.Role", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("SafeBook.Domain.HRMS.Organization", b =>
+                {
+                    b.Navigation("MembersList");
                 });
 
             modelBuilder.Entity("SafeBook.Domain.Shop.ProductCategory", b =>

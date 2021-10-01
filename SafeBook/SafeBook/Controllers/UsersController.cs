@@ -9,6 +9,7 @@ using SafeBook.Domain.Persistence;
 using Microsoft.AspNetCore.Http;
 using SafeBook.DTOs.MainPage;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using SafeBook.DTOs.Common;
 using SafeBook.Domain.Common;
 
@@ -16,6 +17,7 @@ namespace SafeBook.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles="BoardMember, Admin", AuthenticationSchemes = "Bearer")]
     public class UsersController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -27,35 +29,71 @@ namespace SafeBook.Controllers
             _mapper = mapper;
         }
 
-        // GET .. api/users
+        // GET .. api/users?like={}
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetUsers()
+        public IActionResult GetUsers([FromQuery] string like)
         {
-            var allUsers = _unitOfWork.Users.GetAll();
+            var users = _unitOfWork.UserManager.Users;
 
+            if (User.IsInRole("BoardMember"))
+            {
+                var shortUsers = users.Select(user => new  { FirstName = user.FirstName, LastName = user.LastName });
+                if (!string.IsNullOrWhiteSpace(like))
+                {
+                    shortUsers = shortUsers.Where(x => x.FirstName.Contains(like) || x.LastName.Contains(like));
+                }
 
-            return Ok(allUsers);
+                return Ok(shortUsers.ToList());
+            }
+
+            if (!string.IsNullOrWhiteSpace(like))
+            {
+                users = users.Where(x => x.FirstName.Contains(like)
+                                          || x.LastName.Contains(like)
+                                          || x.AddressLine1.Contains(like)
+                                          || x.Email.Contains(like)
+                                          || x.PhoneNumber.Contains(like));
+            }
+            var usersWithRoles = users.ToList();
+            var DTOs = new List<UserDto>();
+
+            foreach (var user in usersWithRoles)
+            {
+                var roleName = _unitOfWork.UserManager.GetRolesAsync(user).Result.First();
+                var role = _unitOfWork.RoleManager.FindByNameAsync(roleName).Result;
+                var userDTO = _mapper.Map<UserDto>(user);
+                userDTO.Role = role;
+                DTOs.Add(userDTO);
+            }
+
+            return Ok(DTOs);
         }
 
+
+
         // GET .. api/users/{id:int}
-        [HttpGet("{id:int}", Name = "GetUser")]
+        [HttpGet("{id:guid}", Name = "GetUser")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetUser(int id)
+        public IActionResult GetUser(Guid id)
         {
             try
             {
-                var user = _unitOfWork.Users.Get(id);
+                var user = _unitOfWork.UserManager.FindByIdAsync(id.ToString()).Result;
 
                 if (user == null)
                 {
                     return NotFound($"backend: Not found user with id = {id}");
                 }
 
-                var result = _mapper.Map<UserDto>(user);
+                var roleName = _unitOfWork.UserManager.GetRolesAsync(user).Result.First();
+                var role = _unitOfWork.RoleManager.FindByNameAsync(roleName).Result;
+                var userDTO = _mapper.Map<UserDto>(user);
+                userDTO.Role = role;
+                var result = userDTO;
 
                 return Ok(result);
             }
@@ -64,6 +102,24 @@ namespace SafeBook.Controllers
                 return Problem($"backend: Error with getting. Something went wrong in {nameof(GetUser)}");
             }
         }
+
+        //DELETE ... api/users/{id}
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUser(Guid id)
+        {
+            // najpierw weryfikujemy czy istnieje
+            var userToDelete = _unitOfWork.UserManager.FindByIdAsync(id.ToString()).Result;
+
+            if (userToDelete == null)
+            {
+                return NotFound();
+            }
+
+            if (_unitOfWork.UserManager.DeleteAsync(userToDelete).Result.Succeeded) return NoContent();
+
+            return BadRequest();
+        }
+
 
         // POST ... api/users
         [HttpPost]
@@ -78,13 +134,19 @@ namespace SafeBook.Controllers
             }
             try
             {
-                var user = _mapper.Map<User>(createUserDto);
+                var user = _mapper.Map<AppUser>(createUserDto);
 
 
-                _unitOfWork.Users.Add(user);
-                _unitOfWork.Save();
+                var result = _unitOfWork.UserManager.CreateAsync(user).Result;
+                if (result.Succeeded)
+                {
+                    var roleName = _unitOfWork.RoleManager.FindByIdAsync(createUserDto.RoleId).Result.Name;
+                    _unitOfWork.UserManager.AddToRoleAsync(user, roleName).Wait();
+                    return CreatedAtRoute("GetUser", new { id = user.Id }, user);
+                }
 
-                return CreatedAtRoute("GetUser", new { id = user.Id }, user);
+                throw new Exception("Cannot create this user.");
+
             }
             catch (Exception exception)
             {
@@ -96,11 +158,11 @@ namespace SafeBook.Controllers
         }
 
         // PUT ... api/users/{id:int}
-        [HttpPut("{id:int}")]
+        [HttpPut("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult UpdateUser(int id, [FromBody] UpdateUserDto updateUserDto)
+        public IActionResult UpdateUser(Guid id, [FromBody] UpdateUserDto updateUserDto)
         {
             if (!ModelState.IsValid)
             {
@@ -108,7 +170,7 @@ namespace SafeBook.Controllers
             }
             try
             {
-                var user = _unitOfWork.Users.Get(id);
+                var user = _unitOfWork.UserManager.FindByIdAsync(id.ToString()).Result;
                 if (user == null)
                 {
                     return NotFound($"backend: Not found user with id = {id}");
@@ -117,8 +179,15 @@ namespace SafeBook.Controllers
 
 
                 _mapper.Map(updateUserDto, user);
+                var userUpdated = _unitOfWork.UserManager.UpdateAsync(user).Result.Succeeded;
+                if (!userUpdated) throw new Exception("Cannot update this user");
 
-                _unitOfWork.Save();
+                var role = _unitOfWork.RoleManager.FindByIdAsync(updateUserDto.RoleId).Result;
+                if (!_unitOfWork.UserManager.IsInRoleAsync(user, role.Name).Result)
+                {
+                    var result = _unitOfWork.UserManager.AddToRoleAsync(user, role.Name).Result;
+                    if(!result.Succeeded) throw new Exception("Cannot set a role for this user");
+                }
 
                 return NoContent();
             }
@@ -134,19 +203,19 @@ namespace SafeBook.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetRoles()
         {
-            var allRoles = _unitOfWork.Roles.GetAllRoles();
+            var allRoles = _unitOfWork.RoleManager.Roles.ToList();
 
             return Ok(allRoles);
         }
 
         // GET..api/users/roles/{id}
-        [HttpGet("roles/{id:int}")]
+        [HttpGet("roles/{id:guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetRole(int id)
+        public IActionResult GetRole(Guid id)
         {
-            var role = _unitOfWork.Roles.GetRole(id);
+            var role = _unitOfWork.RoleManager.FindByIdAsync(id.ToString()).Result;
             if (role == null)
             {
                 return NotFound($"backend: Not found role with id = {id}");
@@ -155,15 +224,16 @@ namespace SafeBook.Controllers
         }
 
         // GET .. api/users/{userId:int}/roles
-        [HttpGet("{userId:int}/roles", Name = "GetUserRole")]
+        [HttpGet("{userId:guid}/roles", Name = "GetUserRole")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetUserRole(int userId)
+        public IActionResult GetUserRole(Guid userId)
         {
             try
             {
-                var role = _unitOfWork.Roles.GetUserRole(userId);
+                var user = _unitOfWork.UserManager.FindByIdAsync(userId.ToString()).Result;
+                var role = _unitOfWork.UserManager.GetRolesAsync(user).Result.First();
 
                 if (role == null)
                 {

@@ -1,0 +1,14 @@
+.actionsPanel {
+    display: flex;
+    position: absolute;
+    width: 75vw;
+    height: 83vh;
+    top: 5rem;
+    left: 16vw;
+    background-color: rgba(255, 255, 255, 0.809);
+
+    border-radius: 0.5%;
+
+    justify-content: center;
+    align-items: center;
+}

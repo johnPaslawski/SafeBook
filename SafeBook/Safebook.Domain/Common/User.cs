@@ -11,8 +11,9 @@ namespace SafeBook.Domain.Common
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
-        public string SecondtName { get; set; }
+        public string SecondName { get; set; }
         public string LastName { get; set; }
+        public string Email { get; set; }
         public DateTime BirthDate { get; set; }
         public string AdressLine1 { get; set; }
         public string AdressLine2 { get; set; }
@@ -24,6 +25,6 @@ namespace SafeBook.Domain.Common
         public Role Role { get; set; } // set to virtual ????
         //[ForeignKey(nameof(Role))]
         public int RoleId { get; set; }
-        
+
     }
 }

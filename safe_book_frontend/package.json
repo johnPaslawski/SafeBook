@@ -6,11 +6,12 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.21.1",
+    "bootstrap": "^5.1.0",
+    "axios": "^0.21.4",
     "http-proxy-middleware": "^2.0.1",
     "oidc-client": "^1.11.5",
     "react": "^17.0.2",
-    "react-calendar": "^3.4.0",
+    "react-bootstrap": "^2.0.0-beta.6",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
@@ -43,5 +44,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:17496"
+  "proxy": "https://localhost:44325"
 }

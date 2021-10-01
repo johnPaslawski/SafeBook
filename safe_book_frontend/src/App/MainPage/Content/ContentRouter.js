@@ -1,7 +1,6 @@
 import { Route, Redirect, Switch} from 'react-router-dom';
 
 import NewsContainer from "./News/NewsContainer";
-import AboutNews from './News/AboutNews/AboutNews';
 import ElementInfoContainer from './ElementInfo/ElementInfoContainer';
 import About from './About/About';
 import Offer from './Offer/Offer';
@@ -19,8 +18,6 @@ const ContentRouter = () => {
                 <Route exact path="/main/news">
                     <NewsContainer />
                 </Route>
-
-                <Route exact path="/main/news/:id" component={AboutNews} />
 
                 <Route exact path="/main/projects">
                     <ProjectsContainer />
