@@ -13,5 +13,6 @@ namespace SafeBook.IdentityServer.Controllers
         [Required] // TODO check this behaviour
         [DataType(DataType.Url)]
         public string ReturnUrl { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

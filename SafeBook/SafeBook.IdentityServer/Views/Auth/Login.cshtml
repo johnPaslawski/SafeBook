@@ -3,7 +3,7 @@
 <form asp-controller="Auth" asp-action="Login" method="post">
     <input type="hidden" asp-for="ReturnUrl" />
     <div>
-        <label>Username</label>
+        <label>Username / email</label>
         <input asp-for="Username" />
     </div>
     <div>
@@ -14,6 +14,10 @@
         <button type="submit">Sign In</button>
     </div>
 </form>
+<div>
+    @Model.ErrorMessage
+</div>
+
 <div>
     <a asp-action="Register" asp-controller="Auth"
        asp-route-returnUrl="@Model.ReturnUrl">Register</a> @* remember not to loose the return url!!!*@

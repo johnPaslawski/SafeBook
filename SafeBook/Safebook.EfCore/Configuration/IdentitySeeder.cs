@@ -42,7 +42,12 @@ namespace SafeBook.EfCore.Configuration
                 if (userManager.FindByNameAsync(user.UserName).Result == null)
                 {
                     var result = userManager.CreateAsync(user, "pass").Result;
-                    if (result.Succeeded) userManager.AddToRoleAsync(user, user.UserName).Wait();
+                    if (result.Succeeded)
+                    {
+                        userManager.AddToRoleAsync(user, user.UserName).Wait();
+                        user.EmailConfirmed = true;
+                        userManager.UpdateAsync(user).Wait();
+                    }
                 }
             }
         }

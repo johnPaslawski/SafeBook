@@ -5,6 +5,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using NETCore.MailKit.Extensions;
+using NETCore.MailKit.Infrastructure.Internal;
 using SafeBook.Domain.Common;
 using SafeBook.EfCore.Configuration;
 using SafeBook.EfCore.EFData;
@@ -49,7 +51,10 @@ namespace SafeBook.IdentityServer
                 .AddInMemoryApiResources(IdentityServer.Configuration.ApiResources)
                 .AddInMemoryApiScopes(IdentityServer.Configuration.ApiScopes)
                 .AddInMemoryClients(IdentityServer.Configuration.Clients)
-                .AddDeveloperSigningCredential(); // TODO roduction config
+                .AddDeveloperSigningCredential(); // TODO production config
+
+            services.AddMailKit(options =>
+                options.UseMailKit(Configuration.GetSection("EmailConfiguration").Get<MailKitOptions>()));
 
             services.AddControllersWithViews();
         }

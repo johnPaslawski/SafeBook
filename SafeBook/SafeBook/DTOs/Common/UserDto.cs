@@ -9,7 +9,7 @@ namespace SafeBook.DTOs.Common
 {
     public class CreateUserDto
     {
-        public string UserName => FirstName + LastName;
+        public string UserName => Email;
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string LastName { get; set; }

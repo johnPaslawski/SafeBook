@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeBook.Domain", "Safebook
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeBook.EfCore", "SafeBook.EfCore\SafeBook.EfCore.csproj", "{59CB6630-F100-4463-A64E-74EDA13ED226}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeBook.IdentityServer", "SafeBook.IdentityServer\SafeBook.IdentityServer.csproj", "{15FCB7C9-3A56-45D5-BAEA-02089CB8E93B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeBook.IdentityServer", "SafeBook.IdentityServer\SafeBook.IdentityServer.csproj", "{15FCB7C9-3A56-45D5-BAEA-02089CB8E93B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
