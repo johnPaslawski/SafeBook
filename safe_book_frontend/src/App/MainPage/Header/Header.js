@@ -106,9 +106,12 @@ class Header extends React.Component{
                     <a activeClassName={`${header.active}`} className={`${grid.grid}`} onClick={ () => userManagerInstance.signinRedirect()}>
                         <img alt=""  src={process.env.PUBLIC_URL + '/LoginStart.png'}/>
                     </a>
-                    <NavLink to="/register" className={`${grid.grid}`} activeClassName={`${header.active}`}>
+                    {/* <NavLink to="/register" className={`${grid.grid}`} activeClassName={`${header.active}`}>
                         <img alt="" src={process.env.PUBLIC_URL + '/RegisterStart.png'}/>
-                    </NavLink>
+                    </NavLink> */}
+                    <a activeClassName={`${header.active}`} className={`${grid.grid}`} onClick={ () => userManagerInstance.signoutRedirect()}>
+                        <img alt=""  src={process.env.PUBLIC_URL + '/RegisterStart.png'}/>
+                    </a>
                 </div>
             </div>
         );
