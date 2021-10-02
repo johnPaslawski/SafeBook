@@ -172,11 +172,12 @@ namespace SafeBook.IdentityServer.Controllers
 
         [HttpGet]
         public async Task<IActionResult> ResetPassword(Guid userId, string resetToken) =>
-            View(new PasswordResetViewModel { UserId = userId, ResetToken = resetToken });
+            View(new ResetPasswordViewModel { UserId = userId, ResetToken = resetToken });
 
         [HttpPost]
-        public async Task<IActionResult> ResetPassword(PasswordResetViewModel viewModel)
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel viewModel)
         {
+            if (!ModelState.IsValid) return View(viewModel);
             var user = await _userManager.FindByIdAsync(viewModel.UserId.ToString());
 
             if (user == null) return BadRequest();

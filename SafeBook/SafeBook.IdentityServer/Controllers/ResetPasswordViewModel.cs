@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SafeBook.IdentityServer.Controllers
 {
-    public class PasswordResetViewModel
+    public class ResetPasswordViewModel
     {
         [Required]
         [DataType(DataType.Text)]
@@ -24,7 +24,7 @@ namespace SafeBook.IdentityServer.Controllers
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm the new password")]
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "Wprowadzone hasła muszą być identyczne!")]
         public string ConfirmPassword { get; set; }
     }
 }
