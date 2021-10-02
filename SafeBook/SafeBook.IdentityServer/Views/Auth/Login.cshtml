@@ -10,15 +10,15 @@
         <form asp-controller="Auth" asp-action="Login" method="post">
             <input type="hidden" asp-for="ReturnUrl" />
             <div>
-                <label>Username / email</label>
+                <label>Nazwa użytkownika / e-mail</label>
                 <input asp-for="Username" class="form-control"/>
             </div>
             <div>
-                <label>Password</label>
+                <label>Hasło</label>
                 <input asp-for="Password" class="form-control"/>
             </div>
             <div class="mt-2">
-                <button type="submit" class="btn btn-dark">Sign In</button>
+                <button type="submit" class="btn btn-dark">Zaloguj</button>
             </div>
         </form>
         <div class="mt-2">
@@ -30,7 +30,7 @@
 
         <div class="mt-2">
             <a asp-action="Register" asp-controller="Auth"
-               asp-route-returnUrl="@Model.ReturnUrl">Register</a> @* remember not to loose the return url!!!*@
+               asp-route-returnUrl="@Model.ReturnUrl">Utwórz konto</a> @* remember not to loose the return url!!!*@
         </div>
     </div>
 </div>

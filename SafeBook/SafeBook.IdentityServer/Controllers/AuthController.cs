@@ -49,7 +49,7 @@ namespace SafeBook.IdentityServer.Controllers
 
             if (user == null)
             {
-                viewModel.ErrorMessage = "No such user!";
+                viewModel.ErrorMessage = "Użytkownik nie istnieje. Sprawdź poprawność danych.";
                 return View(viewModel);
             }
 
@@ -70,7 +70,7 @@ namespace SafeBook.IdentityServer.Controllers
                     // TODO send recovery email or similar
                 }
 
-                viewModel.ErrorMessage = "Incorrect password!";
+                viewModel.ErrorMessage = "Nieprawidłowe hasło!";
                 return View(viewModel);
             }
 
@@ -107,13 +107,22 @@ namespace SafeBook.IdentityServer.Controllers
                     Request.Scheme,
                     Request.Host.ToString());
 
-                await _emailService.SendAsync(user.Email, "SafeBook email verification",
-                    $"<a href={confirmationLink}>Click here to verify your account</a>", true);
+                await _emailService.SendAsync(user.Email, "SafeBook - aktywacja konta",
+                    $"<h3>Witaj, {user.FirstName ?? "Nieznajomy / -a!"}</h3>" +
+                    $"<p>Cieszymy się, że jesteś z nami :)</p>" +
+                    $"<a href={confirmationLink}>Kliknij tutaj aby aktywować swoje SafeBookowe konto</a>",
+                    true);
 
                 return RedirectToAction("EmailVerification");
             }
 
-            return BadRequest(result.Errors.FirstOrDefault().Description);
+            if (result.ToString().Contains("DuplicateUserName")) // TODO check what errors may occur here and handle in bulk if possible
+            {
+                viewModel.ErrorMessage = "Użytkownik o podanym adresie e-mail już istnieje.";
+                return View(viewModel);
+            }
+
+            return BadRequest();
         }
 
         [HttpGet]
@@ -156,7 +165,7 @@ namespace SafeBook.IdentityServer.Controllers
         {
             var user = await _userManager.FindByEmailAsync(email);
 
-            if (user == null) return BadRequest("No such user!");
+            if (user == null) return BadRequest("Użytkownik nie istnieje!");
 
             var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
             var resetLink = Url.Action(nameof(ResetPassword),
@@ -165,7 +174,12 @@ namespace SafeBook.IdentityServer.Controllers
                 Request.Scheme,
                 Request.Host.ToString());
 
-            await _emailService.SendAsync(user.Email, "SafeBook password reset", $"<a href={resetLink}>Click here to reset your password</a>", true);
+            await _emailService.SendAsync(user.Email, "Odzyskiwanie hasła - SafeBook",
+                $"<h3>Witaj, {user.FirstName ?? "Nieznajomy / -a!"}</h3>" +
+                    $"<p>Ktoś usiłuje zresetować Twoje hasło do SafeBooka. Jeśli to nie ty, zignoruj tę wiadomość lub powiadom administrację," +
+                $" jeśli ten problem wystąpi ponownie.</p>" +
+                    $"<a href={resetLink}>Kliknij tutaj, aby odzyskać hasło</a>",
+                true);
 
             return View();
         }
@@ -184,7 +198,7 @@ namespace SafeBook.IdentityServer.Controllers
 
             var result = await _userManager.ResetPasswordAsync(user, viewModel.ResetToken, viewModel.Password);
 
-            if (!result.Succeeded) throw new Exception($"Cannot reset password for user {user.UserName}");
+            if (!result.Succeeded) throw new Exception($"Cannot reset password for user with id: {user.Id}");
 
             return Redirect("https://localhost:44366/"); // TODO remove hardcoded reference
         }

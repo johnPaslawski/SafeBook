@@ -6,15 +6,18 @@
 }
 <div class="d-flex justify-content-center mt-5">
     <div class="w-25">
+        <div>
+            <p class="text-danger">@Model.ErrorMessage</p>
+        </div>
         <form asp-controller="Auth" asp-action="Register" method="post">
-            <input type="hidden" asp-for="ReturnUrl" />
+            <input type="hidden" asp-for="ReturnUrl"/>
             <div>
-                <label>Email</label>
+                <label asp-for="Email"></label>
                 <input asp-for="Email" class="form-control"/>
                 <span asp-validation-for="Email"></span>
             </div>
             <div>
-                <label>Password</label>
+                <label asp-for="Password"></label>
                 <input asp-for="Password" class="form-control"/>
                 <span asp-validation-for="Password"></span>
             </div>

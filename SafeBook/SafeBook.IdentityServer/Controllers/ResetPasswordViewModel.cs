@@ -18,13 +18,13 @@ namespace SafeBook.IdentityServer.Controllers
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Nowe hasło")]
         public string Password { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm the new password")]
-        [Compare("Password", ErrorMessage = "Wprowadzone hasła muszą być identyczne!")]
+        [Display(Name = "Potwierdź nowe hasło")]
+        [Compare("Password", ErrorMessage = "Podaj to samo nowe hasło w obydwu polach.")]
         public string ConfirmPassword { get; set; }
     }
 }
