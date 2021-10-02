@@ -15,7 +15,10 @@
     </div>
 </form>
 <div>
-    @Model.ErrorMessage
+    @if (Model?.ErrorMessage != null)
+    {
+        @Model.ErrorMessage
+    }
 </div>
 
 <div>

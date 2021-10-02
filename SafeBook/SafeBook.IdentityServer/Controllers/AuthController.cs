@@ -53,7 +53,7 @@ namespace SafeBook.IdentityServer.Controllers
                 return View(viewModel);
             }
 
-            if (user.EmailConfirmed)
+            if (user.EmailConfirmed) // TODO add as requirement in identity config
             {
                 var result = await _signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
 
@@ -70,7 +70,8 @@ namespace SafeBook.IdentityServer.Controllers
                     // TODO send recovery email or similar
                 }
 
-                return View();
+                viewModel.ErrorMessage = "Incorrect password!";
+                return View(viewModel);
             }
 
             return BadRequest("You need to verify your email first!");
@@ -110,15 +111,12 @@ namespace SafeBook.IdentityServer.Controllers
                     $"<a href={confirmationLink}>Click here to verify your account</a>", true);
 
                 return RedirectToAction("EmailVerification");
-
-
-                await _signInManager.SignInAsync(user, false);
-                return Redirect(viewModel.ReturnUrl);
             }
 
             return BadRequest(result.Errors.FirstOrDefault().Description);
         }
 
+        [HttpGet]
         public async Task<IActionResult> VerifyEmail(Guid userId, string confirmationToken, string returnUrl)
         {
             var user = await _userManager.FindByIdAsync(userId.ToString());
@@ -138,8 +136,8 @@ namespace SafeBook.IdentityServer.Controllers
         [HttpGet]
         public async Task<IActionResult> Logout(string logoutId)
         {
-            var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
-            _userManager.RemoveClaimsAsync(user, User.Claims).Wait();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            await _userManager.RemoveClaimsAsync(user, User.Claims);
             await _signInManager.SignOutAsync();
 
 
@@ -151,6 +149,43 @@ namespace SafeBook.IdentityServer.Controllers
             }
 
             return Redirect(logoutRequest.PostLogoutRedirectUri);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PasswordReset(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if (user == null) return BadRequest("No such user!");
+
+            var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var resetLink = Url.Action(nameof(ResetPassword),
+                "Auth",
+                new { userId = user.Id, resetToken },
+                Request.Scheme,
+                Request.Host.ToString());
+
+            await _emailService.SendAsync(user.Email, "SafeBook password reset", $"<a href={resetLink}>Click here to reset your password</a>", true);
+
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ResetPassword(Guid userId, string resetToken) =>
+            View(new PasswordResetViewModel { UserId = userId, ResetToken = resetToken });
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(PasswordResetViewModel viewModel)
+        {
+            var user = await _userManager.FindByIdAsync(viewModel.UserId.ToString());
+
+            if (user == null) return BadRequest();
+
+            var result = await _userManager.ResetPasswordAsync(user, viewModel.ResetToken, viewModel.Password);
+
+            if (!result.Succeeded) throw new Exception($"Cannot reset password for user {user.UserName}");
+
+            return Redirect("https://localhost:44366/"); // TODO remove hardcoded reference
         }
     }
 }

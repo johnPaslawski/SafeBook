@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +38,9 @@ namespace SafeBook.IdentityServer
                 })
                 .AddEntityFrameworkStores<SafeBookIdentityDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.Configure<DataProtectionTokenProviderOptions>(options =>
+                options.TokenLifespan = TimeSpan.FromMinutes(30));
 
             services.ConfigureApplicationCookie(options =>
             {
