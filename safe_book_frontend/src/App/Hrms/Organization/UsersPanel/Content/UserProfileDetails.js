@@ -1,6 +1,7 @@
 import "../UsersPanel.css";
 import { Link } from "react-router-dom";
 import * as React from "react";
+import config from '../../../../../config.json';
 
 const UserProfileDetails = ({ user, handleDelete }) => {
 
@@ -20,7 +21,6 @@ const UserProfileDetails = ({ user, handleDelete }) => {
         copyButton.className = 'userOptionsButton';
         copyButton.innerHTML = '<i class="bi bi-files"></i> Kopiuj';
       }, 2000);
-      
   }
 
   return (
@@ -37,6 +37,9 @@ const UserProfileDetails = ({ user, handleDelete }) => {
               <i className="bi bi-pencil-square"></i> Edytuj dane
             </button>
           </Link>
+          <a href={`${config.PASSWORD_RESET_URL}${user.email}`}>
+            <button className="userOptionsButton">Resetuj hasło</button>
+          </a>
           <button onClick={() => { handleDelete(user.id); }} className="userOptionsButtonDelete">
             <i className="bi bi-x-circle-fill"></i> Usuń
           </button>
