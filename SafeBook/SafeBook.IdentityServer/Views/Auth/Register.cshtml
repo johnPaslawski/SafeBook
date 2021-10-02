@@ -1,27 +1,35 @@
 ﻿@model RegisterViewModel
 
-<form asp-controller="Auth" asp-action="Register" method="post">
-    <input type="hidden" asp-for="ReturnUrl" />
-    <div>
-        <label>Email</label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Email verification";
+}
+<div class="d-flex justify-content-center mt-5">
+    <div class="w-25">
+        <form asp-controller="Auth" asp-action="Register" method="post">
+            <input type="hidden" asp-for="ReturnUrl" />
+            <div>
+                <label>Email</label>
+                <input asp-for="Email" class="form-control"/>
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div>
+                <label>Password</label>
+                <input asp-for="Password" class="form-control"/>
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div>
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" class="form-control"/>
+                <span asp-validation-for="ConfirmPassword"></span>
+            </div>
+            <div class="mt-2">
+                <button type="submit" class="btn btn-dark">Sign Up</button>
+            </div>
+        </form>
+        <div class="mt-2">
+            <a asp-action="Login" asp-controller="Auth"
+               asp-route-returnUrl="@Model.ReturnUrl">Back to login</a>
+        </div>
     </div>
-    <div>
-        <label>Password</label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div>
-        <label asp-for="ConfirmPassword"></label>
-        <input asp-for="ConfirmPassword" />
-        <span asp-validation-for="ConfirmPassword"></span>
-    </div>
-    <div>
-        <button type="submit">Sign Up</button>
-    </div>
-</form>
-<div>
-    <a asp-action="Login" asp-controller="Auth"
-       asp-route-returnUrl="@Model.ReturnUrl">Back to login</a>
 </div>

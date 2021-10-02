@@ -1,27 +1,36 @@
 ﻿@model LoginViewModel
 
-<form asp-controller="Auth" asp-action="Login" method="post">
-    <input type="hidden" asp-for="ReturnUrl" />
-    <div>
-        <label>Username / email</label>
-        <input asp-for="Username" />
-    </div>
-    <div>
-        <label>Password</label>
-        <input asp-for="Password" />
-    </div>
-    <div>
-        <button type="submit">Sign In</button>
-    </div>
-</form>
-<div>
-    @if (Model?.ErrorMessage != null)
-    {
-        @Model.ErrorMessage
-    }
-</div>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Login";
+}
 
-<div>
-    <a asp-action="Register" asp-controller="Auth"
-       asp-route-returnUrl="@Model.ReturnUrl">Register</a> @* remember not to loose the return url!!!*@
+<div class="d-flex justify-content-center mt-5">
+    <div class="w-25">
+        <form asp-controller="Auth" asp-action="Login" method="post">
+            <input type="hidden" asp-for="ReturnUrl" />
+            <div>
+                <label>Username / email</label>
+                <input asp-for="Username" class="form-control"/>
+            </div>
+            <div>
+                <label>Password</label>
+                <input asp-for="Password" class="form-control"/>
+            </div>
+            <div class="mt-2">
+                <button type="submit" class="btn btn-dark">Sign In</button>
+            </div>
+        </form>
+        <div class="mt-2">
+            @if (Model?.ErrorMessage != null)
+            {
+                @Model.ErrorMessage
+            }
+        </div>
+
+        <div class="mt-2">
+            <a asp-action="Register" asp-controller="Auth"
+               asp-route-returnUrl="@Model.ReturnUrl">Register</a> @* remember not to loose the return url!!!*@
+        </div>
+    </div>
 </div>
