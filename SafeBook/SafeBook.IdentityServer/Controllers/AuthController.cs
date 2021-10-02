@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityModel;
+using IdentityServer4.Extensions;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -145,7 +146,10 @@ namespace SafeBook.IdentityServer.Controllers
         [HttpGet]
         public async Task<IActionResult> Logout(string logoutId)
         {
+            if (!User.IsAuthenticated()) return NotFound(); // TODO do we need this?
+
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
             await _userManager.RemoveClaimsAsync(user, User.Claims);
             await _signInManager.SignOutAsync();
 
